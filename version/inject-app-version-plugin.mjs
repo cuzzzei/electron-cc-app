@@ -1,4 +1,4 @@
-import { getVersion } from './getVersion.mjs';
+import { getVersion } from './getVersion.mjs'
 
 /**
  * Somehow inject app version to vite build context
@@ -8,6 +8,6 @@ export const injectAppVersion = () => ({
    name: 'inject-version',
    config: () => {
       // TODO: Find better way to inject app version
-      process.env.VITE_APP_VERSION = getVersion();
+      process.env.VITE_APP_VERSION = getVersion()
    },
-});
+})
