@@ -1,13 +1,7 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 * {
    padding: 0px;
    margin: 0px;
-}
-
-button {
-   padding: .5rem .7rem;
-   border: none;
-   cursor: pointer;
-   border-radius: .2rem;
+   font-family: "Inter", sans-serif;
 }

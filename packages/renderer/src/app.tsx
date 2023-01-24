@@ -1,5 +1,6 @@
 import { Main } from '/@/features/misc'
 import { AppProvider } from '/@/providers/app'
+import './index.css'
 
 const App = () => {
    return (

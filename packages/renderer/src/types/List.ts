@@ -52,4 +52,21 @@ export class List<T extends BaseEntity> {
 
       return null
    }
+
+   filter(filterFunction: (item: T) => boolean): List<T> {
+      const filteredList = new List<T>()
+
+      let temp: Node<T> | null = this.head
+
+      while (temp != null) {
+         const shouldAdd = filterFunction(temp.value)
+
+         if (shouldAdd) {
+            filteredList.add(temp.value)
+         }
+         temp = temp.next
+      }
+
+      return filteredList
+   }
 }
