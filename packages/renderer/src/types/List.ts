@@ -1,6 +1,4 @@
-interface BaseEntity {
-   id: string
-}
+import { BaseEntity } from '/@/types/BaseEntity'
 
 interface Node<T extends BaseEntity> {
    value: T
@@ -43,7 +41,7 @@ export class List<T extends BaseEntity> {
       let temp: Node<T> | null = this.head
 
       while (temp != null) {
-         if (temp.value.id === id) {
+         if (temp.value.getId() === id) {
             return temp
          }
 

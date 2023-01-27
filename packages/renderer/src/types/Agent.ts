@@ -10,16 +10,15 @@ interface AgentProps {
 }
 
 export class Agent {
-   id: string = ''
-   extension: string = ''
-   name: string = ''
-   age: number = 0
-   callsHistory: List<Call>
-
-   overtime: number = 0
-   specialty: Specialty = 'de escritorio'
-   start: string = ''
-   finish: string = ''
+   private id: string
+   private extension: string
+   private name: string
+   private age: number
+   private callsHistory: List<Call>
+   private overtime: number
+   private specialty: Specialty
+   private start: string
+   private finish: string
 
    constructor({ id, name, age, specialty }: AgentProps) {
       this.id = id
@@ -43,5 +42,41 @@ export class Agent {
 
          this.callsHistory.add(newCall)
       }
+   }
+
+   getId() {
+      return this.id
+   }
+
+   getExtension() {
+      return this.extension
+   }
+
+   getName() {
+      return this.name
+   }
+
+   getAge() {
+      return this.age
+   }
+
+   getCallsHistory() {
+      return this.callsHistory
+   }
+
+   getOvertime() {
+      return this.overtime
+   }
+
+   getSpecialty() {
+      return this.specialty
+   }
+
+   getStart() {
+      return this.start
+   }
+
+   getFinish() {
+      return this.finish
    }
 }
