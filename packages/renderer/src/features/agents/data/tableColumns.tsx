@@ -1,5 +1,7 @@
 import { TableColumn } from '/@/components/Table'
+import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/Agent'
+import { Name } from '/@/types/Name'
 
 export const columns: Array<TableColumn<Agent>> = [
    {
@@ -10,7 +12,9 @@ export const columns: Array<TableColumn<Agent>> = [
    {
       id: 'name',
       Header: 'Nombre',
-      accessor: 'getName',
+      Cell: (agent) => {
+         return agent.getName().toString()
+      },
    },
    {
       id: 'age',

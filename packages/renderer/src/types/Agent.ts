@@ -1,82 +1,61 @@
 import { Call } from '/@/types/Call'
+import { AgentDefinition, AgentProps } from '/@/types/definitions/Agent'
 import { List } from '/@/types/List'
+import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
+import { Time } from '/@/types/Time'
 
-interface AgentProps {
-   id: string
-   name: string
-   age: number
-   specialty: Specialty
-}
-
-export class Agent {
+export class Agent implements AgentDefinition {
    private id: string
    private extension: string
-   private name: string
+   private name: Name
    private age: number
    private callsHistory: List<Call>
    private overtime: number
    private specialty: Specialty
-   private start: string
-   private finish: string
+   private start: Time
+   private finish: Time
 
-   constructor({ id, name, age, specialty }: AgentProps) {
+   constructor({
+      id,
+      extension,
+      name,
+      age,
+      callsHistory,
+      overtime,
+      specialty,
+      start,
+      finish,
+   }: AgentProps) {
       this.id = id
+      this.extension = extension
       this.name = name
       this.age = age
-      this.extension = '123'
-      this.start = '07:00'
-      this.finish = '13:00'
-      this.overtime = 3
+      this.callsHistory = callsHistory
+      this.overtime = overtime
       this.specialty = specialty
-      this.callsHistory = new List<Call>()
-
-      for (let i = 0; i < 10; i++) {
-         const newCall: Call = {
-            id: crypto.randomUUID(),
-            clientName: `Client ${i}`,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipis',
-            start: '07:00',
-            finish: '07:04',
-         }
-
-         this.callsHistory.add(newCall)
-      }
+      this.start = start
+      this.finish = finish
    }
 
-   getId() {
-      return this.id
-   }
+   // getters
+   public getId() { return this.id }
+   public getExtension() { return this.extension }
+   public getName() { return this.name }
+   public getAge() { return this.age }
+   public getCallsHistory() { return this.callsHistory }
+   public getOvertime() { return this.overtime }
+   public getSpecialty() { return this.specialty }
+   public getStart() { return this.start }
+   public getFinish() { return this.finish }
 
-   getExtension() {
-      return this.extension
-   }
-
-   getName() {
-      return this.name
-   }
-
-   getAge() {
-      return this.age
-   }
-
-   getCallsHistory() {
-      return this.callsHistory
-   }
-
-   getOvertime() {
-      return this.overtime
-   }
-
-   getSpecialty() {
-      return this.specialty
-   }
-
-   getStart() {
-      return this.start
-   }
-
-   getFinish() {
-      return this.finish
-   }
+   // setters
+   public setExtension(extension: string) { this.extension = extension }
+   public setName(name: Name) { this.name = name }
+   public setAge(age: number) { this.age = age }
+   public setCallsHistory(callsHistory: List<Call>) { this.callsHistory = callsHistory }
+   public setOvertime(overtime: number) { this.overtime = overtime }
+   public setSpecialty(specialty: Specialty) { this.specialty = specialty }
+   public setStart(start: Time) { this.start = start }
+   public setFinish(finish: Time) { this.finish = finish }
 }

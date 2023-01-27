@@ -6,13 +6,14 @@ import { AgentsFilter } from '/@/features/agents/components/AgentsFilter'
 import { Agent } from '/@/types/Agent'
 
 export const AgentsList = () => {
-   const ctx = useAppContext()
+   const { agentsList } = useAppContext()
    const [name, setName] = useState('')
    const [specialty, setSpecialty] = useState('Todas')
 
    function filterAgent(agent: Agent): boolean {
       const nameValidation = agent
          .getName()
+         .toString()
          .toLowerCase()
          .includes(name.toLowerCase())
 
@@ -23,7 +24,7 @@ export const AgentsList = () => {
       return nameValidation && agent.getSpecialty() === specialty
    }
 
-   const filteredData = ctx.agentsList
+   const filteredData = agentsList
       .filter((agent) => filterAgent(agent))
       .map((agent) => agent)
 

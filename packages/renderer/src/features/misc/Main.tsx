@@ -1,64 +1,51 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { AgentsList } from '/@/features/agents/components/AgentsList'
 import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/Agent'
-
-function AgentForm({ onSubmit }: { onSubmit: (p: Agent) => void }) {
-   const [name, setName] = useState('')
-
-   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-      e.preventDefault()
-
-      const newAgent = new Agent({
-         id: crypto.randomUUID(),
-         name,
-         age: 30,
-         specialty: 'servidores',
-      })
-
-      onSubmit(newAgent)
-      setName('')
-   }
-
-   return (
-      <form onSubmit={handleSubmit}>
-         <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-         />
-
-         <button type='submit'>Add agent</button>
-      </form>
-   )
-}
+import { Call } from '/@/types/Call'
+import { List } from '/@/types/List'
+import { Name } from '/@/types/Name'
+import { Time } from '/@/types/Time'
 
 export const Main = () => {
-   const ctx = useAppContext()
+   const { render, agentsList } = useAppContext()
+   const renderRef = useRef(false)
 
    function handleAddAgent(p: Agent) {
-      ctx.agentsList.add(p)
-      ctx.render()
+      agentsList.add(p)
+      render()
    }
 
    useEffect(() => {
-      handleAddAgent(
-         new Agent({
+      if (!renderRef.current) {
+         const agent1 = new Agent({
             id: crypto.randomUUID(),
+            name: new Name('Ronaldo', 'Nazario'),
             age: 22,
-            name: 'Ronaldo Nazario',
-            specialty: 'impresoras',
+            callsHistory: new List<Call>(),
+            extension: '333',
+            start: new Time(7, 0),
+            finish: new Time(8, 50),
+            overtime: 10,
+            specialty: 'de escritorio',
          })
-      )
 
-      handleAddAgent(
-         new Agent({
+         const agent2 = new Agent({
             id: crypto.randomUUID(),
-            age: 23,
-            name: 'Franklin Rousevelt',
-            specialty: 'servidores',
+            name: new Name('Marco "El Chino"', 'Maidana'),
+            age: 25,
+            callsHistory: new List<Call>(),
+            extension: '444',
+            start: new Time(7, 0),
+            finish: new Time(9, 40),
+            overtime: 11,
+            specialty: 'portátiles',
          })
-      )
+
+         handleAddAgent(agent1)
+         handleAddAgent(agent2)
+         renderRef.current = true
+      }
    }, [])
 
    return (
