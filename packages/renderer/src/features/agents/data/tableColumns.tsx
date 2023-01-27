@@ -1,7 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import { TableColumn } from '/@/components/Table'
-import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/Agent'
-import { Name } from '/@/types/Name'
 
 export const columns: Array<TableColumn<Agent>> = [
    {
@@ -48,6 +47,8 @@ export const columns: Array<TableColumn<Agent>> = [
    {
       id: 'actions',
       Cell: (agent) => {
+         const navigate = useNavigate()
+
          return (
             <div className='d-flex gap-1'>
                <div>
@@ -57,7 +58,10 @@ export const columns: Array<TableColumn<Agent>> = [
                </div>
 
                <div>
-                  <button className='btn btn-primary'>
+                  <button
+                     className='btn btn-primary'
+                     onClick={() => navigate(`/agents/${agent.getId()}`)}
+                  >
                      <i className='fa fa-pencil' />
                   </button>
                </div>

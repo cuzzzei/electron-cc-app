@@ -43,6 +43,7 @@ export const AgentsList = () => {
             <Table
                columns={columns}
                data={filteredData}
+               emptyMessage='No se encontraron agentes'
             />
          </div>
       </div>

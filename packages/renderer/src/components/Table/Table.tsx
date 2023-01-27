@@ -11,9 +11,24 @@ export interface TableColumn<T> {
 interface TableProps<T> {
    columns: Array<TableColumn<T>>
    data: Array<T & BaseEntity>
+   emptyMessage?: string
 }
 
-export const Table = <T,>({ columns, data }: TableProps<T>) => {
+export const Table = <T,>({
+   columns,
+   data,
+   emptyMessage = 'Entries not found',
+}: TableProps<T>) => {
+   if (data.length === 0) {
+      return (
+         <div className='card'>
+            <div className='card-body'>
+               <p>{emptyMessage}</p>
+            </div>
+         </div>
+      )
+   }
+
    return (
       <div className='card'>
          <div className='card-body'>

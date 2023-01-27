@@ -1,11 +1,11 @@
-import { Main } from '/@/features/misc'
 import { AppProvider } from '/@/providers/app'
+import { AppRoutes } from '/@/routes'
 import './index.css'
 
 const App = () => {
    return (
       <AppProvider>
-         <Main />
+         <AppRoutes />
       </AppProvider>
    )
 }
