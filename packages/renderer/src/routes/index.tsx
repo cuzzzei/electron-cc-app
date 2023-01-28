@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import { Main } from '/@/features/misc'
-import { UpdateAgent } from '../features/agents/routes/UpdateAgent'
-import { Agents } from '/@/features/agents/routes/Agents'
+import { Agent } from '/@/features/agents/routes/Agent'
 import { NewAgent } from '/@/features/agents/routes/NewAgent'
+import { Agents } from '/@/features/agents/routes/Agents'
 
 export const AppRoutes = () => {
    return (
@@ -15,17 +15,17 @@ export const AppRoutes = () => {
          <Route
             path='/agents'
             element={<Agents />}
-         />
+         >
+            <Route
+               path='new'
+               element={<NewAgent />}
+            />
 
-         <Route
-            path='/agents/new'
-            element={<NewAgent />}
-         />
-
-         <Route
-            path='/agents/:id'
-            element={<UpdateAgent />}
-         />
+            <Route
+               path='view/:id'
+               element={<Agent />}
+            />
+         </Route>
       </Routes>
    )
 }

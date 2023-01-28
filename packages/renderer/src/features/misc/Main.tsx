@@ -5,8 +5,8 @@ export const Main = () => {
 
    return (
       <div>
-         Bienvenido
-         
+         <h3>Welcome</h3>
+
          <button
             className='btn btn-dark'
             onClick={() => navigate('/agents')}
