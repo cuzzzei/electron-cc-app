@@ -4,14 +4,16 @@ import { useRender } from '/@/hooks'
 
 // === BORRAR =====
 import { Agent } from '/@/types/Agent'
-import { Call } from '/@/types/Call'
-import { List } from '/@/types/List'
+import { AgentList } from '../types/AgentList'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
+import { AgentNode } from '/@/types/AgentNode'
+import { AgentsList } from '/@/features/agents/components/AgentsList'
+import { fill } from '/@/providers/DELETE'
 // === BORRAR =====
 
 interface AppContextType {
-   agentsList: List<Agent>
+   agentsList: AgentList
    render: () => void
 }
 const AppContext = createContext<AppContextType | null>(null)
@@ -21,10 +23,10 @@ export function useAppContext() {
 
 function useInitAppContext() {
    const render = useRender()
-   const agentsList = useRef<List<Agent> | null>(null)
+   const agentsList = useRef<AgentList>(new AgentList())
 
    if (!agentsList?.current) {
-      agentsList.current = new List<Agent>()
+      agentsList.current = new AgentList()
    }
 
    return {
@@ -34,52 +36,22 @@ function useInitAppContext() {
 }
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-   const v = useInitAppContext()
+   const context = useInitAppContext()
+   const { agentsList, render } = context
 
    // ==== BORRAR =====
    const renderRef = useRef(false)
 
-   function handleAddAgent(p: Agent) {
-      v.agentsList.add(p)
-      v.render()
-   }
-
    useEffect(() => {
       if (!renderRef.current) {
-         const agent1 = new Agent({
-            id: crypto.randomUUID(),
-            name: new Name('Ronaldo', 'Nazario'),
-            age: 22,
-            callsHistory: new List<Call>(),
-            extension: '333',
-            start: new Time(7, 0),
-            finish: new Time(8, 50),
-            overtime: 10,
-            specialty: 'de escritorio',
-         })
-
-         const agent2 = new Agent({
-            id: crypto.randomUUID(),
-            name: new Name('Marco "El Chino"', 'Maidana'),
-            age: 25,
-            callsHistory: new List<Call>(),
-            extension: '444',
-            start: new Time(7, 0),
-            finish: new Time(9, 40),
-            overtime: 11,
-            specialty: 'portátiles',
-         })
-
-         handleAddAgent(agent1)
-         handleAddAgent(agent2)
+         fill(agentsList, render)
          renderRef.current = true
       }
    }, [])
-   // ==== BORRAR =====
 
    return (
       <HashRouter>
-         <AppContext.Provider value={v}>{children}</AppContext.Provider>
+         <AppContext.Provider value={context}>{children}</AppContext.Provider>
       </HashRouter>
    )
 }

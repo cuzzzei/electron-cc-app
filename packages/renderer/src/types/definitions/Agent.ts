@@ -1,5 +1,4 @@
-import { Call } from '/@/types/Call'
-import { List } from '/@/types/List'
+import { AgentList } from '../AgentList'
 import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
 import { Time } from '/@/types/Time'
@@ -9,7 +8,7 @@ export interface AgentProps {
    extension: string
    name: Name
    age: number
-   callsHistory: List<Call>
+   callsHistory: AgentList
    overtime: number
    specialty: Specialty
    start: Time
@@ -22,7 +21,7 @@ export interface AgentDefinition {
    getExtension: () => string
    getName: () => Name
    getAge: () => number
-   getCallsHistory: () => List<Call>
+   getCallsHistory: () => AgentList
    getOvertime: () => number
    getSpecialty: () => Specialty
    getStart: () => Time
@@ -32,7 +31,7 @@ export interface AgentDefinition {
    setExtension: (value: string) => void
    setName: (value: Name) => void
    setAge: (value: number) => void
-   setCallsHistory: (value: List<Call>) => void
+   setCallsHistory: (value: AgentList) => void
    setOvertime: (value: number) => void
    setSpecialty: (value: Specialty) => void
    setStart: (value: Time) => void

@@ -24,9 +24,7 @@ export const AgentsList = () => {
       return nameValidation && agent.getSpecialty() === specialty
    }
 
-   const filteredData = agentsList
-      .filter((agent) => filterAgent(agent))
-      .map((agent) => agent)
+   const filteredData = agentsList.filter((agent) => filterAgent(agent)).myMAP(agent => agent)
 
    return (
       <div className='d-flex flex-column mt-5 gap-5'>

@@ -1,6 +1,6 @@
 import { Call } from '/@/types/Call'
 import { AgentDefinition, AgentProps } from '/@/types/definitions/Agent'
-import { List } from '/@/types/List'
+import { AgentList } from './AgentList'
 import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
 import { Time } from '/@/types/Time'
@@ -10,7 +10,7 @@ export class Agent implements AgentDefinition {
    private extension: string
    private name: Name
    private age: number
-   private callsHistory: List<Call>
+   private callsHistory: AgentList
    private overtime: number
    private specialty: Specialty
    private start: Time
@@ -53,7 +53,7 @@ export class Agent implements AgentDefinition {
    public setExtension(extension: string) { this.extension = extension }
    public setName(name: Name) { this.name = name }
    public setAge(age: number) { this.age = age }
-   public setCallsHistory(callsHistory: List<Call>) { this.callsHistory = callsHistory }
+   public setCallsHistory(callsHistory: AgentList) { this.callsHistory = callsHistory }
    public setOvertime(overtime: number) { this.overtime = overtime }
    public setSpecialty(specialty: Specialty) { this.specialty = specialty }
    public setStart(start: Time) { this.start = start }

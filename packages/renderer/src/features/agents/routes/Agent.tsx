@@ -5,7 +5,7 @@ import { Agent as AgentType } from '/@/types/Agent'
 export const Agent = () => {
    const { agentsList } = useAppContext()
    const { id } = useParams()
-   const agent: AgentType | undefined = agentsList.findById(id ?? '')?.value
+   const agent: AgentType | undefined = agentsList.findById(id ?? '')?.getValue()
 
    if (!agent) {
       return null
