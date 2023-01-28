@@ -51,7 +51,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
    return (
       <HashRouter>
-         <AppContext.Provider value={context}>{children}</AppContext.Provider>
+         <AppContext.Provider value={context}>
+            <div className='container text-center p-5'>{children}</div>
+         </AppContext.Provider>
       </HashRouter>
    )
 }

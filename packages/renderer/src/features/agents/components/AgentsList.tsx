@@ -8,7 +8,7 @@ import { Agent } from '/@/types/Agent'
 export const AgentsList = () => {
    const { agentsList } = useAppContext()
    const [name, setName] = useState('')
-   const [specialty, setSpecialty] = useState('Todas')
+   const [specialty, setSpecialty] = useState('All')
 
    function filterAgent(agent: Agent): boolean {
       const nameValidation = agent
@@ -17,18 +17,20 @@ export const AgentsList = () => {
          .toLowerCase()
          .includes(name.toLowerCase())
 
-      if (specialty === 'Todas') {
+      if (specialty === 'All') {
          return nameValidation
       }
 
       return nameValidation && agent.getSpecialty() === specialty
    }
 
-   const filteredData = agentsList.filter((agent) => filterAgent(agent)).myMAP(agent => agent)
+   const filteredData = agentsList
+      .filter((agent) => filterAgent(agent))
+      .myMAP((agent) => agent)
 
    return (
       <div className='d-flex flex-column mt-5 gap-5'>
-         <h3>Agentes registrados</h3>
+         <h3>Agents</h3>
 
          <div className='container mt-5 px-2'>
             <AgentsFilter
@@ -41,7 +43,7 @@ export const AgentsList = () => {
             <Table
                columns={columns}
                data={filteredData}
-               emptyMessage='No se encontraron agentes'
+               emptyMessage='Agents not found'
             />
          </div>
       </div>

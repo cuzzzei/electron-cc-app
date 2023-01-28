@@ -11,8 +11,8 @@ export interface AgentProps {
    callsHistory: AgentList
    overtime: number
    specialty: Specialty
-   start: Time
-   finish: Time
+   startTime: Time
+   finishTime: Time
 }
 
 export interface AgentDefinition {
@@ -24,8 +24,8 @@ export interface AgentDefinition {
    getCallsHistory: () => AgentList
    getOvertime: () => number
    getSpecialty: () => Specialty
-   getStart: () => Time
-   getFinish: () => Time
+   getStartTime: () => Time
+   getFinishTime: () => Time
 
    // setters
    setExtension: (value: string) => void
@@ -34,6 +34,6 @@ export interface AgentDefinition {
    setCallsHistory: (value: AgentList) => void
    setOvertime: (value: number) => void
    setSpecialty: (value: Specialty) => void
-   setStart: (value: Time) => void
-   setFinish: (value: Time) => void
+   setStartTime: (value: Time) => void
+   setFinishTime: (value: Time) => void
 }

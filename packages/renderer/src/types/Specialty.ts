@@ -1,16 +1,16 @@
 export type Specialty =
-   | 'servidores'
-   | 'de escritorio'
-   | 'portátiles'
-   | 'linux'
-   | 'impresoras'
-   | 'redes'
+   | 'Servers'
+   | 'Desktop'
+   | 'Laptops'
+   | 'Linux'
+   | 'Printers'
+   | 'Network'
 
-export const specialities: Specialty[] = [
-   'de escritorio',
-   'impresoras',
-   'linux',
-   'portátiles',
-   'redes',
-   'servidores',
+export const specialties: Specialty[] = [
+   'Desktop',
+   'Printers',
+   'Linux',
+   'Laptops',
+   'Network',
+   'Servers',
 ]

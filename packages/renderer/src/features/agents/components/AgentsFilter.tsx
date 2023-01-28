@@ -1,4 +1,5 @@
-import { specialities } from '/@/types/Specialty'
+import { useNavigate } from 'react-router-dom'
+import { specialties } from '/@/types/Specialty'
 
 interface AgentsFilterProps {
    name: string
@@ -13,6 +14,12 @@ export const AgentsFilter = ({
    specialty,
    setSpecialty,
 }: AgentsFilterProps) => {
+   const navigate = useNavigate()
+
+   function newAgent() {
+      navigate('/agents/new')
+   }
+
    return (
       <div className='mb-2 d-flex justify-content-between align-items-center'>
          <div className='position-relative'>
@@ -40,7 +47,7 @@ export const AgentsFilter = ({
                value={specialty}
                onChange={(e) => setSpecialty(e.target.value)}
             >
-               {['Todas', ...specialities].map((speciality) => (
+               {['All', ...specialties].map((speciality) => (
                   <option
                      key={speciality}
                      value={speciality}
@@ -51,7 +58,10 @@ export const AgentsFilter = ({
             </select>
 
             <div>
-               <button className='btn btn-success'>
+               <button
+                  className='btn btn-success'
+                  onClick={() => newAgent()}
+               >
                   <i className='fa fa-user-plus' />
                </button>
             </div>

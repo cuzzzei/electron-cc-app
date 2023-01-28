@@ -9,11 +9,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Ronaldo', 'Nazario'),
       age: 22,
       callsHistory: new AgentList(),
-      extension: '333',
-      start: new Time(7, 0),
-      finish: new Time(8, 50),
+      extension: '3333',
+      startTime: new Time(7, 0),
+      finishTime: new Time(8, 50),
       overtime: 10,
-      specialty: 'de escritorio',
+      specialty: 'Desktop',
    })
 
    const agent2 = new Agent({
@@ -21,11 +21,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Marco "El Chino"', 'Maidana'),
       age: 25,
       callsHistory: new AgentList(),
-      extension: '444',
-      start: new Time(7, 0),
-      finish: new Time(9, 40),
+      extension: '4444',
+      startTime: new Time(7, 0),
+      finishTime: new Time(9, 40),
       overtime: 11,
-      specialty: 'portátiles',
+      specialty: 'Laptops',
    })
 
    const agent3 = new Agent({
@@ -33,11 +33,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Manuel', 'Martinez'),
       age: 33,
       callsHistory: new AgentList(),
-      extension: '555',
-      start: new Time(7, 0),
-      finish: new Time(15, 0),
+      extension: '5555',
+      startTime: new Time(7, 0),
+      finishTime: new Time(15, 0),
       overtime: 13,
-      specialty: 'redes',
+      specialty: 'Network',
    })
 
    const agent4 = new Agent({
@@ -45,11 +45,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Maria', 'Morales'),
       age: 24,
       callsHistory: new AgentList(),
-      extension: '666',
-      start: new Time(7, 0),
-      finish: new Time(15, 0),
+      extension: '6666',
+      startTime: new Time(7, 0),
+      finishTime: new Time(15, 0),
       overtime: 13,
-      specialty: 'portátiles',
+      specialty: 'Laptops',
    })
 
    const agent5 = new Agent({
@@ -57,11 +57,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Daniela', 'Juarez'),
       age: 44,
       callsHistory: new AgentList(),
-      extension: '555',
-      start: new Time(7, 0),
-      finish: new Time(16, 0),
+      extension: '7777',
+      startTime: new Time(7, 0),
+      finishTime: new Time(16, 0),
       overtime: 10,
-      specialty: 'linux',
+      specialty: 'Linux',
    })
 
    const agent6 = new Agent({
@@ -69,11 +69,11 @@ export function fill(list: AgentList, render: () => void) {
       name: new Name('Maria', 'Salazar'),
       age: 44,
       callsHistory: new AgentList(),
-      extension: '777',
-      start: new Time(7, 0),
-      finish: new Time(16, 0),
+      extension: '8888',
+      startTime: new Time(7, 0),
+      finishTime: new Time(16, 0),
       overtime: 10,
-      specialty: 'impresoras',
+      specialty: 'Printers',
    })
 
    list.insertAgent(agent1)

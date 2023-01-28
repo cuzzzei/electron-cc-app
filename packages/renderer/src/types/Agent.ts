@@ -1,4 +1,3 @@
-import { Call } from '/@/types/Call'
 import { AgentDefinition, AgentProps } from '/@/types/definitions/Agent'
 import { AgentList } from './AgentList'
 import { Name } from '/@/types/Name'
@@ -13,8 +12,8 @@ export class Agent implements AgentDefinition {
    private callsHistory: AgentList
    private overtime: number
    private specialty: Specialty
-   private start: Time
-   private finish: Time
+   private startTime: Time
+   private finishTime: Time
 
    constructor({
       id,
@@ -24,8 +23,8 @@ export class Agent implements AgentDefinition {
       callsHistory,
       overtime,
       specialty,
-      start,
-      finish,
+      startTime,
+      finishTime,
    }: AgentProps) {
       this.id = id
       this.extension = extension
@@ -34,8 +33,8 @@ export class Agent implements AgentDefinition {
       this.callsHistory = callsHistory
       this.overtime = overtime
       this.specialty = specialty
-      this.start = start
-      this.finish = finish
+      this.startTime = startTime
+      this.finishTime = finishTime
    }
 
    // getters
@@ -46,8 +45,8 @@ export class Agent implements AgentDefinition {
    public getCallsHistory() { return this.callsHistory }
    public getOvertime() { return this.overtime }
    public getSpecialty() { return this.specialty }
-   public getStart() { return this.start }
-   public getFinish() { return this.finish }
+   public getStartTime() { return this.startTime }
+   public getFinishTime() { return this.finishTime }
 
    // setters
    public setExtension(extension: string) { this.extension = extension }
@@ -56,6 +55,6 @@ export class Agent implements AgentDefinition {
    public setCallsHistory(callsHistory: AgentList) { this.callsHistory = callsHistory }
    public setOvertime(overtime: number) { this.overtime = overtime }
    public setSpecialty(specialty: Specialty) { this.specialty = specialty }
-   public setStart(start: Time) { this.start = start }
-   public setFinish(finish: Time) { this.finish = finish }
+   public setStartTime(start: Time) { this.startTime = start }
+   public setFinishTime(finish: Time) { this.finishTime = finish }
 }

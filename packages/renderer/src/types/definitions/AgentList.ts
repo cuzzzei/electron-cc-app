@@ -3,14 +3,8 @@ import { AgentNode } from '../AgentNode'
 import { Agent } from '/@/types/Agent'
 
 export interface AgentListDefinition {
-   isValidPos: (node: AgentNode) => boolean
-   copyAll: (list: AgentList) => void
-   swapNodes: (nodeA: AgentNode, nodeB: AgentNode) => void
-
-   sortByName: (nodeA: AgentNode, nodeB: AgentNode) => void
-   sortBySpecialty: (nodeA: AgentNode, nodeB: AgentNode) => void
-   sortListByName: () => void
-   sortListBySpecialty: () => void
+   sortByName: () => void
+   sortBySpecialty: () => void
    
    isEmpty: () => boolean
    insert: (node: AgentNode) => void

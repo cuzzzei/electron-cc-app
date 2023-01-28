@@ -11,6 +11,14 @@ export class AgentList implements AgentListDefinition {
       this.length = 0
    }
 
+   private isValidPos(node: AgentNode): boolean {
+      return true
+   }
+   private copyAll(list: AgentList): void {}
+   private swapNodes(nodeA: AgentNode, nodeB: AgentNode): void {}
+   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode): void {}
+   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode): void {}
+
    public insert(newNode: AgentNode): void {
       newNode.setNext(this.head)
       this.head = newNode
@@ -61,33 +69,21 @@ export class AgentList implements AgentListDefinition {
 
          temp = temp.getNext()
       }
-      
+
       return filteredList
    }
 
    // =================================================================
-   public isValidPos(node: AgentNode): boolean {
-      return true
-   }
-   public copyAll(list: AgentList): void {}
-   public swapNodes(nodeA: AgentNode, nodeB: AgentNode): void {}
-
-   public sortByName(nodeA: AgentNode, nodeB: AgentNode): void {}
-   public sortBySpecialty(nodeA: AgentNode, nodeB: AgentNode): void {}
-   public sortListByName() {}
-   public sortListBySpecialty() {}
-
+   public sortByName() {}
+   public sortBySpecialty() {}
    public isEmpty(): boolean {
       return this.head == null
    }
-
    public delete(node: AgentNode) {}
    public deleteAll() {}
-
    public getFirstPosition(): AgentNode {
       return this.head as AgentNode
    }
-
    public getLastPosition(): AgentNode {
       return this.head as AgentNode
    }
@@ -102,7 +98,7 @@ export class AgentList implements AgentListDefinition {
    public find(node: AgentNode): AgentNode {
       return this.head as AgentNode
    }
-   
+
    public retrieve(node: AgentNode): Agent {
       return node.getValue()
    }

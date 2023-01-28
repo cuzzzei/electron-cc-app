@@ -33,7 +33,7 @@ export const Table = <T,>({
       <div className='card'>
          <div className='card-body'>
             <div className='table-responsive'>
-               <table className='table table-responsive table-borderless table-hover align-middle'>
+               <table className='table table-responsive table-borderless table-hover align-middle text-start'>
                   <thead>
                      <tr className='bg-light'>
                         <th scope='col'>
