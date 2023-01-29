@@ -8,7 +8,6 @@ import { AgentList } from '../types/AgentList'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 import { AgentNode } from '/@/types/AgentNode'
-import { AgentsList } from '/@/features/agents/components/AgentsList'
 import { fill } from '/@/providers/DELETE'
 import { MainLayout } from '/@/components/Layout'
 // === BORRAR =====

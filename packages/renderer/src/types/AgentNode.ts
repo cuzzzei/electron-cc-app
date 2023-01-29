@@ -1,8 +1,6 @@
-import { AgentNodeDefinition } from './definitions/AgentNode'
 import { Agent } from '/@/types/Agent'
 
-export class AgentNode
-implements AgentNodeDefinition {
+export class AgentNode {
    private value: Agent
    private prev : AgentNode | null
    private next : AgentNode | null

@@ -1,8 +1,7 @@
-import { AgentNode } from './AgentNode'
 import { Agent } from '/@/types/Agent'
-import { AgentListDefinition } from '/@/types/definitions/AgentList'
+import { AgentNode } from './AgentNode'
 
-export class AgentList implements AgentListDefinition {
+export class AgentList {
    head: AgentNode | null
    length: number = 0
 
@@ -30,7 +29,7 @@ export class AgentList implements AgentListDefinition {
       this.insert(newNode)
    }
 
-   public myMAP(callback: (item: Agent) => any) {
+   public map(callback: (item: Agent) => any) {
       let result = []
       let temp: AgentNode | null = this.head
 

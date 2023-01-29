@@ -1,11 +1,12 @@
 import { Agent as AgentType } from '/@/types/Agent'
 import { AgentDetails } from '../components/AgentDetails'
+import { Avatar } from '/@/components/Avatar'
+import { Tabs, Tab, TabList, TabPanels } from '/@/components/Tabs'
 import { useAppContext } from '/@/providers/app'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { CallList } from '/@/features/calls/components/CallList'
 
 export const Agent = () => {
-   const [tabIndex, setTabIndex] = useState(1)
    const { agentsList } = useAppContext()
    const { id } = useParams()
    const agent: AgentType | undefined = agentsList
@@ -17,11 +18,8 @@ export const Agent = () => {
    return (
       <div className='w-full'>
          <div className='d-flex gap-5'>
-            <img
-               src={`https://api.dicebear.com/5.x/thumbs/svg?seed=${agent
-                  .getName()
-                  .toString()}`}
-               alt='avatar'
+            <Avatar
+               seed={agent.getName().toString()}
                style={{ width: '20rem' }}
             />
 
@@ -41,39 +39,17 @@ export const Agent = () => {
             </div>
          </div>
 
-         <ul className='nav nav-tabs mt-5'>
-            <li
-               className='nav-item'
-               role='button'
-               onClick={() => setTabIndex(1)}
-            >
-               <p
-                  className={`nav-link ${
-                     tabIndex === 1 ? 'active' : 'text-muted'
-                  }`}
-                  aria-current='page'
-               >
-                  Agent details
-               </p>
-            </li>
+         <Tabs>
+            <TabList>
+               <Tab>Agent details</Tab>
+               <Tab>Call history</Tab>
+            </TabList>
 
-            <li
-               className='nav-item'
-               role='button'
-               onClick={() => setTabIndex(2)}
-            >
-               <p
-                  className={`nav-link ${
-                     tabIndex === 2 ? 'active' : 'text-muted'
-                  }`}
-               >
-                  Call history
-               </p>
-            </li>
-         </ul>
-
-         {tabIndex === 1 && <AgentDetails agent={agent} />}
-         {/*{tabIndex === 2 && <CallHistory />}*/}
+            <TabPanels>
+               <AgentDetails agent={agent} />
+               <CallList callList={agent.getCallsHistory()} />
+            </TabPanels>
+         </Tabs>
       </div>
    )
 }

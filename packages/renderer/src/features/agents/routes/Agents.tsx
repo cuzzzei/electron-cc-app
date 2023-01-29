@@ -1,4 +1,5 @@
 import { Outlet, useNavigate } from 'react-router-dom'
+import { Avatar } from '/@/components/Avatar'
 import { useAppContext } from '/@/providers/app'
 
 export const Agents = () => {
@@ -9,7 +10,7 @@ export const Agents = () => {
       <div className='d-flex'>
          <div
             className='bg-light vh-100 p-5'
-            style={{ width: '20%', overflowY: 'scroll' }}
+            style={{ width: '20%', overflowY: 'auto' }}
          >
             <div>
                <h3 className='fw-bold'>Agents</h3>
@@ -19,19 +20,16 @@ export const Agents = () => {
             <button className='btn btn-dark w-100'>Add new</button>
 
             <ul className='list-unstyled'>
-               {agentsList.myMAP((agent) => (
+               {agentsList.map((agent) => (
                   <li
                      key={agent.getId()}
                      className='py-4 d-flex gap-4 align-items-center'
                      role='button'
                      onClick={() => navigate('/agents/view/' + agent.getId())}
                   >
-                     <img
-                        src={`https://api.dicebear.com/5.x/thumbs/svg?seed=${agent
-                           .getName()
-                           .toString()}`}
-                        alt='avatar'
+                     <Avatar
                         className='rounded-circle'
+                        seed={agent.getName().toString()}
                         style={{ width: '5rem' }}
                      />
 
@@ -41,7 +39,7 @@ export const Agents = () => {
                         </p>
                         <p className='mb-0'>{agent.getSpecialty()}</p>
                         <p className='text-muted mb-0'>
-                           #{agent.getExtension()}
+                           ext. {agent.getExtension()}
                         </p>
                      </div>
                   </li>

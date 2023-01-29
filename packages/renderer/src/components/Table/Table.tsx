@@ -12,16 +12,24 @@ interface TableProps<T> {
    columns: Array<TableColumn<T>>
    data: Array<T & BaseEntity>
    emptyMessage?: string
+   showSelectors?: boolean
+   onRowClick?: (row: T) => void
+   style?: React.CSSProperties
+   className?: string
 }
 
 export const Table = <T,>({
    columns,
    data,
    emptyMessage = 'Entries not found',
+   showSelectors = false,
+   onRowClick,
+   style = {},
+   className = '',
 }: TableProps<T>) => {
    if (data.length === 0) {
       return (
-         <div className='card'>
+         <div className='card text-center p-5'>
             <div className='card-body'>
                <p>{emptyMessage}</p>
             </div>
@@ -30,18 +38,26 @@ export const Table = <T,>({
    }
 
    return (
-      <div className='card'>
+      <div
+         className={`card ${className}`}
+         style={{
+            overflowY: 'auto',
+            ...style,
+         }}
+      >
          <div className='card-body'>
             <div className='table-responsive'>
                <table className='table table-responsive table-borderless table-hover align-middle text-start'>
                   <thead>
                      <tr className='bg-light'>
-                        <th scope='col'>
-                           <input
-                              className='form-check-input'
-                              type='checkbox'
-                           />
-                        </th>
+                        {showSelectors && (
+                           <th scope='col'>
+                              <input
+                                 className='form-check-input'
+                                 type='checkbox'
+                              />
+                           </th>
+                        )}
 
                         {columns.map((column) => (
                            <th
@@ -60,6 +76,8 @@ export const Table = <T,>({
                            key={item.getId()}
                            item={item}
                            columns={columns}
+                           showSelector={showSelectors}
+                           onClick={onRowClick}
                         />
                      ))}
                   </tbody>
