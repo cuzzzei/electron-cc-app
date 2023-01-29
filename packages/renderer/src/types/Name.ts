@@ -10,12 +10,22 @@ export class Name implements NameDefinition {
    }
 
    // getters
-   public getFirst() { return this.first }
-   public getLast() { return this.last }
+   public getFirst() {
+      return this.first
+   }
+   public getLast() {
+      return this.last
+   }
 
    // setters
-   public setFirst(first: string) { this.first = first }
-   public setLast(last: string) { this.last = last }
+   public setFirst(first: string) {
+      this.first = first
+   }
+   public setLast(last: string) {
+      this.last = last
+   }
 
-   public toString() : string { return `${this.first} ${this.last}`}
+   public toString(): string {
+      return `${this.first} ${this.last}`
+   }
 }

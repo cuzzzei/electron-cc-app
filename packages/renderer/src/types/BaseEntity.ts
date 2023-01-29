@@ -1,5 +1,3 @@
-
-
 export interface BaseEntity {
-   getId: () => string;
+   getId: () => string
 }

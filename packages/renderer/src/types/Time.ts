@@ -10,17 +10,31 @@ export class Time implements TimeDefinition {
    }
 
    // getters
-   public getHour() { return this.hour }
-   public getMinute() { return this.minute }
+   public getHour() {
+      return this.hour
+   }
+   public getMinute() {
+      return this.minute
+   }
 
    // setters
-   public setHour(hour: number) { this.hour = hour }
-   public setMinute(minute: number) { this.minute = minute }
+   public setHour(hour: number) {
+      this.hour = hour
+   }
+   public setMinute(minute: number) {
+      this.minute = minute
+   }
 
-   public toString() : string { 
-      const hour : string = (this.hour).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-      const minute : string = (this.minute).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+   public toString(): string {
+      const hour: string = this.hour.toLocaleString('en-US', {
+         minimumIntegerDigits: 2,
+         useGrouping: false,
+      })
+      const minute: string = this.minute.toLocaleString('en-US', {
+         minimumIntegerDigits: 2,
+         useGrouping: false,
+      })
 
-      return `${hour}:${minute}` 
+      return `${hour}:${minute}`
    }
 }
