@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { Tab } from '/@/components/Tabs/Tab'
 
 interface TabsProps {

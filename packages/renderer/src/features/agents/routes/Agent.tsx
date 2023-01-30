@@ -16,7 +16,11 @@ export const Agent = () => {
    if (!agent) return null
 
    return (
-      <div className='w-full'>
+      <div
+         className={`w-full animate__animated ${
+            Boolean(id) && 'animate__fadeIn'
+         }`}
+      >
          <div className='d-flex gap-5'>
             <Avatar
                seed={agent.getName().toString()}

@@ -1,9 +1,9 @@
-import { Outlet, useNavigate } from 'react-router-dom'
-import { Avatar } from '/@/components/Avatar'
+import { CreateAgent } from '/@/features/agents/components/CreateAgent'
+import { Outlet } from 'react-router-dom'
 import { useAppContext } from '/@/providers/app'
+import { AgentList } from '/@/features/agents/components/AgentList'
 
 export const Agents = () => {
-   const navigate = useNavigate()
    const { agentsList } = useAppContext()
 
    return (
@@ -17,34 +17,8 @@ export const Agents = () => {
             </div>
 
             <hr />
-            <button className='btn btn-dark w-100'>Add new</button>
-
-            <ul className='list-unstyled'>
-               {agentsList.map((agent) => (
-                  <li
-                     key={agent.getId()}
-                     className='py-4 d-flex gap-4 align-items-center'
-                     role='button'
-                     onClick={() => navigate('/agents/view/' + agent.getId())}
-                  >
-                     <Avatar
-                        className='rounded-circle'
-                        seed={agent.getName().toString()}
-                        style={{ width: '5rem' }}
-                     />
-
-                     <div className='d-flex flex-column'>
-                        <p className='fw-bold fs-5 mb-1'>
-                           {agent.getName().toString()}
-                        </p>
-                        <p className='mb-0'>{agent.getSpecialty()}</p>
-                        <p className='text-muted mb-0'>
-                           ext. {agent.getExtension()}
-                        </p>
-                     </div>
-                  </li>
-               ))}
-            </ul>
+            <CreateAgent />
+            <AgentList agentList={agentsList} />
          </div>
 
          <div

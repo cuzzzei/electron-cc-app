@@ -16,6 +16,7 @@ export interface AgentFormData {
 }
 
 interface AgentFormProps {
+   id?: string
    onSubmit: (data: AgentFormData) => void
    defaultValues?: AgentFormData
    actions: React.ReactNode
@@ -32,26 +33,43 @@ const schema = yup
    })
    .required()
 
-export const AgentForm = ({
-   onSubmit,
-   defaultValues,
-   actions,
-}: AgentFormProps) => {
+export const AgentForm = ({ id, onSubmit, defaultValues }: AgentFormProps) => {
    return (
       <Form<AgentFormData, typeof schema>
+         id={id}
          defaultValues={{ specialty: specialties[0], ...defaultValues }}
          onSubmit={onSubmit}
          schema={schema}
       >
          {({ register, formState }) => (
             <>
-               <Input
-                  label='Extension'
-                  error={formState.errors['extension']}
-                  registration={register('extension')}
-                  required
-                  size={4}
-               />
+               <div className='row g-4'>
+                  <Input
+                     label='Extension'
+                     className='col-sm-6'
+                     error={formState.errors['extension']}
+                     registration={register('extension')}
+                     required
+                     size={4}
+                  />
+
+                  <Select
+                     label='Specialty'
+                     error={formState.errors['specialty']}
+                     registration={register('specialty')}
+                     className='col-sm-6'
+                  >
+                     {specialties.map((specialty) => (
+                        <option
+                           key={specialty}
+                           value={specialty}
+                        >
+                           {specialty}
+                        </option>
+                     ))}
+                  </Select>
+               </div>
+
                <div className='row g-4'>
                   <Input
                      label='First name'
@@ -76,7 +94,7 @@ export const AgentForm = ({
                      type='number'
                      error={formState.errors['age']}
                      registration={register('age')}
-                     className='col-sm-1'
+                     className='col-sm-3'
                      required
                   />
 
@@ -85,25 +103,9 @@ export const AgentForm = ({
                      type='number'
                      error={formState.errors['overtime']}
                      registration={register('overtime')}
-                     className='col-sm-5'
+                     className='col-sm-9'
                      required
                   />
-
-                  <Select
-                     label='Specialty'
-                     error={formState.errors['specialty']}
-                     registration={register('specialty')}
-                     className='col-sm-6'
-                  >
-                     {specialties.map((specialty) => (
-                        <option
-                           key={specialty}
-                           value={specialty}
-                        >
-                           {specialty}
-                        </option>
-                     ))}
-                  </Select>
                </div>
 
                <div className='row g-4'>
@@ -125,8 +127,6 @@ export const AgentForm = ({
                      required
                   />
                </div>
-
-               {actions}
             </>
          )}
       </Form>
