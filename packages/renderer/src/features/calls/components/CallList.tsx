@@ -1,5 +1,6 @@
 import { CallList as CallListClass } from '/@/types/CallList'
 import { columns } from '../data/tableColumns'
+import { CreateCall } from '../components/CreateCall'
 import { Table } from '/@/components/Table'
 
 interface CallListProps {
@@ -10,7 +11,11 @@ export const CallList = ({ callList }: CallListProps) => {
    return (
       <div className='p-5'>
          <div>
-            <h3 className='mb-4 fw-bold'>Calls</h3>
+            <div className='d-flex gap-3 align-items-start'>
+               <h3 className='mb-4 fw-bold'>Calls</h3>
+
+               <CreateCall callList={callList} />
+            </div>
 
             <Table
                columns={columns}

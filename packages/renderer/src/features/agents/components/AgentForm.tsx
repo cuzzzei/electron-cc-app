@@ -19,7 +19,6 @@ interface AgentFormProps {
    id?: string
    onSubmit: (data: AgentFormData) => void
    defaultValues?: AgentFormData
-   actions: React.ReactNode
 }
 
 const schema = yup

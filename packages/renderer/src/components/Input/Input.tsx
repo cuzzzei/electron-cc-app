@@ -15,6 +15,7 @@ type InputProps = {
    registration: Partial<UseFormRegisterReturn>
    required?: boolean
    size?: number
+   textArea?: boolean
 }
 
 export const Input = ({
@@ -27,7 +28,12 @@ export const Input = ({
    registration,
    type = 'text',
    size,
+   textArea = false,
+   ...rest
 }: InputProps) => {
+
+   const Component = textArea ? 'textarea' : 'input'
+
    return (
       <div className={`form-group text-start  ${className}`}>
          <label htmlFor={label}>
@@ -36,7 +42,7 @@ export const Input = ({
             {required && <span className='text-danger'>*</span>}
          </label>
 
-         <input
+         <Component
             id={label}
             type={type}
             placeholder={placeholder}
@@ -44,6 +50,7 @@ export const Input = ({
             size={size}
             maxLength={size}
             {...registration}
+            {...rest}
          />
 
          {helperText && (

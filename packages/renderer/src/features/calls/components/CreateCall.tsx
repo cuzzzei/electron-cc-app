@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import { Modal } from '/@/components/Modal'
-import {
-   AgentForm,
-   AgentFormData,
-} from '/@/features/agents/components/AgentForm'
-import { useAppContext } from '/@/providers/app'
-import { Agent } from '/@/types/Agent'
+import { CallForm, CallFormData } from '../components/CallForm'
 import { CallList } from '/@/types/CallList'
+import { Modal } from '/@/components/Modal'
+import { PhoneArrowDownLeftIcon } from '@heroicons/react/24/solid'
+import { useAppContext } from '/@/providers/app'
+import { useState } from 'react'
+import { Call } from '/@/types/Call'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 
-export const CreateAgent = () => {
-   const [isOpen, setIsOpen] = useState(false)
-   const { agentsList, render } = useAppContext()
+interface CreateCallProps {
+   callList: CallList
+}
 
-   function onSubmit(data: AgentFormData) {
+export const CreateCall = ({ callList }: CreateCallProps) => {
+   const [isOpen, setIsOpen] = useState(false)
+   const { render } = useAppContext()
+
+   function onSubmit(data: CallFormData) {
       const [startHour, startMinute] = data.startTime
          .split(':')
          .map((s) => Number(s))
@@ -22,19 +24,15 @@ export const CreateAgent = () => {
          .split(':')
          .map((s) => Number(s))
 
-      const newAgent = new Agent({
+      const newCall = new Call({
          id: crypto.randomUUID(),
-         age: data.age,
-         callsHistory: new CallList(),
-         extension: data.extension,
-         name: new Name(data.firstName, data.lastName),
-         overtime: data.overtime,
-         specialty: data.specialty,
-         startTime: new Time(startHour, startMinute),
-         finishTime: new Time(finishHour, finishMinute),
+         clientName: new Name(data.clientFirstName, data.clientLastName),
+         description: data.description,
+         start: new Time(startHour, startMinute),
+         finish: new Time(finishHour, finishMinute),
       })
 
-      agentsList.insertAgent(newAgent)
+      callList.insertCall(newCall)
       setIsOpen(false)
       render()
    }
@@ -43,27 +41,29 @@ export const CreateAgent = () => {
       <Modal
          isOpen={isOpen}
          onClose={() => setIsOpen(false)}
-         title='New agent'
+         title='New call'
          triggerButton={
             <button
-               className='btn btn-dark w-100'
+               className='btn btn-success'
                onClick={() => setIsOpen(true)}
             >
-               Add new
+               <div style={{ width: '16px' }}>
+                  <PhoneArrowDownLeftIcon />
+               </div>
             </button>
          }
          confirmButton={
             <button
                className='btn btn-dark'
                type='submit'
-               form='create-agent'
+               form='create-call'
             >
                Create
             </button>
          }
       >
-         <AgentForm
-            id='create-agent'
+         <CallForm
+            id='create-call'
             onSubmit={onSubmit}
          />
       </Modal>

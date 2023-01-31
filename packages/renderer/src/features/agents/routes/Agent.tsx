@@ -17,9 +17,8 @@ export const Agent = () => {
 
    return (
       <div
-         className={`w-full animate__animated ${
-            Boolean(id) && 'animate__fadeIn'
-         }`}
+         key={id}
+         className='w-full animate__animated animate__fadeIn'
       >
          <div className='d-flex gap-5'>
             <Avatar
