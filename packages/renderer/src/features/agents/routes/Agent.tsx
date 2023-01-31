@@ -5,6 +5,7 @@ import { Tabs, Tab, TabList, TabPanels } from '/@/components/Tabs'
 import { useAppContext } from '/@/providers/app'
 import { useParams } from 'react-router-dom'
 import { CallList } from '/@/features/calls/components/CallList'
+import { UpdateAgent } from '/@/features/agents/components/UpdateAgent'
 
 export const Agent = () => {
    const { agentsList } = useAppContext()
@@ -20,19 +21,23 @@ export const Agent = () => {
          key={id}
          className='w-full animate__animated animate__fadeIn'
       >
-         <div className='d-flex gap-5'>
+         <div className='d-flex gap-5 w-full'>
             <Avatar
                seed={agent.getName().toString()}
                style={{ width: '20rem' }}
             />
 
-            <div>
-               <h1
-                  className='mt-5 fw-bold'
-                  style={{ fontSize: '3.5rem' }}
-               >
-                  {agent.getName().toString()}
-               </h1>
+            <div className='w-100'>
+               <div className='d-flex justify-content-between'>
+                  <h1
+                     className='mt-5 fw-bold'
+                     style={{ fontSize: '3.5rem' }}
+                  >
+                     {agent.getName().toString()}
+                  </h1>
+
+                  <UpdateAgent agent={agent} />
+               </div>
 
                <p className='fs-5 mb-0'>{agent.getSpecialty()}</p>
 
