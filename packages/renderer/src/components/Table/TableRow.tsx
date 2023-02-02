@@ -16,7 +16,6 @@ export const TableRow = <T extends unknown>({
    function handleClick(
       e: React.MouseEvent<HTMLTableDataCellElement, MouseEvent>
    ) {
-      e.preventDefault()
       onClick && onClick(item)
    }
    return (

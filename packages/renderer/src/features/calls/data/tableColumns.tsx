@@ -1,4 +1,5 @@
 import { TableColumn } from '/@/components/Table'
+import { UpdateCall } from '/@/features/calls/components/UpdateCall'
 import { Call } from '/@/types/Call'
 
 export const columns: Array<TableColumn<Call>> = [
@@ -30,11 +31,7 @@ export const columns: Array<TableColumn<Call>> = [
       Cell: (call) => {
          return (
             <div className='d-flex gap-2 justify-content-center'>
-               <div>
-                  <button className='btn btn-primary'>
-                     <i className='fa fa-pencil' />
-                  </button>
-               </div>
+               <UpdateCall call={call} />
 
                <div>
                   <button className='btn btn-danger'>

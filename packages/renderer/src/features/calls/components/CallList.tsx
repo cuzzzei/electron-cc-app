@@ -20,9 +20,6 @@ export const CallList = ({ callList }: CallListProps) => {
             <Table
                columns={columns}
                data={callList.map((call) => call)}
-               onRowClick={(call) => {
-                  console.log(call)
-               }}
                style={{
                   maxHeight: '54vh',
                   overflowY: 'auto',

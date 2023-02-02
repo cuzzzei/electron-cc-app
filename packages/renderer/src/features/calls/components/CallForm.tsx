@@ -31,55 +31,59 @@ export const CallForm = ({ id, onSubmit, defaultValues }: CallFormProps) => {
          onSubmit={onSubmit}
          schema={schema}
       >
-         {({ register, formState }) => (
-            <>
-               <div className='row g-4'>
-                  <h6>Client</h6>
-                  <Input
-                     label='First name'
-                     className='col-sm-6'
-                     error={formState.errors['clientFirstName']}
-                     registration={register('clientFirstName')}
-                     required
-                  />
+         {({ register, formState }) => {
+            console.log(formState.errors)
+
+            return (
+               <>
+                  <div className='row g-4'>
+                     <h6>Client</h6>
+                     <Input
+                        label='First name'
+                        className='col-sm-6'
+                        error={formState.errors['clientFirstName']}
+                        registration={register('clientFirstName')}
+                        required
+                     />
+
+                     <Input
+                        label='Last name'
+                        className='col-sm-6'
+                        error={formState.errors['clientLastName']}
+                        registration={register('clientLastName')}
+                        required
+                     />
+                  </div>
+
+                  <div className='row g-4'>
+                     <Input
+                        label='Start time'
+                        type='time'
+                        error={formState.errors['startTime']}
+                        registration={register('startTime')}
+                        className='col-sm-6'
+                        required
+                     />
+
+                     <Input
+                        label='Finish time'
+                        type='time'
+                        error={formState.errors['finishTime']}
+                        registration={register('finishTime')}
+                        className='col-sm-6'
+                        required
+                     />
+                  </div>
 
                   <Input
-                     label='First name'
-                     className='col-sm-6'
-                     error={formState.errors['clientLastName']}
-                     registration={register('clientLastName')}
-                     required
+                     label='Description'
+                     error={formState.errors['description']}
+                     registration={register('description')}
+                     textArea
                   />
-               </div>
-
-               <div className='row g-4'>
-                  <Input
-                     label='Start time'
-                     type='time'
-                     error={formState.errors['startTime']}
-                     registration={register('startTime')}
-                     className='col-sm-6'
-                     required
-                  />
-
-                  <Input
-                     label='Finish time'
-                     type='time'
-                     error={formState.errors['finishTime']}
-                     registration={register('finishTime')}
-                     className='col-sm-6'
-                     required
-                  />
-               </div>
-
-               <Input
-                  label='Description'
-                  error={formState.errors['description']}
-                  registration={register('description')}
-                  textArea
-               />
-            </>
-         )}
+               </>
+            )
+         }}
       </Form>
    )
 }
