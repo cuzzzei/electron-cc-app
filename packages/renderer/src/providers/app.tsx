@@ -10,6 +10,8 @@ import { Time } from '/@/types/Time'
 import { AgentNode } from '/@/types/AgentNode'
 import { fill } from '/@/providers/DELETE'
 import { MainLayout } from '/@/components/Layout'
+import { Toast } from '../components/Toast'
+import { ToastProvider } from '/@/providers/ToastProvider'
 // === BORRAR =====
 
 interface AppContextType {
@@ -52,7 +54,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
    return (
       <HashRouter>
          <AppContext.Provider value={context}>
-            <MainLayout>{children}</MainLayout>
+            <ToastProvider>
+               <MainLayout>{children}</MainLayout>
+            </ToastProvider>
          </AppContext.Provider>
       </HashRouter>
    )

@@ -7,12 +7,14 @@ import { useState } from 'react'
 import { Call } from '/@/types/Call'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
+import { useToast } from '/@/hooks/useToast'
 
 interface CreateCallProps {
    callList: CallList
 }
 
 export const CreateCall = ({ callList }: CreateCallProps) => {
+   const toast = useToast()
    const [isOpen, setIsOpen] = useState(false)
    const { render } = useAppContext()
 
@@ -32,9 +34,18 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
          finish: new Time(finishHour, finishMinute),
       })
 
-      callList.insertCall(newCall)
-      setIsOpen(false)
-      render()
+      try {
+         callList.insertCall(newCall)
+         setIsOpen(false)
+
+         toast({
+            title: 'Call created successfully',
+         })
+
+         render()
+      } catch (err) {
+         console.log(err)
+      }
    }
 
    return (

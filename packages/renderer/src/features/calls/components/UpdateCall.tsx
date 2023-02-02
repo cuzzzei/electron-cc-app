@@ -5,12 +5,14 @@ import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
+import { useToast } from '/@/hooks/useToast'
 
 interface UpdateCallProps {
    call: Call
 }
 
 export const UpdateCall = ({ call }: UpdateCallProps) => {
+   const toast = useToast()
    const [isOpen, setIsOpen] = useState(false)
    const { render } = useAppContext()
 
@@ -26,6 +28,11 @@ export const UpdateCall = ({ call }: UpdateCallProps) => {
       call.setDescription(data.description)
       call.setStart(new Time(startHour, startMinute))
       call.setFinish(new Time(finishHour, finishMinute))
+
+      toast({
+         title: 'Call updated successfully',
+      })
+
       setIsOpen(false)
       render()
    }

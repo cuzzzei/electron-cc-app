@@ -4,6 +4,7 @@ import {
    AgentForm,
    AgentFormData,
 } from '/@/features/agents/components/AgentForm'
+import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/Agent'
 import { CallList } from '/@/types/CallList'
@@ -11,6 +12,7 @@ import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 
 export const CreateAgent = () => {
+   const toast = useToast()
    const [isOpen, setIsOpen] = useState(false)
    const { agentsList, render } = useAppContext()
 
@@ -34,9 +36,19 @@ export const CreateAgent = () => {
          finishTime: new Time(finishHour, finishMinute),
       })
 
-      agentsList.insertAgent(newAgent)
-      setIsOpen(false)
-      render()
+      try {
+         agentsList.insertAgent(newAgent)
+         setIsOpen(false)
+
+         toast({
+            title: 'Agent created successfully',
+            description: `Agent ${newAgent.getName()} added`,
+         })
+
+         render()
+      } catch (err) {
+         console.log(err)
+      }
    }
 
    return (

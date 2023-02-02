@@ -5,6 +5,7 @@ import {
    AgentForm,
    AgentFormData,
 } from '/@/features/agents/components/AgentForm'
+import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/Agent'
 import { Name } from '/@/types/Name'
@@ -15,6 +16,7 @@ interface UpdateAgentProps {
 }
 
 export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
+   const toast = useToast()
    const { render } = useAppContext()
    const [isOpen, setIsOpen] = useState(false)
 
@@ -34,6 +36,11 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
       agent.setOvertime(data.overtime)
       agent.setSpecialty(data.specialty)
       agent.setStartTime(new Time(startHour, startMinute))
+
+      toast({
+         title: 'Agent updated successfully',
+         description: `Agent ${agent.getName()} updated`,
+      })
 
       setIsOpen(false)
       render()

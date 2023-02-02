@@ -5,7 +5,7 @@ interface ModalProps {
    onClose: () => void
 
    triggerButton: React.ReactElement
-   confirmButton: React.ReactElement
+   confirmButton?: React.ReactElement
 }
 
 export const Modal = ({
