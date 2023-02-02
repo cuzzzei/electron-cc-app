@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Avatar } from '/@/components/Avatar'
 import { AgentList as AgentListClass } from '/@/types/AgentList'
 
@@ -7,6 +7,7 @@ interface AgentListProps {
 }
 
 export const AgentList = ({ agentList }: AgentListProps) => {
+   const params = useParams()
    const navigate = useNavigate()
 
    return (
@@ -14,7 +15,7 @@ export const AgentList = ({ agentList }: AgentListProps) => {
          {agentList.map((agent) => (
             <li
                key={agent.getId()}
-               className='py-4 d-flex gap-4 align-items-center'
+               className='py-4 d-flex gap-4 align-items-center  animate__animated animate__backInRight'
                role='button'
                onClick={() => {
                   navigate('/agents/view/' + agent.getId())
@@ -23,7 +24,9 @@ export const AgentList = ({ agentList }: AgentListProps) => {
                <Avatar
                   className='rounded-circle'
                   seed={agent.getName().toString()}
-                  style={{ width: '5rem' }}
+                  style={{
+                     width: params.id === agent.getId() ? '7.5rem' : '5rem',
+                  }}
                />
 
                <div className='d-flex flex-column'>

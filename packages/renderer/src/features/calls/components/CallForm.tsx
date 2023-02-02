@@ -20,6 +20,8 @@ const schema = yup
    .object({
       clientFirstName: yup.string().min(4).required(),
       clientLastName: yup.string().min(4).required(),
+      startTime: yup.string().required(),
+      finishTime: yup.string().required(),
    })
    .required()
 

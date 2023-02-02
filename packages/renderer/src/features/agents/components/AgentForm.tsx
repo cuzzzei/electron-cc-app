@@ -29,6 +29,8 @@ const schema = yup
       age: yup.number().required(),
       overtime: yup.number().required(),
       specialty: yup.string().required(),
+      startTime: yup.string().required(),
+      finishTime: yup.string().required(),
    })
    .required()
 
