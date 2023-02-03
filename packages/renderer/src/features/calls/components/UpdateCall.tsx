@@ -26,8 +26,8 @@ export const UpdateCall = ({ call }: UpdateCallProps) => {
 
       call.setClientName(new Name(data.clientFirstName, data.clientLastName))
       call.setDescription(data.description)
-      call.setStart(new Time(startHour, startMinute))
-      call.setFinish(new Time(finishHour, finishMinute))
+      call.setStartTime(new Time(startHour, startMinute))
+      call.setFinishTime(new Time(finishHour, finishMinute))
 
       toast({
          title: 'Call updated successfully',
@@ -41,8 +41,8 @@ export const UpdateCall = ({ call }: UpdateCallProps) => {
       clientFirstName: call.getClientName().getFirst(),
       clientLastName: call.getClientName().getLast(),
       description: call.getDescription(),
-      startTime: call.getStart().toString(),
-      finishTime: call.getFinish().toString(),
+      startTime: call.getStartTime().toString(),
+      finishTime: call.getStartTime().toString(),
    }
 
    return (

@@ -1,6 +1,4 @@
-import { NameDefinition } from '/@/types/definitions/Name'
-
-export class Name implements NameDefinition {
+export class Name {
    private first: string
    private last: string
 
@@ -9,15 +7,13 @@ export class Name implements NameDefinition {
       this.last = last
    }
 
-   // getters
-   public getFirst() {
+   public getFirst(): string {
       return this.first
    }
-   public getLast() {
+   public getLast(): string {
       return this.last
    }
 
-   // setters
    public setFirst(first: string) {
       this.first = first
    }
@@ -27,5 +23,35 @@ export class Name implements NameDefinition {
 
    public toString(): string {
       return `${this.first} ${this.last}`
+   }
+
+   public assign(name: Name): Name {
+      this.first = name.getFirst()
+      this.last = name.getLast()
+      return this
+   }
+
+   public isEqual(other: Name): boolean {
+      return false
+   }
+
+   public isDifferent(other: Name): boolean {
+      return false
+   }
+
+   public isGreatherThan(other: Name): boolean {
+      return false
+   }
+
+   public isGreaterOrEquals(other: Name): boolean {
+      return false
+   }
+
+   public isLesserThan(other: Name): boolean {
+      return false
+   }
+
+   public isLesserOrEquals(other: Name): boolean {
+      return false
    }
 }

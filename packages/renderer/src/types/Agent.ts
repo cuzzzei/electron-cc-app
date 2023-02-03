@@ -20,11 +20,11 @@ export class Agent {
    private extension: string
    private name: Name
    private age: number
-   private callsHistory: CallList
    private overtime: number
    private specialty: Specialty
    private startTime: Time
    private finishTime: Time
+   private callsHistory: CallList
 
    constructor({
       id,
@@ -48,33 +48,32 @@ export class Agent {
       this.finishTime = finishTime
    }
 
-   // getters
-   public getId() {
+   public getId(): string {
       return this.id
    }
-   public getExtension() {
+   public getExtension(): string {
       return this.extension
    }
-   public getName() {
+   public getName(): Name {
       return this.name
    }
-   public getAge() {
+   public getAge(): number {
       return this.age
    }
-   public getCallsHistory() {
-      return this.callsHistory
-   }
-   public getOvertime() {
+   public getOvertime(): number {
       return this.overtime
    }
-   public getSpecialty() {
+   public getSpecialty(): Specialty {
       return this.specialty
    }
-   public getStartTime() {
+   public getStartTime(): Time {
       return this.startTime
    }
-   public getFinishTime() {
+   public getFinishTime(): Time {
       return this.finishTime
+   }
+   public getCallsHistory(): CallList {
+      return this.callsHistory
    }
 
    // setters
@@ -87,9 +86,6 @@ export class Agent {
    public setAge(age: number) {
       this.age = age
    }
-   public setCallsHistory(callsHistory: CallList) {
-      this.callsHistory = callsHistory
-   }
    public setOvertime(overtime: number) {
       this.overtime = overtime
    }
@@ -101,5 +97,40 @@ export class Agent {
    }
    public setFinishTime(finish: Time) {
       this.finishTime = finish
+   }
+   public setCallsHistory(callsHistory: CallList) {
+      this.callsHistory = callsHistory
+   }
+
+   public toString(): string {
+      return ''
+   }
+
+   public assign(other: Agent): Agent {
+      return this
+   }
+
+   public isEqual(other: Agent): boolean {
+      return false
+   }
+
+   public isDifferent(other: Agent): boolean {
+      return false
+   }
+
+   public isGreatherThan(other: Agent): boolean {
+      return false
+   }
+
+   public isGreaterOrEquals(other: Agent): boolean {
+      return false
+   }
+
+   public isLesserThan(other: Agent): boolean {
+      return false
+   }
+
+   public isLesserOrEquals(other: Agent): boolean {
+      return false
    }
 }

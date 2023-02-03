@@ -9,11 +9,11 @@ export class CallNode {
       this.next = null
    }
 
-   public getValue() {
+   public getValue(): Call {
       return this.value
    }
 
-   public getNext() {
+   public getNext(): CallNode | null {
       return this.next
    }
 

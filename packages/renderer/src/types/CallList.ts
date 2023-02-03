@@ -10,22 +10,74 @@ export class CallList {
       this.length = 0
    }
 
+   private isValidPosition(node: CallNode): boolean {
+      return true
+   }
+
+   private copyAll(list: CallList) {}
+
+   private insertNode(node: CallNode) {
+      node.setNext(this.head)
+      this.head = node
+      this.length += 1
+   }
+
+   public isEmpty(): boolean {
+      return this.length === 0
+   }
+
    public getLength(): number {
       return this.length
    }
 
-   public insert(newNode: CallNode) {
-      newNode.setNext(this.head)
-      this.head = newNode
-      this.length += 1
-   }
-
-   public insertCall(call: Call) {
+   public insert(call: Call) {
       const newNode = new CallNode(call)
-      this.insert(newNode)
+      this.insertNode(newNode)
    }
 
-   public map(callback: (item: Call) => any) {
+   public insertOrdered(call: Call) {}
+
+   public remove(node: CallNode) {}
+
+   public getFirstPosition(): CallNode | null {
+      return null
+   }
+
+   public getLastPosition(): CallNode | null {
+      return null
+   }
+
+   public getPrevPosition(): CallNode | null {
+      return null
+   }
+
+   public getNextPosition(): CallNode | null {
+      return null
+   }
+
+   public findData(call: Call): CallNode | null {
+      return null
+   }
+
+   public retrieve(node: CallNode): Call {
+      return node.getValue()
+   }
+
+   public toString(): string {
+      return ''
+   }
+
+   public deleteAll() {}
+
+   public writeToDisk(s: string) {}
+
+   public readFromDisk(s: string) {}
+
+   public assign(list: CallList): CallList {
+      return this
+   }
+
+   public map(callback: (item: Call) => any): Array<any> {
       let result = []
       let temp: CallNode | null = this.head
 

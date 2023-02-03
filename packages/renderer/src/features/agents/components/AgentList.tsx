@@ -11,7 +11,12 @@ export const AgentList = ({ agentList }: AgentListProps) => {
    const navigate = useNavigate()
 
    return (
-      <ul className='list-unstyled'>
+      <ul
+         className='list-unstyled'
+         style={{
+            overflowX: 'hidden',
+         }}
+      >
          {agentList.map((agent) => (
             <li
                key={agent.getId()}

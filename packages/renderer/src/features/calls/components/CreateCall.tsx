@@ -35,7 +35,7 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
       })
 
       try {
-         callList.insertCall(newCall)
+         callList.insert(newCall)
          setIsOpen(false)
 
          toast({

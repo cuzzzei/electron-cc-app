@@ -16,7 +16,7 @@ export const columns: Array<TableColumn<Call>> = [
       id: 'duration',
       Header: 'Duration',
       Cell: (call) => {
-         return `${call.getStart()} - ${call.getFinish()}`
+         return `${call.getStartTime()} - ${call.getFinishTime()}`
       },
    },
 

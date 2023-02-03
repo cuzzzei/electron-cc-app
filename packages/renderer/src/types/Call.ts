@@ -11,40 +11,40 @@ export interface CallProps {
 
 export class Call {
    private id: string
-   private start: Time
-   private finish: Time
+   private startTime: Time
+   private finishTime: Time
    private clientName: Name
    private description: string
 
    constructor({ id, start, finish, clientName, description }: CallProps) {
       this.id = id
-      this.start = start
-      this.finish = finish
+      this.startTime = start
+      this.finishTime = finish
       this.clientName = clientName
       this.description = description
    }
 
-   public getId() {
+   public getId(): string {
       return this.id
    }
-   public getStart() {
-      return this.start
+   public getStartTime(): Time {
+      return this.startTime
    }
-   public getFinish() {
-      return this.finish
+   public getFinishTime(): Time {
+      return this.finishTime
    }
-   public getClientName() {
+   public getClientName(): Name {
       return this.clientName
    }
-   public getDescription() {
+   public getDescription(): string {
       return this.description
    }
 
-   public setStart(start: Time) {
-      this.start = start
+   public setStartTime(start: Time) {
+      this.startTime = start
    }
-   public setFinish(finish: Time) {
-      this.finish = finish
+   public setFinishTime(finish: Time) {
+      this.finishTime = finish
    }
    public setClientName(clientName: Name) {
       this.clientName = clientName
@@ -54,8 +54,36 @@ export class Call {
    }
 
    public toString(): string {
-      return `${this.id} | (${this.start} - ${
-         this.finish
+      return `${this.id} | (${this.startTime} - ${
+         this.finishTime
       }) | ${this.clientName.toString()} \n${this.description}`
+   }
+
+   public assign(other: Call): Call {
+      return this
+   }
+
+   public isEqual(other: Call): boolean {
+      return false
+   }
+
+   public isDifferent(other: Call): boolean {
+      return false
+   }
+
+   public isGreatherThan(other: Call): boolean {
+      return false
+   }
+
+   public isGreaterOrEquals(other: Call): boolean {
+      return false
+   }
+
+   public isLesserThan(other: Call): boolean {
+      return false
+   }
+
+   public isLesserOrEquals(other: Call): boolean {
+      return false
    }
 }

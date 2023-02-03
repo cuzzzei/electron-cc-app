@@ -11,13 +11,13 @@ export class AgentNode {
       this.next = null
    }
 
-   public getValue() {
+   public getValue(): Agent {
       return this.value
    }
-   public getPrev() {
+   public getPrev(): AgentNode | null {
       return this.prev
    }
-   public getNext() {
+   public getNext(): AgentNode | null {
       return this.next
    }
 
