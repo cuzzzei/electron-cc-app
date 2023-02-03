@@ -47,7 +47,13 @@ export const CreateAgent = () => {
 
          render()
       } catch (err) {
-         console.log(err)
+         if (err instanceof Error) {
+            toast({
+               title: err.name,
+               description: err.message,
+               status: 'error',
+            })
+         }
       }
    }
 

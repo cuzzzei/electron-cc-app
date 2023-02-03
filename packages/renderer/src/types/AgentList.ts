@@ -1,5 +1,6 @@
 import { Agent } from '/@/types/Agent'
 import { AgentNode } from './AgentNode'
+import { ListException } from '/@/types/ListException'
 
 export class AgentList {
    head: AgentNode | null
@@ -29,6 +30,9 @@ export class AgentList {
    }
 
    public insert(agent: Agent): void {
+      //if(value)
+      //   throw new ListException('Error trying to insert node in <AgentList>')
+
       const newNode = new AgentNode(agent)
       this.insertNode(newNode)
    }
@@ -60,12 +64,11 @@ export class AgentList {
 
    public sortByName() {}
    public sortBySpecialty() {}
-   
-   
+
    public toString() {
       return ''
    }
-   
+
    public deleteAll() {}
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
@@ -73,7 +76,6 @@ export class AgentList {
    public assign(newList: AgentList): AgentList {
       return newList
    }
-
 
    // ======================================================
    public map(callback: (item: Agent) => any) {
