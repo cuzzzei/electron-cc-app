@@ -34,6 +34,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
    }
 
    useEffect(() => {
+      // TODO: bug with multiple toast, too much timer
       const timer = setTimeout(() => {
          setList((prev) => {
             const newList = [...prev]

@@ -50,7 +50,9 @@ export const Agent = () => {
          <Tabs>
             <TabList>
                <Tab>Agent details</Tab>
-               <Tab>Call history</Tab>
+               <Tab>{`Call history (${agent
+                  .getCallsHistory()
+                  .getLength()})`}</Tab>
             </TabList>
 
             <TabPanels>

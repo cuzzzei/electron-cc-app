@@ -1,5 +1,5 @@
 import { CallList as CallListClass } from '/@/types/CallList'
-import { columns } from '../data/tableColumns'
+import { getColumns } from '../data/tableColumns'
 import { CreateCall } from '../components/CreateCall'
 import { Table } from '/@/components/Table'
 
@@ -18,7 +18,7 @@ export const CallList = ({ callList }: CallListProps) => {
             </div>
 
             <Table
-               columns={columns}
+               columns={getColumns(callList)}
                data={callList.map((call) => call)}
                style={{
                   maxHeight: '54vh',

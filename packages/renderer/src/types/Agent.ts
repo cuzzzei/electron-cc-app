@@ -76,7 +76,6 @@ export class Agent {
       return this.callsHistory
    }
 
-   // setters
    public setExtension(extension: string) {
       this.extension = extension
    }

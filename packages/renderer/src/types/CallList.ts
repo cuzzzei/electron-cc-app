@@ -1,5 +1,6 @@
 import { Call } from '/@/types/Call'
 import { CallNode } from '/@/types/CallNode'
+import { ListException } from '/@/types/ListException'
 
 export class CallList {
    private head: CallNode | null
@@ -37,7 +38,38 @@ export class CallList {
 
    public insertOrdered(call: Call) {}
 
-   public remove(node: CallNode) {}
+   public remove(node: CallNode) {
+      let prev = this.head
+      if (prev === null) {
+         throw new ListException('Cannot remove, list is empty')
+      }
+
+      // Found at first position?
+      if (prev === node) {
+         this.head = this.head!.getNext()
+         this.length--
+         return
+      }
+
+      let counter = 0
+      while (prev!.getNext() !== null) {
+         if (counter > this.length) {
+            console.log('infinite loop')
+            return
+         }
+
+         if (prev?.getNext() === node) {
+            const nodeAfterDeleted = prev.getNext()?.getNext() ?? null
+            prev.setNext(nodeAfterDeleted)
+            return
+         }
+
+         prev = prev!.getNext()
+         counter++
+      }
+
+      throw new ListException('Error trying to delete node, not found')
+   }
 
    public getFirstPosition(): CallNode | null {
       return null
@@ -55,8 +87,18 @@ export class CallList {
       return null
    }
 
-   public findData(call: Call): CallNode | null {
-      return null
+   public findData(call: Call): CallNode {
+      let temp = this.head
+
+      while (temp !== null) {
+         if (temp!.getValue().getId() === call.getId()) {
+            return temp
+         }
+
+         temp = temp.getNext()
+      }
+
+      throw new ListException('Not found')
    }
 
    public retrieve(node: CallNode): Call {

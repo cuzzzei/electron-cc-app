@@ -64,7 +64,7 @@ export class Call {
    }
 
    public isEqual(other: Call): boolean {
-      return false
+      return this.id === other.getId()
    }
 
    public isDifferent(other: Call): boolean {
