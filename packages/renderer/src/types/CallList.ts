@@ -51,21 +51,15 @@ export class CallList {
          return
       }
 
-      let counter = 0
-      while (prev!.getNext() !== null) {
-         if (counter > this.length) {
-            console.log('infinite loop')
-            return
-         }
-
-         if (prev?.getNext() === node) {
+      while (prev?.getNext()) {
+         if (prev.getNext() === node) {
             const nodeAfterDeleted = prev.getNext()?.getNext() ?? null
             prev.setNext(nodeAfterDeleted)
+            this.length--
             return
          }
 
-         prev = prev!.getNext()
-         counter++
+         prev = prev.getNext()
       }
 
       throw new ListException('Error trying to delete node, not found')
