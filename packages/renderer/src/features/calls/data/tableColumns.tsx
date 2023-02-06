@@ -20,7 +20,7 @@ function CallListActions({ call, callList }: CallListActionsProps) {
          callList.remove(nodeToDelete)
          toast({
             title: 'Call deleted successfully',
-            status: 'warning',
+            status: 'success',
          })
 
          render()
@@ -66,7 +66,7 @@ export function getColumns(callList: CallList): Array<TableColumn<Call>> {
          id: 'duration',
          Header: 'Duration',
          Cell: (call) => {
-            return `${call.getStartTime()} - ${call.getFinishTime()}`
+            return `${call.getStartTime()} - ${call.getEndTime()}`
          },
       },
 

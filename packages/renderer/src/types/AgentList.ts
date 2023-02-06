@@ -1,6 +1,5 @@
 import { Agent } from '/@/types/Agent'
 import { AgentNode } from './AgentNode'
-import { ListException } from '/@/types/ListException'
 
 export class AgentList {
    head: AgentNode | null

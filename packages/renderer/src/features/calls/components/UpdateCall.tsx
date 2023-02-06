@@ -2,10 +2,10 @@ import { Call } from '/@/types/Call'
 import { CallForm, CallFormData } from '../components/CallForm'
 import { Modal } from '/@/components/Modal'
 import { Name } from '/@/types/Name'
-import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { Time } from '/@/types/Time'
 
 interface UpdateCallProps {
    call: Call
@@ -17,17 +17,12 @@ export const UpdateCall = ({ call }: UpdateCallProps) => {
    const { render } = useAppContext()
 
    function onSubmit(data: CallFormData) {
-      const [startHour, startMinute] = data.startTime
-         .split(':')
-         .map((s) => Number(s))
-      const [finishHour, finishMinute] = data.finishTime
-         .split(':')
-         .map((s) => Number(s))
+      // TODO: Fix bug >> Update call hour doesnt reorder the list
 
       call.setClientName(new Name(data.clientFirstName, data.clientLastName))
       call.setDescription(data.description)
-      call.setStartTime(new Time(startHour, startMinute))
-      call.setFinishTime(new Time(finishHour, finishMinute))
+      call.setStartTime(Time.fromString(data.startTime))
+      call.setEndTime(Time.fromString(data.startTime))
 
       toast({
          title: 'Call updated successfully',
@@ -42,7 +37,7 @@ export const UpdateCall = ({ call }: UpdateCallProps) => {
       clientLastName: call.getClientName().getLast(),
       description: call.getDescription(),
       startTime: call.getStartTime().toString(),
-      finishTime: call.getStartTime().toString(),
+      endTime: call.getEndTime().toString(),
    }
 
    return (

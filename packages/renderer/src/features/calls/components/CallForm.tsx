@@ -6,7 +6,7 @@ export interface CallFormData {
    clientFirstName: string
    clientLastName: string
    startTime: string
-   finishTime: string
+   endTime: string
    description: string
 }
 
@@ -21,7 +21,7 @@ const schema = yup
       clientFirstName: yup.string().min(4).required(),
       clientLastName: yup.string().min(4).required(),
       startTime: yup.string().required(),
-      finishTime: yup.string().required(),
+      endTime: yup.string().required(),
    })
    .required()
 
@@ -33,59 +33,55 @@ export const CallForm = ({ id, onSubmit, defaultValues }: CallFormProps) => {
          onSubmit={onSubmit}
          schema={schema}
       >
-         {({ register, formState }) => {
-            console.log(formState.errors)
-
-            return (
-               <>
-                  <div className='row g-4'>
-                     <h6>Client</h6>
-                     <Input
-                        label='First name'
-                        className='col-sm-6'
-                        error={formState.errors['clientFirstName']}
-                        registration={register('clientFirstName')}
-                        required
-                     />
-
-                     <Input
-                        label='Last name'
-                        className='col-sm-6'
-                        error={formState.errors['clientLastName']}
-                        registration={register('clientLastName')}
-                        required
-                     />
-                  </div>
-
-                  <div className='row g-4'>
-                     <Input
-                        label='Start time'
-                        type='time'
-                        error={formState.errors['startTime']}
-                        registration={register('startTime')}
-                        className='col-sm-6'
-                        required
-                     />
-
-                     <Input
-                        label='Finish time'
-                        type='time'
-                        error={formState.errors['finishTime']}
-                        registration={register('finishTime')}
-                        className='col-sm-6'
-                        required
-                     />
-                  </div>
+         {({ register, formState }) => (
+            <>
+               <div className='row g-4'>
+                  <h6>Client</h6>
+                  <Input
+                     label='First name'
+                     className='col-sm-6'
+                     error={formState.errors['clientFirstName']}
+                     registration={register('clientFirstName')}
+                     required
+                  />
 
                   <Input
-                     label='Description'
-                     error={formState.errors['description']}
-                     registration={register('description')}
-                     textArea
+                     label='Last name'
+                     className='col-sm-6'
+                     error={formState.errors['clientLastName']}
+                     registration={register('clientLastName')}
+                     required
                   />
-               </>
-            )
-         }}
+               </div>
+
+               <div className='row g-4'>
+                  <Input
+                     label='Start time'
+                     type='time'
+                     error={formState.errors['startTime']}
+                     registration={register('startTime')}
+                     className='col-sm-6'
+                     required
+                  />
+
+                  <Input
+                     label='End time'
+                     type='time'
+                     error={formState.errors['endTime']}
+                     registration={register('endTime')}
+                     className='col-sm-6'
+                     required
+                  />
+               </div>
+
+               <Input
+                  label='Description'
+                  error={formState.errors['description']}
+                  registration={register('description')}
+                  textArea
+               />
+            </>
+         )}
       </Form>
    )
 }

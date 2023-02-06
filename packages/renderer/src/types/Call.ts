@@ -4,7 +4,7 @@ import { Time } from '/@/types/Time'
 export interface CallProps {
    id: string
    start: Time
-   finish: Time
+   end: Time
    clientName: Name
    description: string
 }
@@ -12,14 +12,14 @@ export interface CallProps {
 export class Call {
    private id: string
    private startTime: Time
-   private finishTime: Time
+   private endTime: Time
    private clientName: Name
    private description: string
 
-   constructor({ id, start, finish, clientName, description }: CallProps) {
+   constructor({ id, start, end, clientName, description }: CallProps) {
       this.id = id
       this.startTime = start
-      this.finishTime = finish
+      this.endTime = end
       this.clientName = clientName
       this.description = description
    }
@@ -30,8 +30,8 @@ export class Call {
    public getStartTime(): Time {
       return this.startTime
    }
-   public getFinishTime(): Time {
-      return this.finishTime
+   public getEndTime(): Time {
+      return this.endTime
    }
    public getClientName(): Name {
       return this.clientName
@@ -43,8 +43,8 @@ export class Call {
    public setStartTime(start: Time) {
       this.startTime = start
    }
-   public setFinishTime(finish: Time) {
-      this.finishTime = finish
+   public setEndTime(End: Time) {
+      this.endTime = End
    }
    public setClientName(clientName: Name) {
       this.clientName = clientName
@@ -53,13 +53,51 @@ export class Call {
       this.description = description
    }
 
+   public static fromString(s: string): Call {
+      const [
+         id,
+         clientFirstName,
+         clientLastName,
+         startTimeStr,
+         endTimeStr,
+         description,
+      ] = s.split(' | ')
+
+      return new Call({
+         id,
+         clientName: new Name(clientFirstName, clientLastName),
+         start: Time.fromString(startTimeStr),
+         end: Time.fromString(endTimeStr),
+         description,
+      })
+   }
+
    public toString(): string {
-      return `${this.id} | (${this.startTime} - ${
-         this.finishTime
-      }) | ${this.clientName.toString()} \n${this.description}`
+      let result: string = ''
+      result += this.id + ' | '
+      result += this.clientName.getFirst() + ' | '
+      result += this.clientName.getLast() + ' | '
+      result += this.startTime + ' | '
+      result += this.endTime + ' | '
+      result += this.description
+      return result
    }
 
    public assign(other: Call): Call {
+      this.id = other.id
+      this.startTime = new Time(
+         other.getStartTime().getHour(),
+         other.getStartTime().getMinute()
+      )
+
+      this.endTime = new Time(
+         other.getEndTime().getHour(),
+         other.getEndTime().getMinute()
+      )
+
+      this.clientName = other.getClientName()
+      this.description = other.getDescription()
+
       return this
    }
 
@@ -68,22 +106,22 @@ export class Call {
    }
 
    public isDifferent(other: Call): boolean {
-      return false
+      return this.id !== other.getId()
    }
 
    public isGreatherThan(other: Call): boolean {
-      return false
+      return this.getStartTime().isGreatherThan(other.getStartTime())
    }
 
    public isGreaterOrEquals(other: Call): boolean {
-      return false
+      return this.getStartTime().isGreaterOrEquals(other.getStartTime())
    }
 
    public isLesserThan(other: Call): boolean {
-      return false
+      return this.getStartTime().isLesserThan(other.getStartTime())
    }
 
    public isLesserOrEquals(other: Call): boolean {
-      return false
+      return this.getStartTime().isLesserOrEquals(other.getStartTime())
    }
 }

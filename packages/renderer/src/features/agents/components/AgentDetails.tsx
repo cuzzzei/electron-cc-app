@@ -53,7 +53,7 @@ export const AgentDetails = ({ agent }: AgentInfoProps) => {
 
             <Label
                icon={<ClockIcon />}
-               text={`${agent.getStartTime()} - ${agent.getFinishTime()}`}
+               text={`${agent.getStartTime()} - ${agent.getEndTime()}`}
             />
 
             <Label

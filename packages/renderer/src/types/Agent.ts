@@ -12,7 +12,7 @@ export interface AgentProps {
    overtime: number
    specialty: Specialty
    startTime: Time
-   finishTime: Time
+   endTime: Time
 }
 
 export class Agent {
@@ -23,7 +23,7 @@ export class Agent {
    private overtime: number
    private specialty: Specialty
    private startTime: Time
-   private finishTime: Time
+   private endTime: Time
    private callsHistory: CallList
 
    constructor({
@@ -35,7 +35,7 @@ export class Agent {
       overtime,
       specialty,
       startTime,
-      finishTime,
+      endTime,
    }: AgentProps) {
       this.id = id
       this.extension = extension
@@ -45,7 +45,7 @@ export class Agent {
       this.overtime = overtime
       this.specialty = specialty
       this.startTime = startTime
-      this.finishTime = finishTime
+      this.endTime = endTime
    }
 
    public getId(): string {
@@ -69,8 +69,8 @@ export class Agent {
    public getStartTime(): Time {
       return this.startTime
    }
-   public getFinishTime(): Time {
-      return this.finishTime
+   public getEndTime(): Time {
+      return this.endTime
    }
    public getCallsHistory(): CallList {
       return this.callsHistory
@@ -94,8 +94,8 @@ export class Agent {
    public setStartTime(start: Time) {
       this.startTime = start
    }
-   public setFinishTime(finish: Time) {
-      this.finishTime = finish
+   public setEndTime(End: Time) {
+      this.endTime = End
    }
    public setCallsHistory(callsHistory: CallList) {
       this.callsHistory = callsHistory

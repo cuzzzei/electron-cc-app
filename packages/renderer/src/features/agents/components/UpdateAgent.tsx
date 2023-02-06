@@ -21,21 +21,14 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
    const [isOpen, setIsOpen] = useState(false)
 
    function onSubmit(data: AgentFormData) {
-      const [startHour, startMinute] = data.startTime
-         .split(':')
-         .map((s) => Number(s))
-      const [finishHour, finishMinute] = data.finishTime
-         .split(':')
-         .map((s) => Number(s))
-
       // Update data
       agent.setAge(data.age)
       agent.setExtension(data.extension)
-      agent.setFinishTime(new Time(finishHour, finishMinute))
+      agent.setEndTime(Time.fromString(data.endTime))
       agent.setName(new Name(data.firstName, data.lastName))
       agent.setOvertime(data.overtime)
       agent.setSpecialty(data.specialty)
-      agent.setStartTime(new Time(startHour, startMinute))
+      agent.setStartTime(Time.fromString(data.endTime))
 
       toast({
          title: 'Agent updated successfully',
@@ -49,7 +42,7 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
    const defaultValues: AgentFormData = {
       age: agent.getAge(),
       extension: agent.getExtension(),
-      finishTime: agent.getFinishTime().toString(),
+      endTime: agent.getEndTime().toString(),
       firstName: agent.getName().getFirst(),
       lastName: agent.getName().getLast(),
       overtime: agent.getOvertime(),

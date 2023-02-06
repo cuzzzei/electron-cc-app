@@ -12,7 +12,7 @@ export interface AgentFormData {
    overtime: number
    specialty: Specialty
    startTime: string
-   finishTime: string
+   endTime: string
 }
 
 interface AgentFormProps {
@@ -30,7 +30,7 @@ const schema = yup
       overtime: yup.number().required(),
       specialty: yup.string().required(),
       startTime: yup.string().required(),
-      finishTime: yup.string().required(),
+      endTime: yup.string().required(),
    })
    .required()
 
@@ -120,10 +120,10 @@ export const AgentForm = ({ id, onSubmit, defaultValues }: AgentFormProps) => {
                   />
 
                   <Input
-                     label='Finish time'
+                     label='End time'
                      type='time'
-                     error={formState.errors['finishTime']}
-                     registration={register('finishTime')}
+                     error={formState.errors['endTime']}
+                     registration={register('endTime')}
                      className='col-sm-6'
                      required
                   />

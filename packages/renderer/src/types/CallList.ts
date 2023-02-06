@@ -12,48 +12,87 @@ export class CallList {
    }
 
    private isValidPosition(node: CallNode): boolean {
-      return true
+      let temp = this.head
+
+      // Check that node is in the list
+      while (temp !== null) {
+         if (temp === node) {
+            return true
+         }
+
+         temp = temp?.getNext()
+      }
+
+      return false
    }
 
    private copyAll(list: CallList) {}
 
-   private insertNode(node: CallNode) {
-      node.setNext(this.head)
-      this.head = node
-      this.length += 1
-   }
-
    public isEmpty(): boolean {
-      return this.length === 0
+      return this.head === null
    }
 
    public getLength(): number {
       return this.length
    }
 
-   public insert(call: Call) {
+   public insert(position: CallNode | null, call: Call) {
+      if (position !== null && !this.isValidPosition(position)) {
+         throw new ListException('Invalid position')
+      }
+
       const newNode = new CallNode(call)
-      this.insertNode(newNode)
+
+      if (newNode === null) {
+         throw new ListException('Memory not available')
+      }
+
+      // Insert at head
+      if (position === null) {
+         newNode.setNext(this.head)
+         this.head = newNode
+      } else {
+         newNode.setNext(position.getNext())
+         position.setNext(newNode)
+      }
+
+      this.length++
    }
 
-   public insertOrdered(call: Call) {}
+   public insertAtEnd(call: Call) {
+      this.insert(this.getLastPosition(), call)
+   }
+
+   public insertOrdered(call: Call) {
+      let previous = null
+      let current = this.head
+
+      // Ascending order (07:00, 07:02, 08:00, ...)
+      while (current !== null && current.getValue().isLesserThan(call)) {
+         previous = current
+         current = current.getNext()
+      }
+
+      this.insert(previous, call)
+   }
 
    public remove(node: CallNode) {
-      let prev = this.head
-      if (prev === null) {
+      if (this.isEmpty()) {
          throw new ListException('Cannot remove, list is empty')
       }
 
+      let prev = this.head
+
       // Found at first position?
       if (prev === node) {
-         this.head = this.head!.getNext()
+         this.head = this.head?.getNext() ?? null
          this.length--
          return
       }
 
       while (prev?.getNext()) {
          if (prev.getNext() === node) {
-            const nodeAfterDeleted = prev.getNext()?.getNext() ?? null
+            const nodeAfterDeleted = node?.getNext() ?? null
             prev.setNext(nodeAfterDeleted)
             this.length--
             return
@@ -66,26 +105,44 @@ export class CallList {
    }
 
    public getFirstPosition(): CallNode | null {
-      return null
+      return this.head
    }
 
    public getLastPosition(): CallNode | null {
-      return null
+      let temp = this.head
+
+      while (temp?.getNext()) {
+         temp = temp.getNext()
+      }
+
+      return temp
    }
 
-   public getPrevPosition(): CallNode | null {
-      return null
+   public getPrevPosition(node: CallNode): CallNode | null {
+      if (this.isEmpty())
+         throw new ListException('Invalid operation, list is empty')
+
+      let prev = this.head
+      while (prev?.getNext() !== node && prev !== null) {
+         prev = prev.getNext()
+      }
+
+      if (prev === null) {
+         throw new ListException('Previous position not found')
+      }
+
+      return prev
    }
 
-   public getNextPosition(): CallNode | null {
-      return null
+   public getNextPosition(node: CallNode): CallNode | null {
+      return node.getNext()
    }
 
    public findData(call: Call): CallNode {
       let temp = this.head
 
       while (temp !== null) {
-         if (temp!.getValue().getId() === call.getId()) {
+         if (temp.getValue().isEqual(call)) {
             return temp
          }
 
@@ -99,8 +156,19 @@ export class CallList {
       return node.getValue()
    }
 
+   public static fromString(str: string): CallList {
+      const calls: Array<string> = str.split('\n')
+      const list = new CallList()
+
+      calls.forEach((callStr) => {
+         list.insertAtEnd(Call.fromString(callStr))
+      })
+
+      return list
+   }
+
    public toString(): string {
-      return ''
+      return this.map((call) => call.toString()).join('\n')
    }
 
    public deleteAll() {}
@@ -113,12 +181,13 @@ export class CallList {
       return this
    }
 
-   public map(callback: (item: Call) => any): Array<any> {
+   public map(callback: (item: Call, index: number) => any): Array<any> {
       let result = []
       let temp: CallNode | null = this.head
 
+      let index = 0
       while (temp != null) {
-         result.push(callback(temp.getValue()))
+         result.push(callback(temp.getValue(), index++))
          temp = temp.getNext()
       }
 

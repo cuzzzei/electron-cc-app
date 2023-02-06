@@ -21,6 +21,11 @@ export class Name {
       this.last = last
    }
 
+   public static fromString(str: string): Name {
+      const [first, last] = str.split(' ')
+      return new Name(first, last)
+   }
+
    public toString(): string {
       return `${this.first} ${this.last}`
    }
@@ -32,26 +37,26 @@ export class Name {
    }
 
    public isEqual(other: Name): boolean {
-      return false
+      return this.toString() === other.toString()
    }
 
    public isDifferent(other: Name): boolean {
-      return false
+      return this.toString() !== other.toString()
    }
 
    public isGreatherThan(other: Name): boolean {
-      return false
+      return this.toString() > other.toString()
    }
 
    public isGreaterOrEquals(other: Name): boolean {
-      return false
+      return this.toString() >= other.toString()
    }
 
    public isLesserThan(other: Name): boolean {
-      return false
+      return this.toString() < other.toString()
    }
 
    public isLesserOrEquals(other: Name): boolean {
-      return false
+      return this.toString() <= other.toString()
    }
 }

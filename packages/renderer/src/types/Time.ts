@@ -2,7 +2,21 @@ export class Time {
    private hour: number
    private minute: number
 
-   constructor(hour: number, minute: number) {
+   constructor(hour?: number, minute?: number) {
+      const d = new Date()
+      const currentHour = d.getHours()
+      const currentMinute = d.getMinutes()
+
+      if (
+         hour === undefined ||
+         minute === undefined ||
+         !this.isValid(hour, minute)
+      ) {
+         this.hour = currentHour
+         this.minute = currentMinute
+         return
+      }
+
       this.hour = hour
       this.minute = minute
    }
@@ -14,26 +28,45 @@ export class Time {
       })
    }
 
+   private isValidHour(hour: number): boolean {
+      return hour >= 0 && hour <= 23
+   }
+
+   private isValidMinute(minute: number): boolean {
+      return minute >= 0 && minute <= 59
+   }
+
    private isValid(hour: number, minute: number): boolean {
-      return true
+      return this.isValidHour(hour) && this.isValidMinute(minute)
    }
 
    private toInt(): number {
-      return 1
+      return this.hour * 100 + this.minute
    }
 
    public getHour(): number {
       return this.hour
    }
+
    public getMinute(): number {
       return this.minute
    }
 
    public setHour(hour: number) {
-      this.hour = hour
+      if (this.isValidHour(hour)) {
+         this.hour = hour
+      }
    }
+
    public setMinute(minute: number) {
-      this.minute = minute
+      if (this.isValidMinute(minute)) {
+         this.minute = minute
+      }
+   }
+
+   public static fromString(s: string): Time {
+      const [hour, minute] = s.split(':').map((s) => Number(s))
+      return new Time(hour, minute)
    }
 
    public toString(): string {
@@ -44,30 +77,32 @@ export class Time {
    }
 
    public assign(other: Time): Time {
+      this.hour = other.hour
+      this.minute = other.minute
       return this
    }
 
    public isEqual(other: Time): boolean {
-      return false
+      return this.toInt() === other.toInt()
    }
 
    public isDifferent(other: Time): boolean {
-      return false
+      return this.toInt() !== other.toInt()
    }
 
    public isGreatherThan(other: Time): boolean {
-      return false
+      return this.toInt() > other.toInt()
    }
 
    public isGreaterOrEquals(other: Time): boolean {
-      return false
+      return this.toInt() >= other.toInt()
    }
 
    public isLesserThan(other: Time): boolean {
-      return false
+      return this.toInt() < other.toInt()
    }
 
    public isLesserOrEquals(other: Time): boolean {
-      return false
+      return this.toInt() <= other.toInt()
    }
 }

@@ -19,23 +19,16 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
    const { render } = useAppContext()
 
    function onSubmit(data: CallFormData) {
-      const [startHour, startMinute] = data.startTime
-         .split(':')
-         .map((s) => Number(s))
-      const [finishHour, finishMinute] = data.finishTime
-         .split(':')
-         .map((s) => Number(s))
-
       const newCall = new Call({
          id: crypto.randomUUID(),
          clientName: new Name(data.clientFirstName, data.clientLastName),
          description: data.description,
-         start: new Time(startHour, startMinute),
-         finish: new Time(finishHour, finishMinute),
+         start: Time.fromString(data.startTime),
+         end: Time.fromString(data.endTime),
       })
 
       try {
-         callList.insert(newCall)
+         callList.insertOrdered(newCall)
          setIsOpen(false)
 
          toast({

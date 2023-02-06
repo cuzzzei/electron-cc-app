@@ -17,13 +17,6 @@ export const CreateAgent = () => {
    const { agentsList, render } = useAppContext()
 
    function onSubmit(data: AgentFormData) {
-      const [startHour, startMinute] = data.startTime
-         .split(':')
-         .map((s) => Number(s))
-      const [finishHour, finishMinute] = data.finishTime
-         .split(':')
-         .map((s) => Number(s))
-
       const newAgent = new Agent({
          id: crypto.randomUUID(),
          age: data.age,
@@ -32,8 +25,8 @@ export const CreateAgent = () => {
          name: new Name(data.firstName, data.lastName),
          overtime: data.overtime,
          specialty: data.specialty,
-         startTime: new Time(startHour, startMinute),
-         finishTime: new Time(finishHour, finishMinute),
+         startTime: Time.fromString(data.startTime),
+         endTime: Time.fromString(data.endTime),
       })
 
       try {
