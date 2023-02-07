@@ -240,12 +240,6 @@ export function fill(list: AgentList, render: () => void) {
       })
    )
 
-   const agent6CallListInString = agent6.getCallsHistory().toString()
-   console.log(agent6CallListInString)
-
-   //const test = CallList.fromString(agent6CallListInString)
-   //console.log(test.toString())
-
    list.insert(agent1)
    list.insert(agent2)
    list.insert(agent3)

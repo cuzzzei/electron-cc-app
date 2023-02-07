@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 interface ModalProps {
    title: string
    isOpen: boolean
@@ -19,6 +21,13 @@ export const Modal = ({
    const mountedStyle = { opacity: 1, display: 'block' }
    const unmountedStyle = { opacity: 0, transition: 'none' }
    const style = isOpen ? mountedStyle : unmountedStyle
+   const modalRef = useRef<HTMLDivElement>(null)
+
+   useEffect(() => {
+      if (isOpen && modalRef.current) {
+         modalRef.current.focus()
+      }
+   }, [isOpen])
 
    return (
       <>
@@ -36,6 +45,7 @@ export const Modal = ({
                   <div
                      className='modal-content'
                      tabIndex={1}
+                     ref={modalRef}
                      style={{
                         borderRadius: '8px',
                         padding: '15px',

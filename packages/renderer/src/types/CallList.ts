@@ -67,8 +67,8 @@ export class CallList {
       let previous = null
       let current = this.head
 
-      // Ascending order (07:00, 07:02, 08:00, ...)
-      while (current !== null && current.getValue().isLesserThan(call)) {
+      // Descending order (08:00, 07:50, 07:40, ...)
+      while (current !== null && current.getValue().isGreatherThan(call)) {
          previous = current
          current = current.getNext()
       }
@@ -171,7 +171,10 @@ export class CallList {
       return this.map((call) => call.toString()).join('\n')
    }
 
-   public deleteAll() {}
+   public deleteAll() {
+      this.head = null
+      this.length = 0
+   }
 
    public writeToDisk(s: string) {}
 

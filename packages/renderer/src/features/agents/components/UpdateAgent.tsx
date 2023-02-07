@@ -55,7 +55,7 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
          <Modal
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
-            title='New agent'
+            title='Update agent'
             triggerButton={
                <button
                   className='btn'
@@ -72,7 +72,7 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
                   type='submit'
                   form='update-agent'
                >
-                  Update
+                  Save
                </button>
             }
          >

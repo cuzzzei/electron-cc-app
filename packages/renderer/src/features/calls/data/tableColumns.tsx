@@ -37,7 +37,7 @@ function CallListActions({ call, callList }: CallListActionsProps) {
 
    return (
       <div className='d-flex gap-2 justify-content-center'>
-         <UpdateCall call={call} />
+         <UpdateCall call={call} callList={callList}/>
 
          <div>
             <button
