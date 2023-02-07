@@ -1,3 +1,7 @@
+import { createAvatar } from '@dicebear/core'
+import { useEffect, useState } from 'react'
+import { shapes } from '@dicebear/collection'
+
 interface AvatarProps {
    seed: string
    className?: string
@@ -5,13 +9,23 @@ interface AvatarProps {
 }
 
 export const Avatar = ({ seed, className, style }: AvatarProps) => {
-   const apiURL = 'https://api.dicebear.com/5.x/thumbs/svg?seed='
+   const [src, setSrc] = useState('')
+
+   useEffect(() => {
+      const avatar = createAvatar(shapes, {
+         seed,
+      })
+
+      avatar.toDataUri().then(setSrc)
+   }, [seed])
+
+   if (!src) return null
 
    return (
       <img
-         src={`${apiURL}${seed}`}
+         src={src}
          alt='avatar'
-         className={className}
+         className={`${className}`}
          style={style}
       />
    )
