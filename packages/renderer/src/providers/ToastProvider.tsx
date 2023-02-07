@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import { Toast, Status } from '/@/components/Toast'
 
 interface ToastProviderProps {
@@ -18,33 +18,40 @@ interface ToastConfig {
    duration?: number
 }
 
+const HIDE_TIMER = 2500
+
 export const ToastProvider = ({ children }: ToastProviderProps) => {
+   const timer = useRef<any>(null)
    const [list, setList] = useState<Array<ToastConfig & { id: string }>>([])
 
    function addToast(toast: ToastConfig) {
       const id = crypto.randomUUID()
 
-      setList((prev) => [
-         ...prev,
-         {
-            id,
-            ...toast,
-         },
-      ])
+      setList((prev) => {
+         return [
+            ...prev,
+            {
+               id,
+               ...toast,
+            },
+         ]
+      })
+   }
+
+   function cleanAll() {
+      setList([])
    }
 
    useEffect(() => {
-      // TODO: bug with multiple toast, too much timer
-      const timer = setTimeout(() => {
-         setList((prev) => {
-            const newList = [...prev]
-            newList.shift()
-            return newList
-         })
-      }, 3000)
+      if (timer.current) {
+         clearTimeout(timer.current)
+         timer.current = setTimeout(() => cleanAll(), HIDE_TIMER)
+      } else {
+         timer.current = setTimeout(() => cleanAll(), HIDE_TIMER)
+      }
 
       return () => {
-         clearTimeout(timer)
+         clearTimeout(timer.current)
       }
    }, [list])
 

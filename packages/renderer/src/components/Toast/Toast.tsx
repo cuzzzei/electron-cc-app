@@ -52,7 +52,7 @@ export const Toast = ({ status, title, description, index }: ToastProps) => {
    return (
       <div
          className='end-0 p-3 animate__animated animate__slideInDown animate__faster'
-         style={{ position: 'absolute', top: index * 100 }}
+         style={{ position: 'absolute', top: index * 100, zIndex: 40 }}
       >
          <div
             role='alert'

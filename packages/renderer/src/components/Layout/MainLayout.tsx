@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { HomeIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 interface MainLayoutProps {
    children: React.ReactNode
@@ -8,7 +8,7 @@ interface MainLayoutProps {
 const navigation = [
    {
       path: '/',
-      icon: <HomeIcon style={{ width: '25px' }} />,
+      icon: <ArrowLeftOnRectangleIcon style={{ width: '25px' }} />,
    },
    {
       path: '/agents',

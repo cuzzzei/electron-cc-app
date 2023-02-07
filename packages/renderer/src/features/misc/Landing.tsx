@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 
-export const Main = () => {
+export const Landing = () => {
    const navigate = useNavigate()
 
    return (
-      <div>
+      <div className='w-full vh-100 d-flex flex-column justify-content-center align-items-center'>
          <h3>Welcome</h3>
 
          <button
             className='btn btn-dark'
             onClick={() => navigate('/agents')}
          >
-            Ir a los agentes
+            Login
          </button>
       </div>
    )
