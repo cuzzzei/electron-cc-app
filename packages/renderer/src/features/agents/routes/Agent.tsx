@@ -1,4 +1,4 @@
-import { Agent as AgentType } from '/@/types/Agent'
+import { Agent as AgentType } from '/@/types/agent/Agent'
 import { AgentDetails } from '../components/AgentDetails'
 import { Avatar } from '/@/components/Avatar'
 import { Tabs, Tab, TabList, TabPanels } from '/@/components/Tabs'

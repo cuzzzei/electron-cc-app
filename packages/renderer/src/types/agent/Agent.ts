@@ -1,4 +1,4 @@
-import { CallList } from '/@/types/CallList'
+import { CallList } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
 import { Time } from '/@/types/Time'

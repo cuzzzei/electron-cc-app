@@ -1,12 +1,11 @@
-import { Call } from '/@/types/Call'
 import { CallForm, CallFormData } from '../components/CallForm'
+import { CallList, Call } from '/@/types/call'
 import { Modal } from '/@/components/Modal'
 import { Name } from '/@/types/Name'
+import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
-import { Time } from '/@/types/Time'
-import { CallList } from '/@/types/CallList'
 
 interface UpdateCallProps {
    call: Call

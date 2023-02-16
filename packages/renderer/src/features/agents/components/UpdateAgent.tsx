@@ -7,7 +7,7 @@ import {
 } from '/@/features/agents/components/AgentForm'
 import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
-import { Agent } from '/@/types/Agent'
+import { Agent } from '/@/types/agent'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 

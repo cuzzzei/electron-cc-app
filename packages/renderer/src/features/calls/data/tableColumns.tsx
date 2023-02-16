@@ -2,7 +2,7 @@ import { TableColumn } from '/@/components/Table'
 import { UpdateCall } from '/@/features/calls/components/UpdateCall'
 import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
-import { Call } from '/@/types/Call'
+import { Call } from '../../../types/call/Call'
 import { CallList } from '/@/types/CallList'
 
 interface CallListActionsProps {

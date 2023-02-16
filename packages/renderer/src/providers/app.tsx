@@ -3,14 +3,8 @@ import { HashRouter } from 'react-router-dom'
 import { useRender } from '/@/hooks'
 
 // === BORRAR =====
-import { Agent } from '/@/types/Agent'
-import { AgentList } from '../types/AgentList'
-import { Name } from '/@/types/Name'
-import { Time } from '/@/types/Time'
-import { AgentNode } from '/@/types/AgentNode'
+import { AgentList } from '/@/types/agent'
 import { fill } from '/@/providers/DELETE'
-import { MainLayout } from '/@/components/Layout'
-import { Toast } from '../components/Toast'
 import { ToastProvider } from '/@/providers/ToastProvider'
 // === BORRAR =====
 

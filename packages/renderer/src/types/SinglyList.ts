@@ -1,9 +1,12 @@
-import { Call } from '/@/types/Call'
-import { CallNode } from '/@/types/CallNode'
 import { ListException } from '/@/types/ListException'
+import { SinglyNode, SinglyNodeReference } from '/@/types/Node'
 
-export class CallList {
-   private head: CallNode | null
+type TSignature = {
+   toString: () => string
+}
+
+export class SinglyList<T extends TSignature> {
+   private head: SinglyNodeReference<T>
    private length: number
 
    constructor() {
@@ -11,7 +14,7 @@ export class CallList {
       this.length = 0
    }
 
-   private isValidPosition(node: CallNode): boolean {
+   private isValidPosition(node: SinglyNode<T>): boolean {
       let temp = this.head
 
       // Check that node is in the list
@@ -26,7 +29,7 @@ export class CallList {
       return false
    }
 
-   private copyAll(list: CallList) {}
+   private copyAll(list: SinglyList<T>) {}
 
    public isEmpty(): boolean {
       return this.head === null
@@ -36,12 +39,12 @@ export class CallList {
       return this.length
    }
 
-   public insert(position: CallNode | null, call: Call) {
+   public insert(position: SinglyNodeReference<T>, item: T) {
       if (position !== null && !this.isValidPosition(position)) {
          throw new ListException('Invalid position')
       }
 
-      const newNode = new CallNode(call)
+      const newNode = new SinglyNode<T>(item)
 
       if (newNode === null) {
          throw new ListException('Memory not available')
@@ -59,24 +62,23 @@ export class CallList {
       this.length++
    }
 
-   public insertAtEnd(call: Call) {
-      this.insert(this.getLastPosition(), call)
+   public insertAtEnd(item: T) {
+      this.insert(this.getLastPosition(), item)
    }
 
-   public insertOrdered(call: Call) {
+   public insertOrdered(item: T, compare: (current: T, item: T) => boolean) {
       let previous = null
       let current = this.head
 
-      // Descending order (08:00, 07:50, 07:40, ...)
-      while (current !== null && current.getValue().isGreatherThan(call)) {
+      while (current !== null && compare(current.getValue(), item)) {
          previous = current
          current = current.getNext()
       }
 
-      this.insert(previous, call)
+      this.insert(previous, item)
    }
 
-   public remove(node: CallNode) {
+   public remove(node: SinglyNode<T>) {
       if (this.isEmpty()) {
          throw new ListException('Cannot remove, list is empty')
       }
@@ -104,11 +106,11 @@ export class CallList {
       throw new ListException('Error trying to delete node, not found')
    }
 
-   public getFirstPosition(): CallNode | null {
+   public getFirstPosition(): SinglyNodeReference<T> {
       return this.head
    }
 
-   public getLastPosition(): CallNode | null {
+   public getLastPosition(): SinglyNodeReference<T> {
       let temp = this.head
 
       while (temp?.getNext()) {
@@ -118,7 +120,7 @@ export class CallList {
       return temp
    }
 
-   public getPrevPosition(node: CallNode): CallNode | null {
+   public getPrevPosition(node: SinglyNode<T>): SinglyNodeReference<T> {
       if (this.isEmpty())
          throw new ListException('Invalid operation, list is empty')
 
@@ -134,41 +136,33 @@ export class CallList {
       return prev
    }
 
-   public getNextPosition(node: CallNode): CallNode | null {
+   public getNextPosition(node: SinglyNode<T>): SinglyNodeReference<T> {
       return node.getNext()
    }
 
-   public findData(call: Call): CallNode {
-      let temp = this.head
+   public findData(
+      value: T,
+      isEqual: (current: T, item: T) => boolean
+   ): SinglyNode<T> {
+      let current = this.head
 
-      while (temp !== null) {
-         if (temp.getValue().isEqual(call)) {
-            return temp
+      while (current !== null) {
+         if (isEqual(current.getValue(), value)) {
+            return current
          }
 
-         temp = temp.getNext()
+         current = current.getNext()
       }
 
       throw new ListException('Not found')
    }
 
-   public retrieve(node: CallNode): Call {
+   public retrieve(node: SinglyNode<T>): T {
       return node.getValue()
    }
 
-   public static fromString(str: string): CallList {
-      const calls: Array<string> = str.split('\n')
-      const list = new CallList()
-
-      calls.forEach((callStr) => {
-         list.insertAtEnd(Call.fromString(callStr))
-      })
-
-      return list
-   }
-
    public toString(): string {
-      return this.map((call) => call.toString()).join('\n')
+      return this.map((item) => item.toString()).join('\n')
    }
 
    public deleteAll() {
@@ -180,13 +174,13 @@ export class CallList {
 
    public readFromDisk(s: string) {}
 
-   public assign(list: CallList): CallList {
+   public assign(list: SinglyList<T>): SinglyList<T> {
       return this
    }
 
-   public map(callback: (item: Call, index: number) => any): Array<any> {
-      let result = []
-      let temp: CallNode | null = this.head
+   public map<G>(callback: (item: T, index: number) => any): Array<G> {
+      let result: Array<G> = []
+      let temp: SinglyNodeReference<T> = this.head
 
       let index = 0
       while (temp != null) {

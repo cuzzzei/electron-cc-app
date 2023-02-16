@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/Agent'
+import { Agent } from './Agent'
 
 export class AgentNode {
    private value: Agent

@@ -1,4 +1,4 @@
-import { Call } from '/@/types/Call'
+import { Call } from './Call'
 
 export class CallNode {
    private value: Call

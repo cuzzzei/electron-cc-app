@@ -6,8 +6,8 @@ import {
 } from '/@/features/agents/components/AgentForm'
 import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
-import { Agent } from '/@/types/Agent'
-import { CallList } from '/@/types/CallList'
+import { Agent } from '/@/types/agent'
+import { CallList } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 

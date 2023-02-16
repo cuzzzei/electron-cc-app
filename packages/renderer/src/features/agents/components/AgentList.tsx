@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { Avatar } from '/@/components/Avatar'
-import { AgentList as AgentListClass } from '/@/types/AgentList'
+import { AgentList as AgentListClass } from '/@/types/agent'
 
 interface AgentListProps {
    agentList: AgentListClass

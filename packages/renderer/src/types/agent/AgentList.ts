@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/Agent'
+import { Agent } from './Agent'
 import { AgentNode } from './AgentNode'
 
 export class AgentList {

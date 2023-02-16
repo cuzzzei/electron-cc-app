@@ -1,4 +1,4 @@
-import { CallList as CallListClass } from '/@/types/CallList'
+import { CallList as CallListClass } from '/@/types/call'
 import { getColumns } from '../data/tableColumns'
 import { CreateCall } from '../components/CreateCall'
 import { Table } from '/@/components/Table'

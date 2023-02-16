@@ -1,4 +1,4 @@
-import { CallList } from '/@/types/CallList'
+import { CallList } from '/@/types/call'
 import { Modal } from '/@/components/Modal'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
