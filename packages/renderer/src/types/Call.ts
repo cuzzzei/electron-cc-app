@@ -86,17 +86,17 @@ export class Call {
    public assign(other: Call): Call {
       this.id = other.id
       this.startTime = new Time(
-         other.getStartTime().getHour(),
-         other.getStartTime().getMinute()
+         other.startTime.getHour(),
+         other.startTime.getMinute()
       )
 
       this.endTime = new Time(
-         other.getEndTime().getHour(),
-         other.getEndTime().getMinute()
+         other.endTime.getHour(),
+         other.endTime.getMinute()
       )
 
-      this.clientName = other.getClientName()
-      this.description = other.getDescription()
+      this.clientName = other.clientName
+      this.description = other.description
 
       return this
    }
@@ -110,18 +110,18 @@ export class Call {
    }
 
    public isGreatherThan(other: Call): boolean {
-      return this.getStartTime().isGreatherThan(other.getStartTime())
+      return this.startTime.isGreatherThan(other.startTime)
    }
 
    public isGreaterOrEquals(other: Call): boolean {
-      return this.getStartTime().isGreaterOrEquals(other.getStartTime())
+      return this.startTime.isGreaterOrEquals(other.startTime)
    }
 
    public isLesserThan(other: Call): boolean {
-      return this.getStartTime().isLesserThan(other.getStartTime())
+      return this.startTime.isLesserThan(other.startTime)
    }
 
    public isLesserOrEquals(other: Call): boolean {
-      return this.getStartTime().isLesserOrEquals(other.getStartTime())
+      return this.startTime.isLesserOrEquals(other.startTime)
    }
 }

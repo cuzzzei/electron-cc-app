@@ -31,8 +31,8 @@ export class Name {
    }
 
    public assign(name: Name): Name {
-      this.first = name.getFirst()
-      this.last = name.getLast()
+      this.first = name.first
+      this.last = name.last
       return this
    }
 

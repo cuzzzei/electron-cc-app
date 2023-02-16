@@ -87,15 +87,7 @@ export class Time {
    }
 
    public isDifferent(other: Time): boolean {
-      return this.toInt() !== other.toInt()
-   }
-
-   public isGreatherThan(other: Time): boolean {
-      return this.toInt() > other.toInt()
-   }
-
-   public isGreaterOrEquals(other: Time): boolean {
-      return this.toInt() >= other.toInt()
+      return !this.isEqual(other)
    }
 
    public isLesserThan(other: Time): boolean {
@@ -103,6 +95,14 @@ export class Time {
    }
 
    public isLesserOrEquals(other: Time): boolean {
-      return this.toInt() <= other.toInt()
+      return !this.isGreatherThan(other)
+   }
+
+   public isGreatherThan(other: Time): boolean {
+      return !this.isEqual(other) && !this.isLesserThan(other)
+   }
+
+   public isGreaterOrEquals(other: Time): boolean {
+      return !this.isLesserThan(other)
    }
 }
