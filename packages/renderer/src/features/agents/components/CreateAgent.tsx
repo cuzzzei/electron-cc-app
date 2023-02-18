@@ -14,13 +14,13 @@ import { Time } from '/@/types/Time'
 export const CreateAgent = () => {
    const toast = useToast()
    const [isOpen, setIsOpen] = useState(false)
-   const { agentsList, render } = useAppContext()
+   const { agentList, render } = useAppContext()
 
    function onSubmit(data: AgentFormData) {
       const newAgent = new Agent({
          id: crypto.randomUUID(),
          age: data.age,
-         callsHistory: new CallList(),
+         callHistory: new CallList(),
          extension: data.extension,
          name: new Name(data.firstName, data.lastName),
          overtime: data.overtime,
@@ -30,7 +30,7 @@ export const CreateAgent = () => {
       })
 
       try {
-         agentsList.insert(newAgent)
+         agentList.insert(newAgent)
          setIsOpen(false)
 
          toast({

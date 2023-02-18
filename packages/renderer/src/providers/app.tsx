@@ -9,7 +9,7 @@ import { ToastProvider } from '/@/providers/ToastProvider'
 // === BORRAR =====
 
 interface AppContextType {
-   agentsList: AgentList
+   agentList: AgentList
    render: () => void
 }
 const AppContext = createContext<AppContextType | null>(null)
@@ -19,28 +19,28 @@ export function useAppContext() {
 
 function useInitAppContext() {
    const render = useRender()
-   const agentsList = useRef<AgentList>(new AgentList())
+   const agentList = useRef<AgentList>(new AgentList())
 
-   if (!agentsList?.current) {
-      agentsList.current = new AgentList()
+   if (!agentList?.current) {
+      agentList.current = new AgentList()
    }
 
    return {
       render,
-      agentsList: agentsList.current,
+      agentList: agentList.current,
    }
 }
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
    const context = useInitAppContext()
-   const { agentsList, render } = context
+   const { agentList, render } = context
 
    // ==== BORRAR =====
    const renderRef = useRef(false)
 
    useEffect(() => {
       if (!renderRef.current) {
-         fill(agentsList, render)
+         fill(agentList, render)
          renderRef.current = true
       }
    }, [])

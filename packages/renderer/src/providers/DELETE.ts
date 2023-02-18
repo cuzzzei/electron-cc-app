@@ -9,7 +9,7 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Ronaldo', 'Nazario'),
       age: 22,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '3333',
       startTime: new Time(7, 0),
       endTime: new Time(8, 50),
@@ -21,7 +21,7 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Marco "El Chino"', 'Maidana'),
       age: 25,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '4444',
       startTime: new Time(7, 0),
       endTime: new Time(9, 40),
@@ -33,7 +33,7 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Manuel', 'Martinez'),
       age: 33,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '5555',
       startTime: new Time(7, 0),
       endTime: new Time(15, 0),
@@ -45,7 +45,7 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Maria', 'Morales'),
       age: 24,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '6666',
       startTime: new Time(7, 0),
       endTime: new Time(15, 0),
@@ -57,7 +57,7 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Daniela', 'Juarez'),
       age: 44,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '7777',
       startTime: new Time(7, 0),
       endTime: new Time(16, 0),
@@ -69,14 +69,14 @@ export function fill(list: AgentList, render: () => void) {
       id: crypto.randomUUID(),
       name: new Name('Maria', 'Salazar'),
       age: 44,
-      callsHistory: new CallList(),
+      callHistory: new CallList(),
       extension: '8888',
       startTime: new Time(7, 0),
       endTime: new Time(16, 0),
       overtime: 10,
       specialty: 'Printers',
    })
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '1'),
@@ -85,7 +85,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(10, 23),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '2'),
@@ -94,7 +94,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 10),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '3'),
@@ -103,7 +103,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '4'),
@@ -112,7 +112,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 10),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '5'),
@@ -121,7 +121,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '6'),
@@ -130,7 +130,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '7'),
@@ -139,7 +139,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '8'),
@@ -148,7 +148,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '9'),
@@ -157,7 +157,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '10'),
@@ -166,7 +166,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '11'),
@@ -175,7 +175,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '12'),
@@ -184,7 +184,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '13'),
@@ -193,7 +193,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '14'),
@@ -202,7 +202,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '15'),
@@ -211,7 +211,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '16'),
@@ -220,7 +220,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '17'),
@@ -229,7 +229,7 @@ export function fill(list: AgentList, render: () => void) {
          end: new Time(8, 20),
       })
    )
-   agent6.getCallsHistory().insertOrdered(
+   agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
          clientName: new Name('Client', '18'),
@@ -245,6 +245,15 @@ export function fill(list: AgentList, render: () => void) {
    list.insert(agent4)
    list.insert(agent5)
    list.insert(agent6)
+
+   const abc = list.map((agent) => {
+      return {
+         ...agent,
+         callHistory: agent.getCallHistory().map((call) => call),
+      }
+   })
+   console.log(abc)
+   //console.log(JSON.stringify(list.map(agent => agent), null, 4))
 
    render()
 }

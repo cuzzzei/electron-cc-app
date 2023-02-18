@@ -8,9 +8,9 @@ import { CallList } from '/@/features/calls/components/CallList'
 import { UpdateAgent } from '/@/features/agents/components/UpdateAgent'
 
 export const Agent = () => {
-   const { agentsList } = useAppContext()
+   const { agentList } = useAppContext()
    const { id } = useParams()
-   const agent: AgentType | undefined = agentsList
+   const agent: AgentType | undefined = agentList
       .findById(id ?? '')
       ?.getValue()
 
@@ -51,13 +51,13 @@ export const Agent = () => {
             <TabList>
                <Tab>Agent details</Tab>
                <Tab>{`Call history (${agent
-                  .getCallsHistory()
+                  .getCallHistory()
                   .getLength()})`}</Tab>
             </TabList>
 
             <TabPanels>
                <AgentDetails agent={agent} />
-               <CallList callList={agent.getCallsHistory()} />
+               <CallList callList={agent.getCallHistory()} />
             </TabPanels>
          </Tabs>
       </div>

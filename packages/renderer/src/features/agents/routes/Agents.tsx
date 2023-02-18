@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 import { useAppContext } from '/@/providers/app'
 
 export const Agents = () => {
-   const { agentsList } = useAppContext()
+   const { agentList } = useAppContext()
 
    return (
       <div className='d-flex'>
@@ -22,7 +22,7 @@ export const Agents = () => {
             <hr />
             <CreateAgent />
 
-            <AgentList agentList={agentsList} />
+            <AgentList agentList={agentList} />
          </div>
 
          <div

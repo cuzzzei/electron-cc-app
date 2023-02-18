@@ -8,7 +8,7 @@ export interface AgentProps {
    extension: string
    name: Name
    age: number
-   callsHistory: CallList
+   callHistory: CallList
    overtime: number
    specialty: Specialty
    startTime: Time
@@ -24,14 +24,14 @@ export class Agent {
    private specialty: Specialty
    private startTime: Time
    private endTime: Time
-   private callsHistory: CallList
+   private callHistory: CallList
 
    constructor({
       id,
       extension,
       name,
       age,
-      callsHistory,
+      callHistory,
       overtime,
       specialty,
       startTime,
@@ -41,7 +41,7 @@ export class Agent {
       this.extension = extension
       this.name = name
       this.age = age
-      this.callsHistory = callsHistory
+      this.callHistory = callHistory
       this.overtime = overtime
       this.specialty = specialty
       this.startTime = startTime
@@ -72,8 +72,8 @@ export class Agent {
    public getEndTime(): Time {
       return this.endTime
    }
-   public getCallsHistory(): CallList {
-      return this.callsHistory
+   public getCallHistory(): CallList {
+      return this.callHistory
    }
 
    public setExtension(extension: string) {
@@ -97,8 +97,8 @@ export class Agent {
    public setEndTime(End: Time) {
       this.endTime = End
    }
-   public setCallsHistory(callsHistory: CallList) {
-      this.callsHistory = callsHistory
+   public setCallHistory(callHistory: CallList) {
+      this.callHistory = callHistory
    }
 
    public toString(): string {

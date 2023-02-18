@@ -64,7 +64,7 @@ export const AgentDetails = ({ agent }: AgentInfoProps) => {
             <Label
                icon={<ChatBubbleLeftEllipsisIcon />}
                text={`${agent
-                  .getCallsHistory()
+                  .getCallHistory()
                   .getLength()} calls received today`}
             />
          </div>

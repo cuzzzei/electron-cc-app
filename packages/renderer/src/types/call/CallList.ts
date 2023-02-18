@@ -11,10 +11,10 @@ export class CallList {
       this.length = 0
    }
 
+   // Checks that node is in the list
    private isValidPosition(node: CallNode): boolean {
       let temp = this.head
 
-      // Check that node is in the list
       while (temp !== null) {
          if (temp === node) {
             return true
@@ -26,7 +26,10 @@ export class CallList {
       return false
    }
 
-   private copyAll(list: CallList) {}
+   private copyAll(list: CallList) {
+      this.head = list.head
+      this.length = list.length
+   }
 
    public isEmpty(): boolean {
       return this.head === null
@@ -156,17 +159,6 @@ export class CallList {
       return node.getValue()
    }
 
-   public static fromString(str: string): CallList {
-      const calls: Array<string> = str.split('\n')
-      const list = new CallList()
-
-      calls.forEach((callStr) => {
-         list.insertAtEnd(Call.fromString(callStr))
-      })
-
-      return list
-   }
-
    public toString(): string {
       return this.map((call) => call.toString()).join('\n')
    }
@@ -180,7 +172,8 @@ export class CallList {
 
    public readFromDisk(s: string) {}
 
-   public assign(list: CallList): CallList {
+   public assign(other: CallList): CallList {
+      this.copyAll(other)
       return this
    }
 
