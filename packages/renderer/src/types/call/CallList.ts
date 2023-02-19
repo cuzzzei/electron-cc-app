@@ -79,9 +79,20 @@ export class CallList {
       this.insert(previous, call)
    }
 
+   public getPrevPosition(node: CallNode): CallNode | null {
+      if (node === this.head || !this.isValidPosition(node)) return null
+
+      let prev = this.head
+      while (prev !== null && prev.getNext() !== node) {
+         prev = prev.getNext()
+      }
+
+      return prev
+   }
+
    public remove(node: CallNode) {
-      if (this.isEmpty()) {
-         throw new ListException('Cannot remove, list is empty')
+      if (!this.isValidPosition(node)) {
+         throw new ListException('Invalid position CallList.remove()')
       }
 
       let prev = this.head
@@ -93,18 +104,17 @@ export class CallList {
          return
       }
 
-      while (prev?.getNext()) {
-         if (prev.getNext() === node) {
-            const nodeAfterDeleted = node?.getNext() ?? null
-            prev.setNext(nodeAfterDeleted)
-            this.length--
-            return
-         }
+      this.getPrevPosition(node)?.setNext(node.getNext())
+   }
 
-         prev = prev.getNext()
+   public findData(call: Call): CallNode | null {
+      let temp = this.head
+
+      while (temp !== null && temp.getValue().isDifferent(call)) {
+         temp = temp.getNext()
       }
 
-      throw new ListException('Error trying to delete node, not found')
+      return temp
    }
 
    public getFirstPosition(): CallNode | null {
@@ -121,38 +131,8 @@ export class CallList {
       return temp
    }
 
-   public getPrevPosition(node: CallNode): CallNode | null {
-      if (this.isEmpty())
-         throw new ListException('Invalid operation, list is empty')
-
-      let prev = this.head
-      while (prev?.getNext() !== node && prev !== null) {
-         prev = prev.getNext()
-      }
-
-      if (prev === null) {
-         throw new ListException('Previous position not found')
-      }
-
-      return prev
-   }
-
    public getNextPosition(node: CallNode): CallNode | null {
       return node.getNext()
-   }
-
-   public findData(call: Call): CallNode {
-      let temp = this.head
-
-      while (temp !== null) {
-         if (temp.getValue().isEqual(call)) {
-            return temp
-         }
-
-         temp = temp.getNext()
-      }
-
-      throw new ListException('Not found')
    }
 
    public retrieve(node: CallNode): Call {

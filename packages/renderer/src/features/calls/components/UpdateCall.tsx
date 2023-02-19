@@ -1,5 +1,5 @@
 import { CallForm, CallFormData } from '../components/CallForm'
-import { CallList, Call } from '/@/types/call'
+import { CallList, Call, CallNode } from '/@/types/call'
 import { Modal } from '/@/components/Modal'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
@@ -18,8 +18,7 @@ export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
    const { render } = useAppContext()
 
    function onSubmit(data: CallFormData) {
-      // TODO: Fix bug >> Update call hour doesnt reorder the list
-      const node = callList.findData(call)
+      const node = callList.findData(call) as CallNode
       callList.remove(node)
 
       call.setClientName(new Name(data.clientFirstName, data.clientLastName))

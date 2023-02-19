@@ -252,8 +252,6 @@ export function fill(list: AgentList, render: () => void) {
          callHistory: agent.getCallHistory().map((call) => call),
       }
    })
-   console.log(abc)
-   //console.log(JSON.stringify(list.map(agent => agent), null, 4))
 
    render()
 }
