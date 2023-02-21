@@ -28,6 +28,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
       const id = crypto.randomUUID()
 
       setList((prev) => {
+         if(prev.length > 5) {
+            return prev
+         }
+         
          return [
             ...prev,
             {
@@ -57,7 +61,17 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
    return (
       <ToastContext.Provider value={addToast}>
-         <div>
+         <div
+            style={{
+               padding: '15px',
+               position: 'absolute',
+               top: 0,
+               right: 0,
+               display: 'flex',
+               flexDirection: 'column',
+               gap: 10,
+            }}
+         >
             {list.map((toast, i) => (
                <Toast
                   {...toast}
