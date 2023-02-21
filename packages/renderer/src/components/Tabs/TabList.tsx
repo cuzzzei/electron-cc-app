@@ -3,11 +3,13 @@ import { TabProps, Tab } from './Tab'
 
 interface TabListProps {
    children: Array<ReactElement<TabProps>>
+   className?: string
 }
 
-export const TabList = ({ children: Tabs }: TabListProps) => {
+export const TabList = ({ children: Tabs, className = '' }: TabListProps) => {
    return (
-      <ul className='nav nav-tabs mt-5'>
+      // TODO: change to template string
+      <ul className={'nav nav-tabs ' + className}>
          {Tabs.map((tab, i) => (
             <Tab
                key={i}

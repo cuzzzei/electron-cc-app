@@ -10,8 +10,8 @@ export const Agents = () => {
    return (
       <div className='d-flex'>
          <div
-            className='bg-light vh-100 p-5'
-            style={{ width: '20%', overflowY: 'auto' }}
+            className='bg-light vh-100 p-4 md:p-5'
+            style={{ minWidth: '20%',  overflowY: 'auto' }}
          >
             <div className='w-100 d-flex justify-content-between'>
                <h3 className='fw-bold'>Agents</h3>
@@ -26,7 +26,7 @@ export const Agents = () => {
          </div>
 
          <div
-            className='p-5'
+            className='p-4 md:p-5'
             style={{ width: '80%' }}
          >
             <Outlet />

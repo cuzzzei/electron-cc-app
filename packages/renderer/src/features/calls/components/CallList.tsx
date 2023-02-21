@@ -10,25 +10,30 @@ interface CallListProps {
 
 export const CallList = ({ callList }: CallListProps) => {
    return (
-      <div className='p-5'>
-         <div>
-            <div className='d-flex gap-3 align-items-start'>
-               <h3 className='mb-4 fw-bold'>Calls</h3>
+      <div className='p-4 md:p-5'
+         style={{
+            display: 'grid',
+            gridTemplateRows: '50px auto',
+            rowGap: '12px',
+            height: '100%'
+         }}
+      >
+         <div className='d-flex gap-3 align-items-start'>
+            <h3 className='fw-bold'>Calls</h3>
 
-               <CreateCall callList={callList} />
-               <DeleteAll callList={callList} />
-            </div>
-
-            <Table
-               columns={getColumns(callList)}
-               data={callList.map((call) => call)}
-               style={{
-                  maxHeight: '54vh',
-                  overflowY: 'auto',
-               }}
-               emptyMessage='No calls received'
-            />
+            <CreateCall callList={callList} />
+            <DeleteAll callList={callList} />
          </div>
+
+         <Table
+            columns={getColumns(callList)}
+            data={callList.map((call) => call)}
+            style={{
+               overflowY: 'auto',
+               height: '350px'
+            }}
+            emptyMessage='No calls received'
+         />
       </div>
    )
 }

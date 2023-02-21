@@ -10,9 +10,7 @@ import { UpdateAgent } from '/@/features/agents/components/UpdateAgent'
 export const Agent = () => {
    const { agentList } = useAppContext()
    const { id } = useParams()
-   const agent: AgentType | undefined = agentList
-      .findById(id ?? '')
-      ?.getValue()
+   const agent: AgentType | undefined = agentList.findById(id ?? '')?.getValue()
 
    if (!agent) return null
 
@@ -20,6 +18,12 @@ export const Agent = () => {
       <div
          key={id}
          className='w-full animate__animated animate__fadeIn'
+         style={{
+            display: 'grid',
+            gridTemplateRows: '220px auto',
+            rowGap: '40px',
+            height: '100%',
+         }}
       >
          <div className='d-flex gap-5 w-full'>
             <Avatar
@@ -27,7 +31,7 @@ export const Agent = () => {
                style={{ width: '20rem' }}
             />
 
-            <div className='w-100'>
+            <div className='w-100 '>
                <div className='d-flex justify-content-between'>
                   <h1
                      className='mt-5 fw-bold'

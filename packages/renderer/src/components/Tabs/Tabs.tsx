@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import { Tab } from '/@/components/Tabs/Tab'
+import { createContext, useContext, useState } from 'react'
 
 interface TabsProps {
    children: Array<React.ReactElement>
+   className?: string
 }
 
 interface TabsContextType {
@@ -24,8 +24,12 @@ function useInitTabsContext() {
    }
 }
 
-export const Tabs = ({ children }: TabsProps) => {
+export const Tabs = ({ children, className = '' }: TabsProps) => {
    const v = useInitTabsContext()
 
-   return <TabsContext.Provider value={v}>{children}</TabsContext.Provider>
+   return (
+      <TabsContext.Provider value={v}>
+         <div className={className}>{children}</div>
+      </TabsContext.Provider>
+   )
 }

@@ -25,7 +25,7 @@ const Label = ({ icon, text }: { icon: React.ReactNode; text: string }) => {
 export const AgentDetails = ({ agent }: AgentInfoProps) => {
    return (
       <div
-         className='p-5 row'
+         className='p-4 md:p-5 row'
          style={{ height: '65vh' }}
       >
          <div className='h-100 col-5'>
