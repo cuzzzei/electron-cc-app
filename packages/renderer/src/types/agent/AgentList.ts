@@ -119,4 +119,8 @@ export class AgentList {
 
       return null
    }
+
+   public toJSON() : any {
+      
+   }
 }

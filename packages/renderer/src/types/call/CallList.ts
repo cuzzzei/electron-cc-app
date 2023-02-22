@@ -169,4 +169,8 @@ export class CallList {
 
       return result
    }
+
+   public toJSON(): any {
+      
+   }
 }
