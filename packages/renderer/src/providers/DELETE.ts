@@ -82,7 +82,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '1'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(10, 20),
-         end: new Time(10, 23),
+         duration: new Time(10, 23),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -91,7 +91,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '2'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(7, 56),
-         end: new Time(8, 10),
+         duration: new Time(8, 10),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -100,7 +100,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '3'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(7, 58),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -109,7 +109,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '4'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 1),
-         end: new Time(8, 10),
+         duration: new Time(8, 10),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -118,7 +118,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '5'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 2),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -127,7 +127,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '6'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 3),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -136,7 +136,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '7'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -145,7 +145,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '8'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 3),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -154,7 +154,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '9'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -163,7 +163,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '10'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -172,7 +172,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '11'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(9, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -181,7 +181,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '12'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -190,7 +190,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '13'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -199,7 +199,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '14'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -208,7 +208,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '15'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -217,7 +217,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '16'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -226,7 +226,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '17'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 15),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
@@ -235,7 +235,7 @@ export function fill(list: AgentList, render: () => void) {
          clientName: new Name('Client', '18'),
          description: 'Lorem Ipsum is simply dummy text',
          start: new Time(8, 14),
-         end: new Time(8, 20),
+         duration: new Time(8, 20),
       })
    )
 

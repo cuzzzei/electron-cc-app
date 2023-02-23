@@ -6,7 +6,7 @@ export interface CallFormData {
    clientFirstName: string
    clientLastName: string
    startTime: string
-   endTime: string
+   duration: string
    description: string
 }
 
@@ -65,10 +65,10 @@ export const CallForm = ({ id, onSubmit, defaultValues }: CallFormProps) => {
                   />
 
                   <Input
-                     label='End time'
+                     label='Duration'
                      type='time'
-                     error={formState.errors['endTime']}
-                     registration={register('endTime')}
+                     error={formState.errors['duration']}
+                     registration={register('duration')}
                      className='col-sm-6'
                      required
                   />

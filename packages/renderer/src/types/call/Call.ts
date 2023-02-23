@@ -4,7 +4,7 @@ import { Time } from '/@/types/Time'
 export interface CallProps {
    id: string
    start: Time
-   end: Time
+   duration: Time
    clientName: Name
    description: string
 }
@@ -12,14 +12,14 @@ export interface CallProps {
 export class Call {
    private id: string
    private startTime: Time
-   private endTime: Time
+   private duration: Time
    private clientName: Name
    private description: string
 
-   constructor({ id, start, end, clientName, description }: CallProps) {
+   constructor({ id, start, duration, clientName, description }: CallProps) {
       this.id = id
       this.startTime = start
-      this.endTime = end
+      this.duration = duration
       this.clientName = clientName
       this.description = description
    }
@@ -30,8 +30,8 @@ export class Call {
    public getStartTime(): Time {
       return this.startTime
    }
-   public getEndTime(): Time {
-      return this.endTime
+   public getDuration(): Time {
+      return this.duration
    }
    public getClientName(): Name {
       return this.clientName
@@ -43,8 +43,8 @@ export class Call {
    public setStartTime(start: Time) {
       this.startTime = start
    }
-   public setEndTime(End: Time) {
-      this.endTime = End
+   public setDuration(duration: Time) {
+      this.duration = duration
    }
    public setClientName(clientName: Name) {
       this.clientName = clientName
@@ -59,7 +59,7 @@ export class Call {
          clientFirstName,
          clientLastName,
          startTimeStr,
-         endTimeStr,
+         duration,
          description,
       ] = s.split(' | ')
 
@@ -67,7 +67,7 @@ export class Call {
          id,
          clientName: new Name(clientFirstName, clientLastName),
          start: Time.fromString(startTimeStr),
-         end: Time.fromString(endTimeStr),
+         duration: Time.fromString(duration),
          description,
       })
    }
@@ -78,7 +78,7 @@ export class Call {
       result += this.clientName.getFirst() + ' | '
       result += this.clientName.getLast() + ' | '
       result += this.startTime + ' | '
-      result += this.endTime + ' | '
+      result += this.duration + ' | '
       result += this.description
       return result
    }
@@ -90,9 +90,9 @@ export class Call {
          other.startTime.getMinute()
       )
 
-      this.endTime = new Time(
-         other.endTime.getHour(),
-         other.endTime.getMinute()
+      this.duration = new Time(
+         other.duration.getHour(),
+         other.duration.getMinute()
       )
 
       this.clientName = other.clientName

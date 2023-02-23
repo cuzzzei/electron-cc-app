@@ -22,7 +22,7 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
          clientName: new Name(data.clientFirstName, data.clientLastName),
          description: data.description,
          start: Time.fromString(data.startTime),
-         end: Time.fromString(data.endTime),
+         duration: Time.fromString(data.duration),
       })
 
       try {

@@ -67,7 +67,7 @@ export function getColumns(callList: CallList): Array<TableColumn<Call>> {
          id: 'duration',
          Header: 'Duration',
          Cell: (call) => {
-            return `${call.getStartTime()} - ${call.getEndTime()}`
+            return `${call.getStartTime()} - ${call.getDuration()}`
          },
       },
 
