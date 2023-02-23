@@ -8,10 +8,10 @@ export const Agents = () => {
    const { agentList } = useAppContext()
 
    return (
-      <div className='d-flex'>
+      <div className='d-flex h-100'>
          <div
-            className='bg-light vh-100 p-4 md:p-5'
-            style={{ minWidth: '20%',  overflowY: 'auto' }}
+            className='bg-light p-4 md:p-5'
+            style={{ minWidth: '20%', overflowY: 'auto' }}
          >
             <div className='w-100 d-flex justify-content-between'>
                <h3 className='fw-bold'>Agents</h3>

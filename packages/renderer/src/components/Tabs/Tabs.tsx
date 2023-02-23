@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from 'react'
 interface TabsProps {
    children: Array<React.ReactElement>
    className?: string
+   style?: React.CSSProperties
 }
 
 interface TabsContextType {
@@ -24,12 +25,21 @@ function useInitTabsContext() {
    }
 }
 
-export const Tabs = ({ children, className = '' }: TabsProps) => {
+export const Tabs = ({ children, className, style }: TabsProps) => {
    const v = useInitTabsContext()
 
    return (
       <TabsContext.Provider value={v}>
-         <div className={className}>{children}</div>
+         <div
+            className={`${className}`}
+            style={{
+               display: 'grid',
+               gridTemplateRows: 'min-content 1fr',
+               ...style,
+            }}
+         >
+            {children}
+         </div>
       </TabsContext.Provider>
    )
 }

@@ -3,7 +3,8 @@ import { UpdateCall } from '/@/features/calls/components/UpdateCall'
 import { useToast } from '/@/hooks/useToast'
 import { useAppContext } from '/@/providers/app'
 import { Call } from '../../../types/call/Call'
-import { CallList } from '/@/types/CallList'
+import { CallList } from '/@/types/call'
+import { CallNode } from '../../../types/call/CallNode';
 
 interface CallListActionsProps {
    call: Call
@@ -16,7 +17,7 @@ function CallListActions({ call, callList }: CallListActionsProps) {
 
    function removeCall() {
       try {
-         const nodeToDelete = callList.findData(call)
+         const nodeToDelete = callList.findData(call) as CallNode
          callList.remove(nodeToDelete)
          toast({
             title: 'Call deleted successfully',

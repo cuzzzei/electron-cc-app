@@ -6,7 +6,7 @@ import {
    ClockIcon,
    PhoneIcon,
    UserCircleIcon,
-   WrenchScrewdriverIcon
+   WrenchScrewdriverIcon,
 } from '@heroicons/react/24/outline'
 
 interface AgentInfoProps {
@@ -24,56 +24,43 @@ const Label = ({ icon, text }: { icon: React.ReactNode; text: string }) => {
 
 export const AgentDetails = ({ agent }: AgentInfoProps) => {
    return (
-      <div
-         className='p-4 md:p-5 row'
-         style={{ height: '65vh' }}
-      >
-         <div className='h-100 col-5'>
-            <h3 className='mb-4 fw-bold'>Agent profile</h3>
+      <div className='p-5'>
+         <h3 className='mb-4 fw-bold'>Agent profile</h3>
 
-            <Label
-               icon={<UserCircleIcon />}
-               text={`${agent.getName()}`}
-            />
+         <Label
+            icon={<UserCircleIcon />}
+            text={`${agent.getName()}`}
+         />
 
-            <Label
-               icon={<CakeIcon />}
-               text={`${agent.getAge()} years old`}
-            />
+         <Label
+            icon={<CakeIcon />}
+            text={`${agent.getAge()} years old`}
+         />
 
-            <Label
-               icon={<WrenchScrewdriverIcon />}
-               text={`${agent.getSpecialty()}`}
-            />
+         <Label
+            icon={<WrenchScrewdriverIcon />}
+            text={`${agent.getSpecialty()}`}
+         />
 
-            <Label
-               icon={<PhoneIcon />}
-               text={`Extension ${agent.getExtension()}`}
-            />
+         <Label
+            icon={<PhoneIcon />}
+            text={`Extension ${agent.getExtension()}`}
+         />
 
-            <Label
-               icon={<ClockIcon />}
-               text={`${agent.getStartTime()} - ${agent.getEndTime()}`}
-            />
+         <Label
+            icon={<ClockIcon />}
+            text={`${agent.getStartTime()} - ${agent.getEndTime()}`}
+         />
 
-            <Label
-               icon={<BanknotesIcon />}
-               text={`${agent.getOvertime()} extra hours`}
-            />
+         <Label
+            icon={<BanknotesIcon />}
+            text={`${agent.getOvertime()} extra hours`}
+         />
 
-            <Label
-               icon={<ChatBubbleLeftEllipsisIcon />}
-               text={`${agent
-                  .getCallHistory()
-                  .getLength()} calls received today`}
-            />
-         </div>
-
-         <div className='h-100 col-7 p-0'>
-            <div className='d-flex h-100'>
-               <div className='vr'></div>
-            </div>
-         </div>
+         <Label
+            icon={<ChatBubbleLeftEllipsisIcon />}
+            text={`${agent.getCallHistory().getLength()} calls received today`}
+         />
       </div>
    )
 }

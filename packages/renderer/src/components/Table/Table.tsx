@@ -38,13 +38,10 @@ export const Table = <T,>({
    }
 
    return (
-      <div
-         className={`card ${className}`}
-         style={{
-            overflowY: 'auto',
-            ...style,
-         }}
-      >
+      <div className={`card ${className}`} style={{
+         overflowY: 'scroll',
+         ...style,
+      }}>
          <div className='card-body'>
             <div className='table-responsive'>
                <table className='table table-responsive table-borderless table-hover align-middle text-start'>

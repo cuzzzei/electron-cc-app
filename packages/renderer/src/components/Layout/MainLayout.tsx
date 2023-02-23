@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import { ArrowLeftOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import {
+   ArrowLeftOnRectangleIcon,
+   UserCircleIcon,
+} from '@heroicons/react/24/solid'
 
 interface MainLayoutProps {
    children: React.ReactNode
@@ -18,7 +21,7 @@ const navigation = [
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
    return (
-      <div className='w-100 vh-100 d-flex overflow-hidden'>
+      <div className='w-100 h-100 d-flex'>
          <nav className='bg-dark d-flex flex-column align-items-center p-4 gap-4 pt-5'>
             {navigation.map((nav) => (
                <NavLink

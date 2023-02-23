@@ -17,18 +17,17 @@ export const Agent = () => {
    return (
       <div
          key={id}
-         className='w-full animate__animated animate__fadeIn'
+         className='w-full animate__animated animate__fadeIn h-100'
          style={{
             display: 'grid',
-            gridTemplateRows: '220px auto',
+            gridTemplateRows: 'min-content 1fr',
             rowGap: '40px',
-            height: '100%',
          }}
       >
          <div className='d-flex gap-5 w-full'>
             <Avatar
                seed={agent.getName().toString()}
-               style={{ width: '20rem' }}
+               style={{ width: '15rem' }}
             />
 
             <div className='w-100 '>
