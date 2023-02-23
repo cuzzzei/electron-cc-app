@@ -33,6 +33,7 @@
     "@types/node": "18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "cross-env": "7.0.3",
@@ -60,6 +61,10 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",
     "react-router-dom": "^6.8.0",
+    "styled-components": "^5.3.6",
     "yup": "^0.32.11"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

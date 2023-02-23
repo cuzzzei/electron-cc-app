@@ -24,7 +24,7 @@ const Label = ({ icon, text }: { icon: React.ReactNode; text: string }) => {
 
 export const AgentDetails = ({ agent }: AgentInfoProps) => {
    return (
-      <div className='p-5'>
+      <div className='p-4 p-lg-5'>
          <h3 className='mb-4 fw-bold'>Agent profile</h3>
 
          <Label

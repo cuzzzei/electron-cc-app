@@ -17,14 +17,9 @@ export const Agent = () => {
    return (
       <div
          key={id}
-         className='w-full animate__animated animate__fadeIn h-100'
-         style={{
-            display: 'grid',
-            gridTemplateRows: 'min-content 1fr',
-            rowGap: '40px',
-         }}
+         className='w-full animate__animated animate__fadeIn h-100 d-flex flex-column gap-5'
       >
-         <div className='d-flex gap-5 w-full'>
+         <div className='d-flex gap-5 w-full h-25'>
             <Avatar
                seed={agent.getName().toString()}
                style={{ width: '15rem' }}
@@ -50,7 +45,11 @@ export const Agent = () => {
             </div>
          </div>
 
-         <Tabs>
+         <Tabs
+            style={{
+               height: '70%',
+            }}
+         >
             <TabList>
                <Tab>Agent details</Tab>
                <Tab>{`Call history (${agent

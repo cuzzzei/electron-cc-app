@@ -3,22 +3,22 @@ import { getColumns } from '../data/tableColumns'
 import { CreateCall } from '../components/CreateCall'
 import { Table } from '/@/components/Table'
 import { DeleteAll } from '/@/features/calls/components/DeleteAll'
+import styled from 'styled-components'
 
 interface CallListProps {
    callList: CallListClass
 }
 
+const Container = styled.div`
+   display: grid;
+   row-gap: 20px;
+   grid-template-rows: min-content;
+   overflow-y: hidden;
+`
+
 export const CallList = ({ callList }: CallListProps) => {
    return (
-      <div
-         className='p-5'
-         style={{
-            display: 'grid',
-            gridTemplateRows: 'min-content 30vh',
-            rowGap: '30px',
-            overflowY: 'hidden',
-         }}
-      >
+      <Container className='p-4 p-lg-5'>
          <div className='d-flex gap-3'>
             <h3 className='fw-bold'>Calls</h3>
 
@@ -31,6 +31,6 @@ export const CallList = ({ callList }: CallListProps) => {
             data={callList.map((call) => call)}
             emptyMessage='No calls received'
          />
-      </div>
+      </Container>
    )
 }

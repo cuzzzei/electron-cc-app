@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import styled from 'styled-components'
 
 interface TabsProps {
    children: Array<React.ReactElement>
@@ -25,21 +26,22 @@ function useInitTabsContext() {
    }
 }
 
+const Container = styled.div`
+   display: grid;
+   grid-template-rows: min-content 1fr;
+`
+
 export const Tabs = ({ children, className, style }: TabsProps) => {
    const v = useInitTabsContext()
 
    return (
       <TabsContext.Provider value={v}>
-         <div
+         <Container
             className={`${className}`}
-            style={{
-               display: 'grid',
-               gridTemplateRows: 'min-content 1fr',
-               ...style,
-            }}
+            style={style}
          >
             {children}
-         </div>
+         </Container>
       </TabsContext.Provider>
    )
 }

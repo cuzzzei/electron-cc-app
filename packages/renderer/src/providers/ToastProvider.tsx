@@ -1,4 +1,5 @@
 import { createContext, useEffect, useRef, useState } from 'react'
+import styled from 'styled-components'
 import { Toast, Status } from '/@/components/Toast'
 
 interface ToastProviderProps {
@@ -19,6 +20,17 @@ interface ToastConfig {
 }
 
 const HIDE_TIMER = 2500
+
+const Container = styled.div`
+   padding: 15px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   z-index: 999;
+`
 
 export const ToastProvider = ({ children }: ToastProviderProps) => {
    const timer = useRef<any>(null)
@@ -61,16 +73,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
    return (
       <ToastContext.Provider value={addToast}>
-         <div
-            style={{
-               padding: '15px',
-               position: 'absolute',
-               top: 0,
-               right: 0,
-               display: 'flex',
-               flexDirection: 'column',
-               gap: 10,
-            }}
+         <Container
          >
             {list.map((toast, i) => (
                <Toast
@@ -79,7 +82,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
                   index={i}
                />
             ))}
-         </div>
+         </Container>
          {children}
       </ToastContext.Provider>
    )

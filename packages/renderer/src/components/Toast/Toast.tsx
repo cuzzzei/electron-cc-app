@@ -3,6 +3,7 @@ import {
    ExclamationCircleIcon,
    ExclamationTriangleIcon,
 } from '@heroicons/react/24/solid'
+import styled from 'styled-components'
 export type Status = 'success' | 'error' | 'warning'
 
 interface ToastProps {
@@ -12,27 +13,31 @@ interface ToastProps {
    index: number
 }
 
+const Icon = styled.div`
+   width: 20px;
+`
+
 function SuccessIcon() {
    return (
-      <div style={{ width: '20px' }}>
+      <Icon>
          <CheckCircleIcon />
-      </div>
+      </Icon>
    )
 }
 
 function ErrorIcon() {
    return (
-      <div style={{ width: '20px' }}>
+      <Icon>
          <ExclamationCircleIcon />
-      </div>
+      </Icon>
    )
 }
 
 function WarningIcon() {
    return (
-      <div style={{ width: '20px' }}>
+      <Icon>
          <ExclamationTriangleIcon />
-      </div>
+      </Icon>
    )
 }
 

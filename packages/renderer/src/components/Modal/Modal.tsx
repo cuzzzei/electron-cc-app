@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import styled from 'styled-components'
 
 interface ModalProps {
    title: string
@@ -9,6 +10,15 @@ interface ModalProps {
    triggerButton: React.ReactElement
    confirmButton?: React.ReactElement
 }
+
+const BackDrop = styled.div`
+   background-color: rgba(0, 0, 0, 0.4);
+`
+
+const Content = styled.div`
+   border-radius: 8px;
+   padding: 15px;
+`
 
 export const Modal = ({
    isOpen,
@@ -34,22 +44,17 @@ export const Modal = ({
          {triggerButton}
 
          {isOpen && (
-            <div
+            <BackDrop
                className='modal center modal-backdrop'
                style={{
-                  backgroundColor: 'rgba(0, 0, 0, 0.4)',
                   ...style,
                }}
             >
                <div className='modal-dialog modal-dialog-centered animate__animated animate__slideInDown animate__faster'>
-                  <div
+                  <Content
                      className='modal-content'
                      tabIndex={1}
                      ref={modalRef}
-                     style={{
-                        borderRadius: '8px',
-                        padding: '15px',
-                     }}
                   >
                      <div className='modal-header border-0'>
                         <h5 className='modal-title'>{title}</h5>
@@ -74,9 +79,9 @@ export const Modal = ({
 
                         {confirmButton}
                      </div>
-                  </div>
+                  </Content>
                </div>
-            </div>
+            </BackDrop>
          )}
       </>
    )
