@@ -16,6 +16,7 @@ type InputProps = {
    required?: boolean
    size?: number
    textArea?: boolean
+   disabled?: boolean
 }
 
 export const Input = ({
@@ -29,9 +30,9 @@ export const Input = ({
    type = 'text',
    size,
    textArea = false,
+   disabled = false,
    ...rest
 }: InputProps) => {
-
    const Component = textArea ? 'textarea' : 'input'
 
    return (
@@ -49,6 +50,7 @@ export const Input = ({
             className={`form-control mt-2 ${error?.message && 'is-invalid'}`}
             size={size}
             maxLength={size}
+            disabled={disabled}
             {...registration}
             {...rest}
          />

@@ -1,10 +1,10 @@
-import { TableColumn } from '/@/components/Table'
-import { UpdateCall } from '/@/features/calls/components/UpdateCall'
-import { useToast } from '/@/hooks/useToast'
-import { useAppContext } from '/@/providers/app'
 import { Call } from '../../../types/call/Call'
 import { CallList } from '/@/types/call'
-import { CallNode } from '../../../types/call/CallNode';
+import { CallNode } from '../../../types/call/CallNode'
+import { TableColumn } from '/@/components/Table'
+import { UpdateCall } from '/@/features/calls/components/UpdateCall'
+import { useAppContext } from '/@/providers/app'
+import { useToast } from '/@/hooks/useToast'
 
 interface CallListActionsProps {
    call: Call
@@ -38,7 +38,10 @@ function CallListActions({ call, callList }: CallListActionsProps) {
 
    return (
       <div className='d-flex gap-2 justify-content-center'>
-         <UpdateCall call={call} callList={callList}/>
+         <UpdateCall
+            call={call}
+            callList={callList}
+         />
 
          <div>
             <button
@@ -62,12 +65,18 @@ export function getColumns(callList: CallList): Array<TableColumn<Call>> {
             return call.getClientName().toString()
          },
       },
-
+      {
+         id: 'start-time',
+         Header: 'Start Time',
+         Cell: (call) => {
+            return call.getStartTime().toString()
+         },
+      },
       {
          id: 'duration',
-         Header: 'Duration',
+         Header: 'Duration (hh:mm)',
          Cell: (call) => {
-            return `${call.getStartTime()} - ${call.getDuration()}`
+            return call.getDuration().toString()
          },
       },
 

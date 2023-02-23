@@ -13,7 +13,7 @@ export interface CallFormData {
 interface CallFormProps {
    id?: string
    onSubmit: (data: CallFormData) => void
-   defaultValues?: CallFormData
+   defaultValues?: Partial<CallFormData>
 }
 
 const schema = yup
@@ -21,7 +21,7 @@ const schema = yup
       clientFirstName: yup.string().min(4).required(),
       clientLastName: yup.string().min(4).required(),
       startTime: yup.string().required(),
-      endTime: yup.string().required(),
+      duration: yup.string().required(),
    })
    .required()
 
@@ -62,10 +62,11 @@ export const CallForm = ({ id, onSubmit, defaultValues }: CallFormProps) => {
                      registration={register('startTime')}
                      className='col-sm-6'
                      required
+                     disabled={id?.includes('update')}
                   />
 
                   <Input
-                     label='Duration'
+                     label='Duration (hh:mm)'
                      type='time'
                      error={formState.errors['duration']}
                      registration={register('duration')}

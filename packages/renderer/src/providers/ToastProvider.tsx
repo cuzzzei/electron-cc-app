@@ -40,10 +40,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
       const id = crypto.randomUUID()
 
       setList((prev) => {
-         if(prev.length > 5) {
+         if (prev.length > 5) {
             return prev
          }
-         
+
          return [
             ...prev,
             {
@@ -73,8 +73,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
    return (
       <ToastContext.Provider value={addToast}>
-         <Container
-         >
+         <Container>
             {list.map((toast, i) => (
                <Toast
                   {...toast}

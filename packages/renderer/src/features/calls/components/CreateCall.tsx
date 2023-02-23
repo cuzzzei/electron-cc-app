@@ -11,6 +11,11 @@ interface CreateCallProps {
    callList: CallList
 }
 
+const defaultValues = {
+   startTime: new Time().toString(),
+   duration: new Time(0, 1).toString(),
+}
+
 export const CreateCall = ({ callList }: CreateCallProps) => {
    const toast = useToast()
    const [isOpen, setIsOpen] = useState(false)
@@ -65,6 +70,7 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
          <CallForm
             id='create-call'
             onSubmit={onSubmit}
+            defaultValues={defaultValues}
          />
       </Modal>
    )
