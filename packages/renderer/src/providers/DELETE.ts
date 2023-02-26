@@ -19,7 +19,7 @@ export function fill(list: AgentList, render: () => void) {
 
    const agent2 = new Agent({
       id: crypto.randomUUID(),
-      name: new Name('Marco "El Chino"', 'Maidana'),
+      name: new Name('Marco', 'Maidana'),
       age: 25,
       callHistory: new CallList(),
       extension: '4444',
@@ -79,163 +79,163 @@ export function fill(list: AgentList, render: () => void) {
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '1'),
-         description: 'Lorem Ipsum is simply dummy text',
+         clientName: new Name('Claire', 'Robinson'),
+         description: 'Printer is unresponsive',
          start: new Time(10, 20),
-         duration: new Time(10, 23),
+         duration: new Time(0, 3),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '2'),
-         description: 'Lorem Ipsum is simply dummy text',
+         clientName: new Name('Zachariah', 'Leonard'),
+         description: 'Printer won’t print',
          start: new Time(7, 56),
-         duration: new Time(8, 10),
+         duration: new Time(0, 10),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '3'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(7, 58),
-         duration: new Time(8, 20),
+         clientName: new Name('Laura', 'Henderson'),
+         description: 'Bad print quality',
+         start: new Time(8, 48),
+         duration: new Time(0, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '4'),
-         description: 'Lorem Ipsum is simply dummy text',
+         clientName: new Name('Yahya', 'Silva'),
+         description: 'Uncertain about printer security',
          start: new Time(8, 1),
-         duration: new Time(8, 10),
+         duration: new Time(0, 5),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '5'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 2),
-         duration: new Time(8, 20),
+         clientName: new Name('Wendy', 'Reese'),
+         description: 'My printer won’t scan',
+         start: new Time(11, 10),
+         duration: new Time(0, 5),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '6'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 3),
-         duration: new Time(8, 20),
+         clientName: new Name('Isaac', 'Hodge'),
+         description: 'Too many paper jams',
+         start: new Time(12, 3),
+         duration: new Time(0, 4),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '7'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Davina', 'Munoz'),
+         description: 'Prints too slowly',
+         start: new Time(12, 10),
+         duration: new Time(0, 2),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '8'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 3),
-         duration: new Time(8, 20),
+         clientName: new Name('Alannah', 'Wilcox'),
+         description: 'Printing is too expensive',
+         start: new Time(13, 3),
+         duration: new Time(0, 3),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '9'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Jasper', 'Hayes'),
+         description: 'I can’t print from my mobile device',
+         start: new Time(13, 20),
+         duration: new Time(0, 9),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '10'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Theodore', 'Beck'),
+         description: 'Wi-Fi printing takes too long',
+         start: new Time(14, 5),
+         duration: new Time(0, 12),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '11'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(9, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Fletcher', 'Dixon'),
+         description: 'Nothing is Printing',
+         start: new Time(14, 40),
+         duration: new Time(0, 20),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '12'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Damian', 'Gray'),
+         description: 'Cartridge or Toner Issue',
+         start: new Time(15, 15),
+         duration: new Time(0, 5),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '13'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Anna', 'Parker'),
+         description: 'Creased Prints',
+         start: new Time(15, 30),
+         duration: new Time(0, 5),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '14'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Danyal', 'Farley'),
+         description: 'Uneven Print Quality',
+         start: new Time(15, 36),
+         duration: new Time(0, 2),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '15'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Aiden', 'Lang'),
+         description: 'The ink was crazy-expensive',
+         start: new Time(7, 15),
+         duration: new Time(0, 6),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '16'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Eden', 'Kelly'),
+         description: 'The wireless networking rarely connected without a fuss',
+         start: new Time(7, 20),
+         duration: new Time(0, 2),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '17'),
-         description: 'Lorem Ipsum is simply dummy text',
-         start: new Time(8, 15),
-         duration: new Time(8, 20),
+         clientName: new Name('Sulayman', 'Franco'),
+         description: 'No local stores sell “the right” ink cartridges anymore',
+         start: new Time(7, 25),
+         duration: new Time(0, 6),
       })
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
          id: crypto.randomUUID(),
-         clientName: new Name('Client', '18'),
-         description: 'Lorem Ipsum is simply dummy text',
+         clientName: new Name('Gareth', 'Estrada'),
+         description: 'Doesn not know hot to turn on the printer',
          start: new Time(8, 14),
-         duration: new Time(8, 20),
+         duration: new Time(0, 5),
       })
    )
 
@@ -245,13 +245,6 @@ export function fill(list: AgentList, render: () => void) {
    list.insert(agent4)
    list.insert(agent5)
    list.insert(agent6)
-
-   const abc = list.map((agent) => {
-      return {
-         ...agent,
-         callHistory: agent.getCallHistory().map((call) => call),
-      }
-   })
 
    render()
 }
