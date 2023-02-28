@@ -257,8 +257,6 @@ export function fill(list: AgentList, render: () => void) {
       Call.compareByStartTime
    )
 
-   console.log(agent6.toString())
-
    list.insert(agent1)
    list.insert(agent2)
    list.insert(agent3)

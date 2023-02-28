@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { specialties } from '/@/types/Specialty'
 
 interface AgentsFilterProps {
@@ -14,14 +13,8 @@ export const AgentsFilter = ({
    specialty,
    setSpecialty,
 }: AgentsFilterProps) => {
-   const navigate = useNavigate()
-
-   function newAgent() {
-      navigate('/agents/new')
-   }
-
    return (
-      <div className='mb-2 d-flex justify-content-between align-items-center'>
+      <div className='mb-2 d-flex justify-content-between align-items-center gap-2'>
          <div className='position-relative'>
             <input
                className='form-control w-100'
@@ -56,21 +49,6 @@ export const AgentsFilter = ({
                   </option>
                ))}
             </select>
-
-            <div>
-               <button
-                  className='btn btn-success'
-                  onClick={() => newAgent()}
-               >
-                  <i className='fa fa-user-plus' />
-               </button>
-            </div>
-
-            <div>
-               <button className='btn btn-danger'>
-                  <i className='fa fa-trash' />
-               </button>
-            </div>
          </div>
       </div>
    )

@@ -128,4 +128,8 @@ export class Call {
    public static compareByStartTime(a: Call, b: Call): number {
       return a.startTime.toInt() - b.startTime.toInt()
    }
+
+   public static compareByDuration(a: Call, b: Call): number {
+      return a.duration.toInt() - b.duration.toInt()
+   }
 }

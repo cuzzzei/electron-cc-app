@@ -108,9 +108,14 @@ export class Agent {
       result += `Name: ${this.name}\n`
       result += `Overtime: ${this.overtime} hours`
       result += `Specialty: ${this.specialty}\n`
-      result += this.startTime.toString() + ' - ' + this.endTime.toString()
-      result += '\n\nCall History: \n'
-      result += this.callHistory.toString() + ' | '
+      result += `${this.startTime} - ${this.endTime}`
+
+      const hasCallHistory = this.callHistory.getLength() > 0
+
+      if (hasCallHistory) {
+         result += '\n\nCall History: \n'
+         result += this.callHistory.toString() + ' | '
+      }
 
       return result
    }
@@ -150,5 +155,13 @@ export class Agent {
 
    public isLesserOrEquals(other: Agent): boolean {
       return this.isLesserThan(other) || this.isEqual(other)
+   }
+
+   public static compareByName(a: Agent, b: Agent): number {
+      return Number(a.name.toString()) - Number(b.name.toString())
+   }
+
+   public static compareBySpecialty(a: Agent, b: Agent): number {
+      return Number(a.specialty) - Number(b.specialty)
    }
 }

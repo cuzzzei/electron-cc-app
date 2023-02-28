@@ -3,9 +3,26 @@ import { AgentsSettings } from '../components/AgentsSettings'
 import { CreateAgent } from '/@/features/agents/components/CreateAgent'
 import { Outlet } from 'react-router-dom'
 import { useAppContext } from '/@/providers/app'
+import { AgentsFilter } from '../components/AgentsFilter'
+import { useState } from 'react'
+import { Agent } from '/@/types/agent'
 
 export const Agents = () => {
    const { agentList } = useAppContext()
+   const [name, setName] = useState('')
+   const [specialty, setSpecialty] = useState('All')
+
+   function filterAgent(agent: Agent) {
+      const nameCondition = agent.getName().toString().toLowerCase().includes(name.toLocaleLowerCase())
+
+      if (specialty === 'All')
+         return nameCondition
+
+      return nameCondition && agent.getSpecialty() === specialty
+   }
+
+   // TODO: bug, filter agents reverse list
+   const filteredAgentList = agentList.filter(filterAgent)
 
    return (
       <div className='d-flex h-100'>
@@ -20,9 +37,20 @@ export const Agents = () => {
             </div>
 
             <hr />
+            <AgentsFilter
+               specialty={specialty}
+               setSpecialty={setSpecialty}
+               name={name}
+               setName={setName}
+            />
             <CreateAgent />
 
-            <AgentList agentList={agentList} />
+            {
+               filteredAgentList.length === 0 ?
+                  <h6>Not found</h6>
+                  : <AgentList agentList={filteredAgentList} />
+            }
+
          </div>
 
          <div
