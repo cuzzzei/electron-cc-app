@@ -102,26 +102,30 @@ export class Call {
    }
 
    public isEqual(other: Call): boolean {
-      return this.id === other.getId()
+      return this.id === other.id
    }
 
    public isDifferent(other: Call): boolean {
-      return this.id !== other.getId()
+      return !this.isEqual(other)
    }
 
    public isGreatherThan(other: Call): boolean {
-      return this.startTime.isGreatherThan(other.startTime)
+      return !this.isLesserOrEquals(other)
    }
 
    public isGreaterOrEquals(other: Call): boolean {
-      return this.startTime.isGreaterOrEquals(other.startTime)
+      return !this.isLesserThan(other)
    }
 
    public isLesserThan(other: Call): boolean {
-      return this.startTime.isLesserThan(other.startTime)
+      return this.id < other.id
    }
 
    public isLesserOrEquals(other: Call): boolean {
-      return this.startTime.isLesserOrEquals(other.startTime)
+      return this.isLesserThan(other) || this.isEqual(other)
+   }
+
+   public static compareByStartTime(a: Call, b: Call): number {
+      return a.startTime.toInt() - b.startTime.toInt()
    }
 }

@@ -102,34 +102,53 @@ export class Agent {
    }
 
    public toString(): string {
-      return ''
+      let result: string = ''
+      result += 'ID: ' + this.id + '\n'
+      result += 'Extension: ' + this.extension + '\t'
+      result += `Name: ${this.name}\n`
+      result += `Overtime: ${this.overtime} hours`
+      result += `Specialty: ${this.specialty}\n`
+      result += this.startTime.toString() + ' - ' + this.endTime.toString()
+      result += '\n\nCall History: \n'
+      result += this.callHistory.toString() + ' | '
+
+      return result
    }
 
    public assign(other: Agent): Agent {
+      this.id = other.id
+      this.extension = other.extension
+      this.name = other.name
+      this.age = other.age
+      this.callHistory = other.callHistory
+      this.overtime = other.overtime
+      this.specialty = other.specialty
+      this.startTime = other.startTime
+      this.endTime = other.endTime
       return this
    }
 
    public isEqual(other: Agent): boolean {
-      return false
+      return this.id === other.id
    }
 
    public isDifferent(other: Agent): boolean {
-      return false
+      return !this.isEqual(other)
    }
 
    public isGreatherThan(other: Agent): boolean {
-      return false
+      return !this.isLesserOrEquals(other)
    }
 
    public isGreaterOrEquals(other: Agent): boolean {
-      return false
+      return !this.isLesserThan(other)
    }
 
    public isLesserThan(other: Agent): boolean {
-      return false
+      return this.id < other.id
    }
 
    public isLesserOrEquals(other: Agent): boolean {
-      return false
+      return this.isLesserThan(other) || this.isEqual(other)
    }
 }

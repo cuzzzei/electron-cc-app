@@ -83,7 +83,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Printer is unresponsive',
          start: new Time(10, 20),
          duration: new Time(0, 3),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -92,7 +93,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Printer won’t print',
          start: new Time(7, 56),
          duration: new Time(0, 10),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -101,7 +103,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Bad print quality',
          start: new Time(8, 48),
          duration: new Time(0, 20),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -110,7 +113,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Uncertain about printer security',
          start: new Time(8, 1),
          duration: new Time(0, 5),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -119,7 +123,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'My printer won’t scan',
          start: new Time(11, 10),
          duration: new Time(0, 5),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -128,7 +133,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Too many paper jams',
          start: new Time(12, 3),
          duration: new Time(0, 4),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -137,7 +143,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Prints too slowly',
          start: new Time(12, 10),
          duration: new Time(0, 2),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -146,7 +153,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Printing is too expensive',
          start: new Time(13, 3),
          duration: new Time(0, 3),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -155,7 +163,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'I can’t print from my mobile device',
          start: new Time(13, 20),
          duration: new Time(0, 9),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -164,7 +173,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Wi-Fi printing takes too long',
          start: new Time(14, 5),
          duration: new Time(0, 12),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -173,7 +183,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Nothing is Printing',
          start: new Time(14, 40),
          duration: new Time(0, 20),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -182,7 +193,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Cartridge or Toner Issue',
          start: new Time(15, 15),
          duration: new Time(0, 5),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -191,7 +203,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Creased Prints',
          start: new Time(15, 30),
          duration: new Time(0, 5),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -200,7 +213,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Uneven Print Quality',
          start: new Time(15, 36),
          duration: new Time(0, 2),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -209,7 +223,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'The ink was crazy-expensive',
          start: new Time(7, 15),
          duration: new Time(0, 6),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -218,7 +233,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'The wireless networking rarely connected without a fuss',
          start: new Time(7, 20),
          duration: new Time(0, 2),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -227,7 +243,8 @@ export function fill(list: AgentList, render: () => void) {
          description: 'No local stores sell “the right” ink cartridges anymore',
          start: new Time(7, 25),
          duration: new Time(0, 6),
-      })
+      }),
+      Call.compareByStartTime
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
@@ -236,8 +253,11 @@ export function fill(list: AgentList, render: () => void) {
          description: 'Doesn not know hot to turn on the printer',
          start: new Time(8, 14),
          duration: new Time(0, 5),
-      })
+      }),
+      Call.compareByStartTime
    )
+
+   console.log(agent6.toString())
 
    list.insert(agent1)
    list.insert(agent2)
