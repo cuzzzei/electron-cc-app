@@ -28,7 +28,7 @@ export const Agents = () => {
       <div className='d-flex h-100'>
          <div
             className='bg-light p-4 md:p-5'
-            style={{ width: '20%', overflowY: 'auto' }}
+            style={{ width: '20%', minWidth: '400px', overflowY: 'auto' }}
          >
             <div className='w-100 d-flex justify-content-between'>
                <h3 className='fw-bold'>Agents</h3>
