@@ -1,5 +1,6 @@
 import { Agent } from './Agent'
 import { AgentNode } from './AgentNode'
+import { ListException } from '/@/types/ListException'
 
 export class AgentList {
    head: AgentNode | null
@@ -10,31 +11,58 @@ export class AgentList {
       this.length = 0
    }
 
-   private isValidPosition(node: AgentNode): boolean {
+   // ===================
+   private isValidPosition(node: AgentNode): boolean {      
       return true
    }
-   private copyAll(list: AgentList): void {}
-   private swapNodes(nodeA: AgentNode, nodeB: AgentNode): void {}
-   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode): void {}
-   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode): void {}
-   private insertNode(newNode: AgentNode): void {
-      newNode.setNext(this.head)
-      this.head = newNode
-      this.length += 1
-   }
 
-   // =================================================================
    public isEmpty(): boolean {
       return this.length === 0
    }
 
-   // TODO:change implementation to use position 
-   public insert(agent: Agent): void {
+   public toString() {
+      return this.map((agent) => agent).join('\n\n\n')
+   }
+
+   private insertNode(pos: AgentNode | null, data: Agent): void {
+      // isvlidpos
+      if (pos !== null && true) {
+         //throw new Error()
+      }
+
+      if (pos === null) {
+         pos = this.head
+      }
+
+      const newNode = new AgentNode(data)
+
+      if (!newNode) {
+         throw new ListException('Memory allocation')
+      }
+
+      newNode.setPrev(pos)
+      newNode.setNext(pos!.getNext())
+
+      pos!.getNext()!.setPrev(newNode as AgentNode)
+      pos!.setNext(newNode as AgentNode)
+   }
+
+   // ============================
+
+   private copyAll(list: AgentList): void {}
+   private swapNodes(nodeA: AgentNode, nodeB: AgentNode): void {}
+   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode): void {}
+   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode): void {}
+
+   // =================================================================
+
+   // TODO:change implementation to use position
+   public insertAtEnd(agent: Agent): void {
       //if(value)
       //   throw new ListException('Error trying to insert node in <AgentList>')
-
-      const newNode = new AgentNode(agent)
-      this.insertNode(newNode)
+      const lastpos = this.getLastPosition()
+      console.log(lastpos)
+      this.insertNode(lastpos , agent)
    }
 
    public delete(node: AgentNode) {}
@@ -43,8 +71,8 @@ export class AgentList {
       return this.head as AgentNode
    }
 
-   public getLastPosition(): AgentNode {
-      return this.head as AgentNode
+   public getLastPosition(): AgentNode | null {
+      return this.head?.getPrev() || null
    }
 
    public getPrevPosition(node: AgentNode): AgentNode {
@@ -65,10 +93,6 @@ export class AgentList {
    public sortByName() {}
    public sortBySpecialty() {}
 
-   public toString() {
-      return this.map((agent) => agent).join('\n\n\n')
-   }
-
    public deleteAll() {}
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
@@ -82,7 +106,7 @@ export class AgentList {
    // ======================================================
    public map(callback: (item: Agent, index: number) => any) {
       let result = []
-      let temp: AgentNode | null = this.head
+      let temp: AgentNode | null = this.head?.getNext() || null
 
       let i = 0
       while (temp != null) {
@@ -101,7 +125,7 @@ export class AgentList {
          const shouldAdd = filterFunction(temp.getValue())
 
          if (shouldAdd) {
-            filteredList.insert(temp.getValue())
+            filteredList.insertAtEnd(temp.getValue())
          }
 
          temp = temp.getNext()

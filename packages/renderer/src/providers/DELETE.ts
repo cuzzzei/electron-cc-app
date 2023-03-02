@@ -257,12 +257,12 @@ export function fill(list: AgentList, render: () => void) {
       Call.compareByStartTime
    )
 
-   list.insert(agent1)
-   list.insert(agent2)
-   list.insert(agent3)
-   list.insert(agent4)
-   list.insert(agent5)
-   list.insert(agent6)
+   list.insertAtEnd(agent1)
+   list.insertAtEnd(agent2)
+   list.insertAtEnd(agent3)
+   list.insertAtEnd(agent4)
+   list.insertAtEnd(agent5)
+   list.insertAtEnd(agent6)
 
    render()
 }

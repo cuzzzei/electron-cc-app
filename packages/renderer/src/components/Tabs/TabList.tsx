@@ -8,8 +8,7 @@ interface TabListProps {
 
 export const TabList = ({ children: Tabs, className = '' }: TabListProps) => {
    return (
-      // TODO: change to template string
-      <ul className={'nav nav-tabs ' + className}>
+      <ul className={`nav nav-tabs ${className}`}>
          {Tabs.map((tab, i) => (
             <Tab
                key={i}
