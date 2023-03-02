@@ -15,7 +15,7 @@ export const AgentList = ({ agentList }: AgentListProps) => {
          }}
       >
          {agentList.map((agent) => (
-            <AgentItem agent={agent} />
+            <AgentItem key={agent.getId()} agent={agent} />
          ))}
       </ul>
    )

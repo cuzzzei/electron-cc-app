@@ -14,8 +14,8 @@ export const AgentsFilter = ({
    setSpecialty,
 }: AgentsFilterProps) => {
    return (
-      <div className='mb-2 d-flex justify-content-between align-items-center gap-2'>
-         <div className='position-relative'>
+      <div className='mb-2 d-flex align-items-center gap-2'>
+         <div className='position-relative w-100'>
             <input
                className='form-control w-100'
                placeholder='Search by name...'
