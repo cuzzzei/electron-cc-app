@@ -1,37 +1,58 @@
 import { Agent } from './Agent'
-import { AgentNode } from './AgentNode'
+import { AgentNode, AgentNodeRef } from './AgentNode'
 import { ListException } from '/@/types/ListException'
 
 export class AgentList {
-   head: AgentNode | null
-   length: number = 0
+   private head: AgentNode
+   private length: number = 0
 
    constructor() {
-      this.head = null
-      this.length = 0
+      this.head = new AgentNode()
+
+      if (!this.head) {
+         throw new ListException('Memory allocation failed')
+      }
+
+      this.head.setPrev(this.head)
+      this.head.setNext(this.head)
+   }
+
+   public getLength(): number {
+      return this.length
    }
 
    // ===================
-   private isValidPosition(node: AgentNode): boolean {      
-      return true
+   private isValidPosition(position: AgentNode): boolean {
+      let aux = this.head.getNext()
+
+      while (aux !== this.head) {
+         if (position === aux) {
+            return true
+         }
+
+         aux = aux?.getNext() || null
+      }
+
+      // Not found
+      return false
    }
 
    public isEmpty(): boolean {
-      return this.length === 0
+      return this.head.getNext() === this.head
    }
 
    public toString() {
       return this.map((agent) => agent).join('\n\n\n')
    }
 
-   private insertNode(pos: AgentNode | null, data: Agent): void {
-      // isvlidpos
-      if (pos !== null && true) {
-         //throw new Error()
+   private insert(position: AgentNodeRef, data: Agent): void {
+      if (position !== null && !this.isValidPosition(position)) {
+         throw new ListException('Invalid position')
       }
 
-      if (pos === null) {
-         pos = this.head
+      // Insert at start
+      if (position === null) {
+         position = this.head
       }
 
       const newNode = new AgentNode(data)
@@ -40,11 +61,22 @@ export class AgentList {
          throw new ListException('Memory allocation')
       }
 
-      newNode.setPrev(pos)
-      newNode.setNext(pos!.getNext())
+      newNode.setPrev(position)
+      newNode.setNext(position!.getNext())
 
-      pos!.getNext()!.setPrev(newNode as AgentNode)
-      pos!.setNext(newNode as AgentNode)
+      position.getNext()?.setPrev(newNode as AgentNode)
+      position.setNext(newNode as AgentNode)
+
+      this.length++
+   }
+
+   public insertAtEnd(agent: Agent): void {
+      const lastpos = this.getLastPosition()
+      this.insert(lastpos, agent)
+   }
+
+   public insertAtStart(agent: Agent): void {
+      this.insert(null, agent)
    }
 
    // ============================
@@ -56,23 +88,18 @@ export class AgentList {
 
    // =================================================================
 
-   // TODO:change implementation to use position
-   public insertAtEnd(agent: Agent): void {
-      //if(value)
-      //   throw new ListException('Error trying to insert node in <AgentList>')
-      const lastpos = this.getLastPosition()
-      console.log(lastpos)
-      this.insertNode(lastpos , agent)
-   }
-
    public delete(node: AgentNode) {}
 
    public getFirstPosition(): AgentNode {
       return this.head as AgentNode
    }
 
-   public getLastPosition(): AgentNode | null {
-      return this.head?.getPrev() || null
+   public getLastPosition(): AgentNodeRef {
+      if (this.head.getNext() === this.head) {
+         return null
+      }
+
+      return this.head.getPrev()
    }
 
    public getPrevPosition(node: AgentNode): AgentNode {
@@ -106,10 +133,10 @@ export class AgentList {
    // ======================================================
    public map(callback: (item: Agent, index: number) => any) {
       let result = []
-      let temp: AgentNode | null = this.head?.getNext() || null
-
+      let temp: AgentNodeRef = this.head.getNext()
       let i = 0
-      while (temp != null) {
+
+      while (temp !== null && temp !== this.head) {
          result.push(callback(temp.getValue(), i++))
          temp = temp.getNext()
       }
@@ -119,9 +146,9 @@ export class AgentList {
 
    public filter(filterFunction: (item: Agent) => boolean): AgentList {
       const filteredList = new AgentList()
-      let temp: AgentNode | null = this.head
+      let temp: AgentNodeRef = this.head.getNext()
 
-      while (temp != null) {
+      while (temp !== null && temp !== this.head) {
          const shouldAdd = filterFunction(temp.getValue())
 
          if (shouldAdd) {
@@ -134,10 +161,10 @@ export class AgentList {
       return filteredList
    }
 
-   public findById(id: string): AgentNode | null {
-      let temp: AgentNode | null = this.head
+   public findById(id: string): AgentNodeRef {
+      let temp: AgentNodeRef = this.head.getNext()
 
-      while (temp != null) {
+      while (temp !== null && temp !== this.head) {
          if (temp.getValue().getId() === id) {
             return temp
          }

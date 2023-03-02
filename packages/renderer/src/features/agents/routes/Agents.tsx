@@ -13,15 +13,17 @@ export const Agents = () => {
    const [specialty, setSpecialty] = useState('All')
 
    function filterAgent(agent: Agent) {
-      const nameCondition = agent.getName().toString().toLowerCase().includes(name.toLocaleLowerCase())
+      const nameCondition = agent
+         .getName()
+         .toString()
+         .toLowerCase()
+         .includes(name.toLocaleLowerCase())
 
-      if (specialty === 'All')
-         return nameCondition
+      if (specialty === 'All') return nameCondition
 
       return nameCondition && agent.getSpecialty() === specialty
    }
 
-   // TODO: bug, filter agents reverse list
    const filteredAgentList = agentList.filter(filterAgent)
 
    return (
@@ -45,12 +47,13 @@ export const Agents = () => {
             />
             <CreateAgent />
 
-            {
-               filteredAgentList.length === 0 ?
-                  <h6>Not found</h6>
-                  : <AgentList agentList={filteredAgentList} />
-            }
-
+            {filteredAgentList.isEmpty() ? (
+               <div className='d-flex w-100 justify-content-center mt-5'>
+                  <h6 className='m-auto'>Agents not found</h6>
+               </div>
+            ) : (
+               <AgentList agentList={filteredAgentList} />
+            )}
          </div>
 
          <div
