@@ -28,6 +28,7 @@ export class AgentList {
       return this.length === 0
    }
 
+   // TODO:change implementation to use position 
    public insert(agent: Agent): void {
       //if(value)
       //   throw new ListException('Error trying to insert node in <AgentList>')
@@ -65,24 +66,27 @@ export class AgentList {
    public sortBySpecialty() {}
 
    public toString() {
-      return ''
+      return this.map((agent) => agent).join('\n\n\n')
    }
 
    public deleteAll() {}
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
 
-   public assign(newList: AgentList): AgentList {
-      return newList
+   public assign(other: AgentList): AgentList {
+      this.head = other.head
+      this.length = other.length
+      return this
    }
 
    // ======================================================
-   public map(callback: (item: Agent) => any) {
+   public map(callback: (item: Agent, index: number) => any) {
       let result = []
       let temp: AgentNode | null = this.head
 
+      let i = 0
       while (temp != null) {
-         result.push(callback(temp.getValue()))
+         result.push(callback(temp.getValue(), i++))
          temp = temp.getNext()
       }
 

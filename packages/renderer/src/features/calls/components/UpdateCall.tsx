@@ -26,7 +26,7 @@ export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
       call.setStartTime(Time.fromString(data.startTime))
       call.setDuration(Time.fromString(data.duration))
 
-      callList.insertOrdered(call)
+      callList.insertOrdered(call, Call.compareByStartTime)
 
       toast({
          title: 'Call updated successfully',

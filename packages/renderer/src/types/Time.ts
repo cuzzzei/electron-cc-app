@@ -40,7 +40,7 @@ export class Time {
       return this.isValidHour(hour) && this.isValidMinute(minute)
    }
 
-   private toInt(): number {
+   public toInt(): number {
       return this.hour * 100 + this.minute
    }
 

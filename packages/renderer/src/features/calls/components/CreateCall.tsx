@@ -31,7 +31,7 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
       })
 
       try {
-         callList.insertOrdered(newCall)
+         callList.insertOrdered(newCall, Call.compareByStartTime)
          setIsOpen(false)
 
          toast({

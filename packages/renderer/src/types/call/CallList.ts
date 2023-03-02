@@ -66,12 +66,17 @@ export class CallList {
       this.insert(this.getLastPosition(), call)
    }
 
-   public insertOrdered(call: Call) {
+   public insertOrdered(call: Call, compare?: (a: Call, b: Call) => number) {
       let previous = null
       let current = this.head
 
       // Descending order (08:00, 07:50, 07:40, ...)
-      while (current !== null && current.getValue().isGreatherThan(call)) {
+      while (
+         current !== null &&
+         (compare
+            ? compare(current.getValue(), call) > 0
+            : current!.getValue().isGreatherThan(call))
+      ) {
          previous = current
          current = current.getNext()
       }
