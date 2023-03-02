@@ -30,7 +30,7 @@ export const CreateAgent = () => {
       })
 
       try {
-         agentList.insert(newAgent)
+         agentList.insertAtEnd(newAgent)
          setIsOpen(false)
 
          toast({
