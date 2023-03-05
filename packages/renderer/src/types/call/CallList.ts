@@ -75,7 +75,7 @@ export class CallList {
          current !== null &&
          (compare
             ? compare(current.getValue(), call) > 0
-            : current!.getValue().isGreatherThan(call))
+            : current.getValue().isGreatherThan(call))
       ) {
          previous = current
          current = current.getNext()
@@ -145,7 +145,9 @@ export class CallList {
    }
 
    public toString(): string {
-      return this.map((call) => call.toString()).join('\n')
+      return this.toArray()
+         .map((call) => call.toString())
+         .join('\n')
    }
 
    public deleteAll() {
@@ -162,13 +164,12 @@ export class CallList {
       return this
    }
 
-   public map(callback: (item: Call, index: number) => any): Array<any> {
-      let result = []
+   public toArray(): Array<Call> {
+      const result: Array<Call> = []
       let temp: CallNode | null = this.head
 
-      let index = 0
       while (temp != null) {
-         result.push(callback(temp.getValue(), index++))
+         result.push(temp.getValue())
          temp = temp.getNext()
       }
 

@@ -14,8 +14,11 @@ export const AgentList = ({ agentList }: AgentListProps) => {
             overflowX: 'hidden',
          }}
       >
-         {agentList.map((agent) => (
-            <AgentItem key={agent.getId()} agent={agent} />
+         {agentList.toArray().map((agent) => (
+            <AgentItem
+               key={agent.getId()}
+               agent={agent}
+            />
          ))}
       </ul>
    )

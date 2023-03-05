@@ -25,15 +25,14 @@ export class AgentList {
    private isValidPosition(position: AgentNode): boolean {
       let aux = this.head.getNext()
 
-      while (aux !== this.head) {
+      while (aux !== null && aux !== this.head) {
          if (position === aux) {
             return true
          }
 
-         aux = aux?.getNext() || null
+         aux = aux.getNext()
       }
 
-      // Not found
       return false
    }
 
@@ -42,10 +41,12 @@ export class AgentList {
    }
 
    public toString() {
-      return this.map((agent) => agent).join('\n\n\n')
+      return this.toArray()
+         .map((agent) => agent.toString())
+         .join('\n\n\n')
    }
 
-   private insert(position: AgentNodeRef, data: Agent): void {
+   public insert(position: AgentNodeRef, data: Agent): void {
       if (position !== null && !this.isValidPosition(position)) {
          throw new ListException('Invalid position')
       }
@@ -62,7 +63,7 @@ export class AgentList {
       }
 
       newNode.setPrev(position)
-      newNode.setNext(position!.getNext())
+      newNode.setNext(position.getNext())
 
       position.getNext()?.setPrev(newNode as AgentNode)
       position.setNext(newNode as AgentNode)
@@ -131,13 +132,12 @@ export class AgentList {
    }
 
    // ======================================================
-   public map(callback: (item: Agent, index: number) => any) {
-      let result = []
+   public toArray(): Array<Agent> {
+      const result: Array<Agent> = []
       let temp: AgentNodeRef = this.head.getNext()
-      let i = 0
 
       while (temp !== null && temp !== this.head) {
-         result.push(callback(temp.getValue(), i++))
+         result.push(temp.getValue())
          temp = temp.getNext()
       }
 

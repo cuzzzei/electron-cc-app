@@ -28,7 +28,7 @@ export const CallList = ({ callList }: CallListProps) => {
 
          <Table
             columns={getColumns(callList)}
-            data={callList.map((call) => call)}
+            data={callList.toArray().map((call) => call)}
             emptyMessage='No calls received'
          />
       </Container>

@@ -9,7 +9,7 @@ export class AgentNode {
    private next: AgentNodeRef
 
    constructor(value?: Agent) {
-      if(value) {
+      if (value) {
          this.value = value
       }
       this.prev = null
