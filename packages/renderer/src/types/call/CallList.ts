@@ -26,7 +26,6 @@ export class CallList {
       return false
    }
 
-   // deep clone
    private copyAll(other: CallList) {
       this.head = null
       this.length = other.length

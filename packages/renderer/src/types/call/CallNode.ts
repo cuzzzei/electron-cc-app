@@ -20,7 +20,7 @@ export class CallNode {
       return this.value
    }
 
-   public getNext(): CallNode | null {
+   public getNext(): CallNodeRef {
       return this.next
    }
 
@@ -28,7 +28,7 @@ export class CallNode {
       this.value = value
    }
 
-   public setNext(next: CallNode | null) {
+   public setNext(next: CallNodeRef) {
       this.next = next
    }
 }

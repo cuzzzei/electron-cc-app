@@ -84,6 +84,9 @@ export class Agent {
       return this.callHistory
    }
 
+   public setId(id: string) {
+      this.id = id
+   }
    public setExtension(extension: string) {
       this.extension = extension
    }

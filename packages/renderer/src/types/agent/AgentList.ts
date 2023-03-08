@@ -131,7 +131,6 @@ export class AgentList {
       return this
    }
 
-   // ======================================================
    public toArray(): Array<Agent> {
       const result: Array<Agent> = []
       let temp: AgentNodeRef = this.head.getNext()
