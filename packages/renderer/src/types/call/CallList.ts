@@ -1,9 +1,9 @@
 import { Call } from './Call'
-import { CallNode } from './CallNode'
+import { CallNode, CallNodeRef } from './CallNode'
 import { ListException } from '/@/types/ListException'
 
 export class CallList {
-   private head: CallNode | null
+   private head: CallNodeRef
    private length: number
 
    constructor() {
@@ -26,9 +26,25 @@ export class CallList {
       return false
    }
 
-   private copyAll(list: CallList) {
-      this.head = list.head
-      this.length = list.length
+   // deep clone
+   private copyAll(other: CallList) {
+      this.head = null
+      this.length = other.length
+      let aux: CallNodeRef = other.head
+
+      while (aux !== null) {
+         const newNode = new CallNode(new Call(aux.getValue()))
+         const lastPos = this.getLastPosition()
+
+         if (lastPos === null) {
+            newNode.setNext(this.head)
+            this.head = newNode
+         } else {
+            lastPos.setNext(newNode)
+         }
+
+         aux = aux.getNext()
+      }
    }
 
    public isEmpty(): boolean {
@@ -39,7 +55,7 @@ export class CallList {
       return this.length
    }
 
-   public insert(position: CallNode | null, call: Call) {
+   public insert(position: CallNodeRef, call: Call) {
       if (position !== null && !this.isValidPosition(position)) {
          throw new ListException('Invalid position')
       }
@@ -84,7 +100,7 @@ export class CallList {
       this.insert(previous, call)
    }
 
-   public getPrevPosition(node: CallNode): CallNode | null {
+   public getPrevPosition(node: CallNode): CallNodeRef {
       if (node === this.head || !this.isValidPosition(node)) return null
 
       let prev = this.head
@@ -110,9 +126,10 @@ export class CallList {
       }
 
       this.getPrevPosition(node)?.setNext(node.getNext())
+      this.length--
    }
 
-   public findData(call: Call): CallNode | null {
+   public findData(call: Call): CallNodeRef {
       let temp = this.head
 
       while (temp !== null && temp.getValue().isDifferent(call)) {
@@ -122,11 +139,11 @@ export class CallList {
       return temp
    }
 
-   public getFirstPosition(): CallNode | null {
+   public getFirstPosition(): CallNodeRef {
       return this.head
    }
 
-   public getLastPosition(): CallNode | null {
+   public getLastPosition(): CallNodeRef {
       let temp = this.head
 
       while (temp?.getNext()) {
@@ -136,7 +153,7 @@ export class CallList {
       return temp
    }
 
-   public getNextPosition(node: CallNode): CallNode | null {
+   public getNextPosition(node: CallNode): CallNodeRef {
       return node.getNext()
    }
 
@@ -166,7 +183,7 @@ export class CallList {
 
    public toArray(): Array<Call> {
       const result: Array<Call> = []
-      let temp: CallNode | null = this.head
+      let temp: CallNodeRef = this.head
 
       while (temp != null) {
          result.push(temp.getValue())

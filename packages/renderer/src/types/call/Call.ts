@@ -16,12 +16,29 @@ export class Call {
    private clientName: Name
    private description: string
 
-   constructor({ id, start, duration, clientName, description }: CallProps) {
-      this.id = id
-      this.startTime = start
-      this.duration = duration
-      this.clientName = clientName
-      this.description = description
+   private initialize() {
+      this.startTime = new Time()
+      this.duration = new Time(0, 0)
+      this.clientName = new Name()
+   }
+
+   constructor(data?: CallProps | Call) {
+      if (!data) {
+         this.initialize()
+         return
+      }
+
+      if (data instanceof Call) {
+         this.initialize()
+         this.assign(data)
+         return
+      }
+
+      this.id = data.id
+      this.startTime = data.start
+      this.duration = data.duration
+      this.clientName = data.clientName
+      this.description = data.description
    }
 
    public getId(): string {
@@ -40,6 +57,9 @@ export class Call {
       return this.description
    }
 
+   public setId(id: string) {
+      this.id = id
+   }
    public setStartTime(start: Time) {
       this.startTime = start
    }
@@ -85,19 +105,10 @@ export class Call {
 
    public assign(other: Call): Call {
       this.id = other.id
-      this.startTime = new Time(
-         other.startTime.getHour(),
-         other.startTime.getMinute()
-      )
-
-      this.duration = new Time(
-         other.duration.getHour(),
-         other.duration.getMinute()
-      )
-
-      this.clientName = other.clientName
+      this.startTime.assign(other.startTime)
+      this.duration.assign(other.duration)
+      this.clientName.assign(other.clientName)
       this.description = other.description
-
       return this
    }
 

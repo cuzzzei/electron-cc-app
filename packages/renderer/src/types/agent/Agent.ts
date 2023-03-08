@@ -26,26 +26,34 @@ export class Agent {
    private endTime: Time
    private callHistory: CallList
 
-   constructor({
-      id,
-      extension,
-      name,
-      age,
-      callHistory,
-      overtime,
-      specialty,
-      startTime,
-      endTime,
-   }: AgentProps) {
-      this.id = id
-      this.extension = extension
-      this.name = name
-      this.age = age
-      this.callHistory = callHistory
-      this.overtime = overtime
-      this.specialty = specialty
-      this.startTime = startTime
-      this.endTime = endTime
+   private initialize() {
+      this.name = new Name()
+      this.startTime = new Time()
+      this.endTime = new Time()
+      this.callHistory = new CallList()
+   }
+
+   constructor(data?: AgentProps | Agent) {
+      if (!data) {
+         this.initialize()
+         return
+      }
+
+      if (data instanceof Agent) {
+         this.initialize()
+         this.assign(data)
+         return
+      }
+
+      this.id = data.id
+      this.extension = data.extension
+      this.name = data.name
+      this.age = data.age
+      this.callHistory = data.callHistory
+      this.overtime = data.overtime
+      this.specialty = data.specialty
+      this.startTime = data.startTime
+      this.endTime = data.endTime
    }
 
    public getId(): string {
@@ -103,10 +111,10 @@ export class Agent {
 
    public toString(): string {
       let result: string = ''
-      result += 'ID: ' + this.id + '\n'
-      result += 'Extension: ' + this.extension + '\t'
+      result += `ID: ${this.id} \n`
+      result += `Extension: ${this.extension}\t\t`
       result += `Name: ${this.name}\n`
-      result += `Overtime: ${this.overtime} hours`
+      result += `Overtime: ${this.overtime} hours\t`
       result += `Specialty: ${this.specialty}\n`
       result += `${this.startTime} - ${this.endTime}`
 
@@ -123,13 +131,13 @@ export class Agent {
    public assign(other: Agent): Agent {
       this.id = other.id
       this.extension = other.extension
-      this.name = other.name
+      this.name.assign(other.name)
       this.age = other.age
-      this.callHistory = other.callHistory
+      this.callHistory.assign(other.callHistory)
       this.overtime = other.overtime
       this.specialty = other.specialty
-      this.startTime = other.startTime
-      this.endTime = other.endTime
+      this.startTime.assign(other.startTime)
+      this.endTime.assign(other.endTime)
       return this
    }
 

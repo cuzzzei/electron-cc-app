@@ -2,9 +2,9 @@ export class Name {
    private first: string
    private last: string
 
-   constructor(first: string, last: string) {
-      this.first = first
-      this.last = last
+   constructor(first?: string, last?: string) {
+      this.first = first ?? ''
+      this.last = last ?? ''
    }
 
    public getFirst(): string {
@@ -41,15 +41,15 @@ export class Name {
    }
 
    public isDifferent(other: Name): boolean {
-      return this.toString() !== other.toString()
+      return !this.isEqual(other)
    }
 
    public isGreatherThan(other: Name): boolean {
-      return this.toString() > other.toString()
+      return !this.isLesserOrEquals(other)
    }
 
    public isGreaterOrEquals(other: Name): boolean {
-      return this.toString() >= other.toString()
+      return !this.isLesserThan(other)
    }
 
    public isLesserThan(other: Name): boolean {
@@ -57,6 +57,6 @@ export class Name {
    }
 
    public isLesserOrEquals(other: Name): boolean {
-      return this.toString() <= other.toString()
+      return this.isLesserThan(other) || this.isEqual(other)
    }
 }

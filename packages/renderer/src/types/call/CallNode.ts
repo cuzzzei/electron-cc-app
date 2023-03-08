@@ -1,11 +1,18 @@
 import { Call } from './Call'
 
+export type CallNodeRef = CallNode | null
+
 export class CallNode {
    private value: Call
-   private next: CallNode | null
+   private next: CallNodeRef
 
-   constructor(value: Call) {
-      this.value = value
+   constructor(value?: Call) {
+      if (!value) {
+         this.value = new Call()
+      } else {
+         this.value = value
+      }
+
       this.next = null
    }
 
