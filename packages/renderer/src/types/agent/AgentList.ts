@@ -8,20 +8,12 @@ export class AgentList {
 
    constructor() {
       this.head = new AgentNode()
-
-      if (!this.head) {
-         throw new ListException('Memory allocation failed')
-      }
-
       this.head.setPrev(this.head)
       this.head.setNext(this.head)
    }
 
-   public getLength(): number {
-      return this.length
-   }
+   private copyAll(list: AgentList) {}
 
-   // ===================
    private isValidPosition(position: AgentNode): boolean {
       let aux = this.head.getNext()
 
@@ -40,13 +32,45 @@ export class AgentList {
       return this.head.getNext() === this.head
    }
 
-   public toString() {
+   public getLength(): number {
+      return this.length
+   }
+
+   public getFirstPosition(): AgentNode {
+      return this.head as AgentNode
+   }
+
+   public getLastPosition(): AgentNodeRef {
+      if (this.isEmpty()) {
+         return null
+      }
+
+      return this.head.getPrev()
+   }
+
+   public getPrevPosition(pos: AgentNode): AgentNodeRef {
+      if (!this.isValidPosition(pos) || pos === this.head.getNext()) {
+         return null
+      }
+
+      return pos.getPrev()
+   }
+
+   public getNextPosition(pos: AgentNode): AgentNodeRef {
+      if (!this.isValidPosition(pos) || pos === this.head.getPrev()) {
+         return null
+      }
+
+      return pos.getNext()
+   }
+
+   public toString(): string {
       return this.toArray()
          .map((agent) => agent.toString())
          .join('\n\n\n')
    }
 
-   public insert(position: AgentNodeRef, data: Agent): void {
+   public insert(position: AgentNodeRef, data: Agent) {
       if (position !== null && !this.isValidPosition(position)) {
          throw new ListException('Invalid position')
       }
@@ -71,59 +95,47 @@ export class AgentList {
       this.length++
    }
 
-   public insertAtEnd(agent: Agent): void {
+   public insertAtEnd(agent: Agent) {
       const lastpos = this.getLastPosition()
       this.insert(lastpos, agent)
    }
 
-   public insertAtStart(agent: Agent): void {
+   public insertAtStart(agent: Agent) {
       this.insert(null, agent)
    }
 
-   // ============================
+   public find(agent: Agent): AgentNodeRef {
+      let aux: AgentNodeRef = this.head.getNext()
 
-   private copyAll(list: AgentList): void {}
-   private swapNodes(nodeA: AgentNode, nodeB: AgentNode): void {}
-   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode): void {}
-   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode): void {}
+      while (aux !== null && aux !== this.head) {
+         if (aux.getValue().isEqual(agent)) {
+            return aux
+         }
 
-   // =================================================================
-
-   public delete(node: AgentNode) {}
-
-   public getFirstPosition(): AgentNode {
-      return this.head as AgentNode
-   }
-
-   public getLastPosition(): AgentNodeRef {
-      if (this.head.getNext() === this.head) {
-         return null
+         aux = aux.getNext()
       }
 
-      return this.head.getPrev()
-   }
-
-   public getPrevPosition(node: AgentNode): AgentNode {
-      return this.head as AgentNode
-   }
-   public getNextPosition(node: AgentNode): AgentNode {
-      return this.head as AgentNode
-   }
-
-   public find(node: AgentNode): AgentNode {
-      return this.head as AgentNode
+      return null
    }
 
    public retrieve(node: AgentNode): Agent {
+      if (!this.isValidPosition(node)) {
+         throw new ListException('Invalid position')
+      }
+
       return node.getValue()
    }
 
-   public sortByName() {}
-   public sortBySpecialty() {}
+   public delete(pos: AgentNode) {
+      if (!this.isValidPosition(pos)) {
+         throw new ListException('Error trying to delete. Invalid position')
+      }
+
+      pos.getPrev()?.setNext(pos.getNext())
+      pos.getNext()?.setPrev(pos.getPrev())
+   }
 
    public deleteAll() {}
-   public writeToDisk(s: string) {}
-   public readFromDisk(s: string) {}
 
    public assign(other: AgentList): AgentList {
       this.head = other.head
@@ -174,5 +186,12 @@ export class AgentList {
       return null
    }
 
+   private swapNodes(nodeA: AgentNode, nodeB: AgentNode) {}
+   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode) {}
+   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode) {}
+   public sortByName() {}
+   public sortBySpecialty() {}
+   public writeToDisk(s: string) {}
+   public readFromDisk(s: string) {}
    public toJSON(): any {}
 }

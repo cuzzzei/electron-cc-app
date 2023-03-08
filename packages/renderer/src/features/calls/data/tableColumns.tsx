@@ -17,8 +17,8 @@ function CallListActions({ call, callList }: CallListActionsProps) {
 
    function removeCall() {
       try {
-         const nodeToDelete = callList.findData(call) as CallNode
-         callList.remove(nodeToDelete)
+         const nodeToDelete = callList.find(call) as CallNode
+         callList.delete(nodeToDelete)
          toast({
             title: 'Call deleted successfully',
             status: 'success',

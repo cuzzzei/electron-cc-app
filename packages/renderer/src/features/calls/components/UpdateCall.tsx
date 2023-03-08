@@ -18,8 +18,8 @@ export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
    const { render } = useAppContext()
 
    function onSubmit(data: CallFormData) {
-      const node = callList.findData(call) as CallNode
-      callList.remove(node)
+      const node = callList.find(call) as CallNode
+      callList.delete(node)
 
       call.setClientName(new Name(data.clientFirstName, data.clientLastName))
       call.setDescription(data.description)

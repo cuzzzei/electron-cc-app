@@ -6,24 +6,14 @@ export class CallList {
    private head: CallNodeRef
    private length: number
 
-   constructor() {
-      this.head = null
-      this.length = 0
-   }
-
-   // Checks that node is in the list
-   private isValidPosition(node: CallNode): boolean {
-      let temp = this.head
-
-      while (temp !== null) {
-         if (temp === node) {
-            return true
-         }
-
-         temp = temp?.getNext()
+   constructor(other?: CallList) {
+      if (other) {
+         this.copyAll(other)
+         return
       }
 
-      return false
+      this.head = null
+      this.length = 0
    }
 
    private copyAll(other: CallList) {
@@ -46,12 +36,61 @@ export class CallList {
       }
    }
 
+   private isValidPosition(node: CallNode): boolean {
+      let temp = this.head
+
+      while (temp !== null) {
+         if (temp === node) {
+            return true
+         }
+
+         temp = temp?.getNext()
+      }
+
+      return false
+   }
+
    public isEmpty(): boolean {
       return this.head === null
    }
 
    public getLength(): number {
       return this.length
+   }
+
+   public getFirstPosition(): CallNodeRef {
+      return this.head
+   }
+
+   public getLastPosition(): CallNodeRef {
+      let temp = this.head
+
+      while (temp?.getNext()) {
+         temp = temp.getNext()
+      }
+
+      return temp
+   }
+
+   public getPrevPosition(node: CallNode): CallNodeRef {
+      if (node === this.head || !this.isValidPosition(node)) return null
+
+      let prev = this.head
+      while (prev !== null && prev.getNext() !== node) {
+         prev = prev.getNext()
+      }
+
+      return prev
+   }
+
+   public getNextPosition(node: CallNode): CallNodeRef {
+      return node.getNext()
+   }
+
+   public toString(): string {
+      return this.toArray()
+         .map((call) => call.toString())
+         .join('\n')
    }
 
    public insert(position: CallNodeRef, call: Call) {
@@ -99,18 +138,21 @@ export class CallList {
       this.insert(previous, call)
    }
 
-   public getPrevPosition(node: CallNode): CallNodeRef {
-      if (node === this.head || !this.isValidPosition(node)) return null
+   public find(call: Call): CallNodeRef {
+      let temp = this.head
 
-      let prev = this.head
-      while (prev !== null && prev.getNext() !== node) {
-         prev = prev.getNext()
+      while (temp !== null && temp.getValue().isDifferent(call)) {
+         temp = temp.getNext()
       }
 
-      return prev
+      return temp
    }
 
-   public remove(node: CallNode) {
+   public retrieve(node: CallNode): Call {
+      return node.getValue()
+   }
+
+   public delete(node: CallNode) {
       if (!this.isValidPosition(node)) {
          throw new ListException('Invalid position CallList.remove()')
       }
@@ -128,52 +170,10 @@ export class CallList {
       this.length--
    }
 
-   public findData(call: Call): CallNodeRef {
-      let temp = this.head
-
-      while (temp !== null && temp.getValue().isDifferent(call)) {
-         temp = temp.getNext()
-      }
-
-      return temp
-   }
-
-   public getFirstPosition(): CallNodeRef {
-      return this.head
-   }
-
-   public getLastPosition(): CallNodeRef {
-      let temp = this.head
-
-      while (temp?.getNext()) {
-         temp = temp.getNext()
-      }
-
-      return temp
-   }
-
-   public getNextPosition(node: CallNode): CallNodeRef {
-      return node.getNext()
-   }
-
-   public retrieve(node: CallNode): Call {
-      return node.getValue()
-   }
-
-   public toString(): string {
-      return this.toArray()
-         .map((call) => call.toString())
-         .join('\n')
-   }
-
    public deleteAll() {
       this.head = null
       this.length = 0
    }
-
-   public writeToDisk(s: string) {}
-
-   public readFromDisk(s: string) {}
 
    public assign(other: CallList): CallList {
       this.copyAll(other)
@@ -192,5 +192,24 @@ export class CallList {
       return result
    }
 
+   public filter(filterFunction: (item: Call) => boolean): CallList {
+      const filteredList = new CallList()
+      let temp: CallNodeRef = this.head
+
+      while (temp !== null) {
+         const shouldAdd = filterFunction(temp.getValue())
+
+         if (shouldAdd) {
+            filteredList.insertAtEnd(temp.getValue())
+         }
+
+         temp = temp.getNext()
+      }
+
+      return filteredList
+   }
+
    public toJSON(): any {}
+   public writeToDisk(s: string) {}
+   public readFromDisk(s: string) {}
 }

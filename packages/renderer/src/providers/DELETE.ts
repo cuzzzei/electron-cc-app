@@ -257,12 +257,28 @@ export function fill(list: AgentList, render: () => void) {
       Call.compareByStartTime
    )
 
+   const agent7 = new Agent(agent6)
+   agent7.setId(crypto.randomUUID())
+
+   agent5.getCallHistory().insertOrdered(
+      new Call({
+         id: crypto.randomUUID(),
+         clientName: new Name('Gareth', 'Estrada'),
+         description: 'Doesn not know hot to turn on the printer',
+         start: new Time(8, 14),
+         duration: new Time(0, 5),
+      }),
+      Call.compareByStartTime
+   )
+   agent7.setCallHistory(new CallList(agent5.getCallHistory()))
+
    list.insertAtStart(agent1)
    list.insertAtStart(agent2)
    list.insertAtStart(agent3)
    list.insertAtStart(agent4)
    list.insertAtStart(agent5)
    list.insertAtStart(agent6)
+   list.insertAtStart(agent7)
 
    render()
 }
