@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from '/@/components/Button'
 import { Modal } from '/@/components/Modal'
 import {
    AgentForm,
@@ -56,21 +57,20 @@ export const CreateAgent = () => {
          onClose={() => setIsOpen(false)}
          title='New agent'
          triggerButton={
-            <button
-               className='btn btn-dark w-100'
+            <Button
                onClick={() => setIsOpen(true)}
+               fullWidth
             >
                Add new
-            </button>
+            </Button>
          }
          confirmButton={
-            <button
-               className='btn btn-dark'
+            <Button
                type='submit'
                form='create-agent'
             >
                Create
-            </button>
+            </Button>
          }
       >
          <AgentForm

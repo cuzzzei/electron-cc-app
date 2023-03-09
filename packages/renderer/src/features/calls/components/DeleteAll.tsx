@@ -3,6 +3,7 @@ import { Modal } from '/@/components/Modal'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { Button } from '/@/components/Button'
 
 interface DeleteAllProps {
    callList: CallList
@@ -29,21 +30,17 @@ export const DeleteAll = ({ callList }: DeleteAllProps) => {
          onClose={() => setIsOpen(false)}
          title='Delete all'
          triggerButton={
-            <button
-               className='btn btn-danger'
-               onClick={() => setIsOpen(true)}
-            >
+            <Button onClick={() => setIsOpen(true)}>
                <i className='fa fa-trash' />
-            </button>
+            </Button>
          }
          confirmButton={
-            <button
-               className='btn btn-danger'
+            <Button
                type='submit'
                onClick={() => deleteAll()}
             >
                Delete all
-            </button>
+            </Button>
          }
       >
          <p>Are you sure you want to delete all calls ?</p>

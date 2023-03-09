@@ -41,7 +41,7 @@ export const Table = <T,>({
       <div
          className={`card ${className}`}
          style={{
-            overflowY: 'scroll',
+            overflowY: 'auto',
             ...style,
          }}
       >

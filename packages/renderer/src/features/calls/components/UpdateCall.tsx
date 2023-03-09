@@ -6,6 +6,7 @@ import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { Button } from '/@/components/Button'
 
 interface UpdateCallProps {
    call: Call
@@ -51,22 +52,18 @@ export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
          title='Update call'
          triggerButton={
             <div>
-               <button
-                  className='btn btn-primary'
-                  onClick={() => setIsOpen(true)}
-               >
+               <Button onClick={() => setIsOpen(true)}>
                   <i className='fa fa-pencil' />
-               </button>
+               </Button>
             </div>
          }
          confirmButton={
-            <button
-               className='btn btn-dark'
+            <Button
                type='submit'
                form='update-call'
             >
                Update
-            </button>
+            </Button>
          }
       >
          <CallForm

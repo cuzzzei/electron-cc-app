@@ -1,5 +1,6 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
+import { Button } from '/@/components/Button'
 import { Modal } from '/@/components/Modal'
 import {
    AgentForm,
@@ -57,23 +58,19 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
             onClose={() => setIsOpen(false)}
             title='Update agent'
             triggerButton={
-               <button
-                  className='btn'
-                  onClick={() => setIsOpen(true)}
-               >
+               <Button onClick={() => setIsOpen(true)}>
                   <div style={{ width: '30px' }}>
                      <PencilSquareIcon />
                   </div>
-               </button>
+               </Button>
             }
             confirmButton={
-               <button
-                  className='btn btn-dark'
+               <Button
                   type='submit'
                   form='update-agent'
                >
                   Save
-               </button>
+               </Button>
             }
          >
             <AgentForm

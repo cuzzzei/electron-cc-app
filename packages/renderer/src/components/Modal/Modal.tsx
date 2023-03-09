@@ -1,3 +1,4 @@
+import { Button } from '/@/components/Button'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -12,12 +13,28 @@ interface ModalProps {
 }
 
 const BackDrop = styled.div`
-   background-color: rgba(0, 0, 0, 0.4);
+   background-color: rgba(0, 0, 0, 0.25);
 `
 
 const Content = styled.div`
    border-radius: 8px;
    padding: 15px;
+   border: none;
+   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+
+   animation-name: show;
+   animation-duration: 0.35s;
+
+   @keyframes show {
+      from {
+         opacity: 0;
+         transform: translate3d(0, -40px, 0);
+      }
+      to {
+         opacity: 1;
+         transform: translate3d(0, 0, 0);
+      }
+   }
 `
 
 export const Modal = ({
@@ -28,9 +45,6 @@ export const Modal = ({
    triggerButton,
    confirmButton,
 }: ModalProps) => {
-   const mountedStyle = { opacity: 1, display: 'block' }
-   const unmountedStyle = { opacity: 0, transition: 'none' }
-   const style = isOpen ? mountedStyle : unmountedStyle
    const modalRef = useRef<HTMLDivElement>(null)
 
    useEffect(() => {
@@ -42,25 +56,19 @@ export const Modal = ({
    return (
       <>
          {triggerButton}
-
          {isOpen && (
-            <BackDrop
-               className='modal center modal-backdrop'
-               style={{
-                  ...style,
-               }}
-            >
-               <div className='modal-dialog modal-dialog-centered animate__animated animate__slideInDown animate__faster'>
+            <BackDrop className='modal center border-0 d-block'>
+               <div className='modal-dialog modal-dialog-centered border-0'>
                   <Content
                      className='modal-content'
                      tabIndex={1}
                      ref={modalRef}
                   >
                      <div className='modal-header border-0'>
-                        <h5 className='modal-title'>{title}</h5>
+                        <h4 className='modal-title'>{title}</h4>
                         <button
+                           className='btn btn-close'
                            type='button'
-                           className='btn-close'
                            data-bs-dismiss='modal'
                            aria-label='Close'
                            onClick={() => onClose()}
@@ -68,14 +76,13 @@ export const Modal = ({
                      </div>
                      <div className='modal-body'>{children}</div>
                      <div className='modal-footer border-0'>
-                        <button
-                           type='button'
-                           className='btn btn-light'
+                        <Button
+                           colorScheme='gray'
                            onClick={() => onClose()}
                            style={{ marginRight: '15px' }}
                         >
                            Cancel
-                        </button>
+                        </Button>
 
                         {confirmButton}
                      </div>

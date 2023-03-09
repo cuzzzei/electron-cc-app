@@ -12,6 +12,11 @@
    filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.title {
+   font-size: 5.5rem;
+   letter-spacing: -0.4rem;
+}
+
 @keyframes logo-spin {
    from {
       transform: rotate(0deg);

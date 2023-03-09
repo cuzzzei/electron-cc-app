@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import './styles.css'
+import { Button } from '/@/components/Button'
 
 export const Landing = () => {
    const navigate = useNavigate()
@@ -8,14 +9,7 @@ export const Landing = () => {
    return (
       <div className='w-full h-100 d-flex'>
          <div className='h-100 w-100 d-flex flex-column gap-5 justify-content-center align-items-center'>
-            <h1
-               className='fw-bold'
-               style={{
-                  fontSize: '5rem',
-               }}
-            >
-               Call Center App
-            </h1>
+            <h1 className='fw-bold title'>Call Center App</h1>
 
             <img
                src={reactLogo}
@@ -23,12 +17,7 @@ export const Landing = () => {
                alt='React logo'
             />
 
-            <button
-               className='btn btn-dark btn-lg'
-               onClick={() => navigate('/agents')}
-            >
-               Start
-            </button>
+            <Button onClick={() => navigate('/agents')}>Start</Button>
          </div>
       </div>
    )

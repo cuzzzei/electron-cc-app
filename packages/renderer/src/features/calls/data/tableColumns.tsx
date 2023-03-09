@@ -5,6 +5,7 @@ import { TableColumn } from '/@/components/Table'
 import { UpdateCall } from '/@/features/calls/components/UpdateCall'
 import { useAppContext } from '/@/providers/app'
 import { useToast } from '/@/hooks/useToast'
+import { Button } from '/@/components/Button'
 
 interface CallListActionsProps {
    call: Call
@@ -44,12 +45,9 @@ function CallListActions({ call, callList }: CallListActionsProps) {
          />
 
          <div>
-            <button
-               className='btn btn-danger'
-               onClick={() => removeCall()}
-            >
+            <Button onClick={() => removeCall()}>
                <i className='fa fa-trash' />
-            </button>
+            </Button>
          </div>
       </div>
    )
