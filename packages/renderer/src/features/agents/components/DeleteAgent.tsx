@@ -4,15 +4,19 @@ import { Modal } from '/@/components/Modal'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { useParams, useNavigate } from 'react-router-dom'
 
 interface DeleteAgentProps {
    agent: Agent
 }
 
 export function DeleteAgent({ agent }: DeleteAgentProps) {
-   const toast = useToast()
    const { agentList, render } = useAppContext()
+   const { id } = useParams()
    const [isOpen, setIsOpen] = useState(false)
+   const navigate = useNavigate()
+   const toast = useToast()
+   const agentInScreen = id === agent.getId()
 
    function handleDelete() {
       const nodeToDelete = agentList.find(agent)
@@ -20,19 +24,17 @@ export function DeleteAgent({ agent }: DeleteAgentProps) {
 
       try {
          agentList.delete(nodeToDelete)
-         toast({
-            title: 'Agent deleted',
-            status: 'success',
-         })
-
+         toast({ title: 'Agent deleted', status: 'success' })
          setIsOpen(false)
+
+         if (agentInScreen) {
+            navigate('/agents')
+         }
+
          render()
       } catch (err) {
          if (err instanceof Error) {
-            toast({
-               title: 'Error trying to delete agent',
-               status: 'error',
-            })
+            toast({ title: 'Error trying to delete agent', status: 'error' })
          }
       }
    }
