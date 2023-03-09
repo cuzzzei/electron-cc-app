@@ -18,6 +18,8 @@ export const TableRow = <T extends unknown>({
    ) {
       onClick && onClick(item)
    }
+
+   // TODO: Background color on hover
    return (
       <tr>
          {showSelector && (

@@ -1,5 +1,5 @@
-import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
+import { Button } from '/@/components/Button'
 import { Modal } from '/@/components/Modal'
 import {
    AgentForm,
@@ -10,6 +10,8 @@ import { useAppContext } from '/@/providers/app'
 import { Agent } from '/@/types/agent'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
+
+import { UserIcon } from '@heroicons/react/20/solid'
 
 interface UpdateAgentProps {
    agent: Agent
@@ -55,25 +57,21 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
          <Modal
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
-            title='Update agent'
+            title='Agent profile'
             triggerButton={
-               <button
-                  className='btn'
-                  onClick={() => setIsOpen(true)}
-               >
-                  <div style={{ width: '30px' }}>
-                     <PencilSquareIcon />
+               <Button onClick={() => setIsOpen(true)} colorScheme='gray'>
+                  <div style={{ width: '15px' }}>
+                     <UserIcon />
                   </div>
-               </button>
+               </Button>
             }
             confirmButton={
-               <button
-                  className='btn btn-dark'
+               <Button
                   type='submit'
                   form='update-agent'
                >
                   Save
-               </button>
+               </Button>
             }
          >
             <AgentForm

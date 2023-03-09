@@ -1,0 +1,80 @@
+.button {
+   padding: 0 12px;
+   border-radius: 5px;
+   font-size: 14px;
+   line-height: 20px;
+   height: 40px;
+
+   border: 1.3px solid;
+   font-weight: 500;
+   color: white;
+}
+.button:hover {
+   background-color: white;
+   /*transition-duration: 0.15s;*/
+   transition-duration: 0.2s;
+
+   transition-property: border-color, background, color, transform, box-shadow;
+   transition-timing-function: ease;
+}
+
+.button-small {
+   height: 32px;
+}
+
+.button-large {
+   font-size: 16px;
+   line-height: 24px;
+   height: 48px;
+}
+
+.button-black {
+   background-color: black;
+   border-color: black;
+}
+.button-black:hover {
+   color: black;
+}
+
+.button-red {
+   background-color: var(--geist-error);
+   border-color: var(--geist-error);
+}
+.button-red:hover {
+   color: var(--geist-error);
+}
+
+.button-yellow {
+   background-color: var(--geist-warning);
+   border-color: var(--geist-warning);
+}
+.button-yellow:hover {
+   color: var(--geist-warning);
+}
+
+.button-cyan {
+   background-color: var(--geist-cyan-dark);
+   border-color: var(--geist-cyan-dark);
+}
+.button-cyan:hover {
+   color: var(--geist-cyan-dark);
+}
+
+.button-gray {
+   background-color: white;
+   color: var(--accents-5);
+   border-color: var(--accents-2);
+}
+.button-gray:hover {
+   border-color: black;
+   color: black;
+}
+
+.ghost {
+   background-color: transparent;
+   border: none;
+}
+.ghost:hover {
+   background-color: #ccc;
+   color: black;
+}

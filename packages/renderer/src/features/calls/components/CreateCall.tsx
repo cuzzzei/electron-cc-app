@@ -6,6 +6,7 @@ import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { Button } from '/@/components/Button'
 
 interface CreateCallProps {
    callList: CallList
@@ -50,21 +51,17 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
          onClose={() => setIsOpen(false)}
          title='New call'
          triggerButton={
-            <button
-               className='btn btn-success'
-               onClick={() => setIsOpen(true)}
-            >
+            <Button onClick={() => setIsOpen(true)}>
                <i className='fa fa-phone' />
-            </button>
+            </Button>
          }
          confirmButton={
-            <button
-               className='btn btn-dark'
+            <Button
                type='submit'
                form='create-call'
             >
                Create
-            </button>
+            </Button>
          }
       >
          <CallForm

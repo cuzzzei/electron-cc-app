@@ -41,15 +41,21 @@ export const Table = <T,>({
       <div
          className={`card ${className}`}
          style={{
-            overflowY: 'scroll',
+            overflowY: 'auto',
+            borderColor: 'var(--accents-2)',
             ...style,
          }}
       >
          <div className='card-body'>
             <div className='table-responsive'>
                <table className='table table-responsive table-borderless table-hover align-middle text-start'>
-                  <thead>
-                     <tr className='bg-light'>
+                  <thead
+                     className='rounded-2'
+                     style={{
+                        backgroundColor: 'var(--accents-1)',
+                     }}
+                  >
+                     <tr>
                         {showSelectors && (
                            <th scope='col'>
                               <input
@@ -63,8 +69,16 @@ export const Table = <T,>({
                            <th
                               scope='col'
                               key={column.id}
+                              className='text-uppercase py-3'
                            >
-                              {column.Header ?? ''}
+                              <span
+                                 style={{
+                                    color: 'var(--accents-5)',
+                                 }}
+                                 className='fw-normal '
+                              >
+                                 {column.Header ?? ''}
+                              </span>
                            </th>
                         ))}
                      </tr>

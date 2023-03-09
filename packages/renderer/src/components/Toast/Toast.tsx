@@ -41,7 +41,26 @@ function WarningIcon() {
    )
 }
 
-export const Toast = ({ status, title, description, index }: ToastProps) => {
+const Container = styled.div`
+   padding: 0.5rem 2rem 0.5rem 1rem;
+   min-width: 200px;
+
+   animation-name: show;
+   animation-duration: 0.35s;
+
+   @keyframes show {
+      from {
+         opacity: 0;
+         transform: translate3d(0, -20px, 0);
+      }
+      to {
+         opacity: 1;
+         transform: translate3d(0, 0, 0);
+      }
+   }
+`
+
+export const Toast = ({ status, title, description }: ToastProps) => {
    const backgroundColor = {
       success: '#38A169',
       error: '#E52E3E',
@@ -55,24 +74,21 @@ export const Toast = ({ status, title, description, index }: ToastProps) => {
    }[status ?? 'success']
 
    return (
-      <div className='animate__animated animate__slideInDown animate__faster'>
-         <div
-            role='alert'
-            className='text-white rounded-2'
-            style={{
-               backgroundColor,
-               padding: '0.5rem 2rem 0.5rem 1rem',
-            }}
-         >
-            <div className='d-flex gap-2 align-items-start'>
-               <Icon />
+      <Container
+         role='alert'
+         className='text-white rounded-2'
+         style={{
+            backgroundColor,
+         }}
+      >
+         <div className='d-flex gap-2 align-items-start'>
+            <Icon />
 
-               <div className='d-flex flex-column gap-1'>
-                  <p className='fw-bold mb-0'>{title}</p>
-                  <p className='mb-0'>{description ?? ''}</p>
-               </div>
+            <div className='d-flex flex-column gap-1'>
+               <p className='fw-bold mb-0'>{title}</p>
+               <p className='mb-0'>{description ?? ''}</p>
             </div>
          </div>
-      </div>
+      </Container>
    )
 }

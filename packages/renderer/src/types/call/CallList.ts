@@ -148,6 +148,20 @@ export class CallList {
       return temp
    }
 
+   public findById(id: string): Call | null {
+      let temp = this.head
+
+      while (temp !== null) {
+         if (temp.getValue().getId() === id) {
+            return temp.getValue()
+         }
+
+         temp = temp.getNext()
+      }
+
+      return null
+   }
+
    public retrieve(node: CallNode): Call {
       return node.getValue()
    }

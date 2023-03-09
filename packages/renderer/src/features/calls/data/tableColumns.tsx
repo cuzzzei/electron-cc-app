@@ -1,8 +1,8 @@
+import { Button } from '/@/components/Button'
 import { Call } from '../../../types/call/Call'
 import { CallList } from '/@/types/call'
 import { CallNode } from '../../../types/call/CallNode'
 import { TableColumn } from '/@/components/Table'
-import { UpdateCall } from '/@/features/calls/components/UpdateCall'
 import { useAppContext } from '/@/providers/app'
 import { useToast } from '/@/hooks/useToast'
 
@@ -38,18 +38,10 @@ function CallListActions({ call, callList }: CallListActionsProps) {
 
    return (
       <div className='d-flex gap-2 justify-content-center'>
-         <UpdateCall
-            call={call}
-            callList={callList}
-         />
-
          <div>
-            <button
-               className='btn btn-danger'
-               onClick={() => removeCall()}
-            >
+            <Button onClick={() => removeCall()}>
                <i className='fa fa-trash' />
-            </button>
+            </Button>
          </div>
       </div>
    )
