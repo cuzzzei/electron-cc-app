@@ -94,8 +94,26 @@ textarea:focus {
    border-color: var(--accents-4) !important;
 }
 
-
 .text-muted {
    color: var(--accents-3) !important;
    font-weight: 400;
+}
+
+::-webkit-scrollbar {
+   width: 15px;
+}
+
+::-webkit-scrollbar-track {
+   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: var(--accents-2);
+   border-radius: 20px;
+   border: 6px solid transparent;
+   background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background-color: #d3d3d3;
 }

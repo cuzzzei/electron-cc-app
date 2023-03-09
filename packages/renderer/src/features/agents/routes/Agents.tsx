@@ -6,7 +6,6 @@ import { useAppContext } from '/@/providers/app'
 import { AgentsFilter } from '../components/AgentsFilter'
 import { useState } from 'react'
 import { Agent } from '/@/types/agent'
-import { Button } from '/@/components/Button'
 
 export const Agents = () => {
    const { agentList } = useAppContext()
