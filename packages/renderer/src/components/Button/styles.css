@@ -52,6 +52,14 @@
    color: var(--geist-warning);
 }
 
+.button-cyan {
+   background-color: var(--geist-cyan-dark);
+   border-color: var(--geist-cyan-dark);
+}
+.button-cyan:hover {
+   color: var(--geist-cyan-dark);
+}
+
 .button-gray {
    background-color: white;
    color: var(--accents-5);

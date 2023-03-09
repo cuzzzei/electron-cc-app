@@ -30,47 +30,25 @@ export const Agents = () => {
    return (
       <div className='d-flex h-100'>
          <div
-            className='p-4 md:p-5'
+            className='py-4 md:py-5'
             style={{ width: '20%', minWidth: '400px', overflowY: 'auto' }}
          >
-            <div className='w-100 d-flex justify-content-between'>
-               <h3 className='fw-bold'>Agents</h3>
+            <div className='px-4 md:px-5'>
+               <div className='w-100 d-flex justify-content-between'>
+                  <h3 className='fw-bold'>Agents</h3>
 
-               <AgentsSettings />
-            </div>
+                  <AgentsSettings />
+               </div>
 
-            <hr />
-            <AgentsFilter
-               specialty={specialty}
-               setSpecialty={setSpecialty}
-               name={name}
-               setName={setName}
-            />
-            <CreateAgent />
+               <hr />
+               <AgentsFilter
+                  specialty={specialty}
+                  setSpecialty={setSpecialty}
+                  name={name}
+                  setName={setName}
+               />
 
-            <div className='p-5 d-flex flex-column gap-1'>
-               <Button fullWidth>Add new</Button>
-
-               <Button
-                  colorScheme='red'
-                  fullWidth
-               >
-                  Add new
-               </Button>
-
-               <Button
-                  colorScheme='yellow'
-                  fullWidth
-               >
-                  Add new
-               </Button>
-
-               <Button
-                  colorScheme='gray'
-                  fullWidth
-               >
-                  Add new
-               </Button>
+               <CreateAgent />
             </div>
 
             {filteredAgentList.isEmpty() ? (

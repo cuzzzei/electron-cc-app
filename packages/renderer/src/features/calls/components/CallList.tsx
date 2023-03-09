@@ -41,7 +41,7 @@ export const CallList = ({ callList }: CallListProps) => {
          )}
 
          <Container className='p-4 p-lg-5'>
-            <div className='d-flex gap-3'>
+            <div className='d-flex gap-2'>
                <h3 className='fw-bold'>Calls</h3>
 
                <CreateCall callList={callList} />

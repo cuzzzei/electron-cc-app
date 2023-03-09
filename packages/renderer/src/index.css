@@ -93,3 +93,9 @@ select:focus,
 textarea:focus {
    border-color: var(--accents-4) !important;
 }
+
+
+.text-muted {
+   color: var(--accents-3) !important;
+   font-weight: 400;
+}

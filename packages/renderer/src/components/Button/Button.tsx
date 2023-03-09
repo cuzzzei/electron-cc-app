@@ -1,6 +1,6 @@
 import './styles.css'
 
-type ColorScheme = 'black' | 'gray' | 'red' | 'yellow'
+type ColorScheme = 'black' | 'gray' | 'red' | 'yellow' | 'cyan'
 type Size = 'small' | 'medium' | 'large'
 
 type ButtonProps = {

@@ -30,7 +30,10 @@ export const DeleteAll = ({ callList }: DeleteAllProps) => {
          onClose={() => setIsOpen(false)}
          title='Delete all'
          triggerButton={
-            <Button onClick={() => setIsOpen(true)}>
+            <Button
+               colorScheme='red'
+               onClick={() => setIsOpen(true)}
+            >
                <i className='fa fa-trash' />
             </Button>
          }

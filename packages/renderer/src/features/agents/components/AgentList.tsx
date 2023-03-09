@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
+import styled from 'styled-components'
 import { Avatar } from '/@/components/Avatar'
 import { AgentList as AgentListClass, Agent } from '/@/types/agent'
 
@@ -6,21 +7,20 @@ interface AgentListProps {
    agentList: AgentListClass
 }
 
+const Container = styled.ul`
+   overflow-x: hidden;
+`
+
 export const AgentList = ({ agentList }: AgentListProps) => {
    return (
-      <ul
-         className='list-unstyled'
-         style={{
-            overflowX: 'hidden',
-         }}
-      >
+      <Container className='list-unstyled mt-3 ps-4 md:ps-5'>
          {agentList.toArray().map((agent) => (
             <AgentItem
                key={agent.getId()}
                agent={agent}
             />
          ))}
-      </ul>
+      </Container>
    )
 }
 
@@ -28,14 +28,21 @@ interface AgentItemProps {
    agent: Agent
 }
 
+const Item = styled.li`
+   &:hover {
+      background-color: var(--accents-1);
+   }
+`
+
 function AgentItem({ agent }: AgentItemProps) {
    const params = useParams()
    const navigate = useNavigate()
+   const active = params.id === agent.getId()
 
    return (
-      <li
+      <Item
          key={agent.getId()}
-         className='py-4 d-flex gap-4 align-items-center'
+         className='py-4 ps-2 d-flex gap-4 align-items-center'
          role='button'
          onClick={() => {
             navigate('/agents/view/' + agent.getId())
@@ -44,16 +51,22 @@ function AgentItem({ agent }: AgentItemProps) {
          <Avatar
             className='rounded-circle'
             seed={agent.getName().toString()}
-            style={{
-               width: params.id === agent.getId() ? '7.5rem' : '5rem',
-            }}
+            style={{ width: '4.5rem' }}
          />
 
          <div className='d-flex flex-column'>
-            <p className='fw-bold fs-5 mb-1'>{agent.getName().toString()}</p>
+            <p
+               className='fs-5 mb-1'
+               style={{
+                  letterSpacing: '-0.05rem',
+                  color: active ? 'var(--geist-violet-dark)' : undefined,
+               }}
+            >
+               {agent.getName().toString()}
+            </p>
             <p className='mb-0'>{agent.getSpecialty()}</p>
-            <p className='text-muted mb-0'>ext. {agent.getExtension()}</p>
+            <p className='mb-0  text-muted'>{agent.getExtension()}</p>
          </div>
-      </li>
+      </Item>
    )
 }
