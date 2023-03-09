@@ -57,7 +57,14 @@ export const Modal = ({
       <>
          {triggerButton}
          {isOpen && (
-            <BackDrop className='modal center border-0 d-block'>
+            <BackDrop
+               className='modal center border-0 d-block'
+               onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                     onClose()
+                  }
+               }}
+            >
                <div className='modal-dialog modal-dialog-centered border-0'>
                   <Content
                      className='modal-content'
