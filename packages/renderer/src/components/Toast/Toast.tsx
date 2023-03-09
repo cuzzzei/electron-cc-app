@@ -55,22 +55,20 @@ export const Toast = ({ status, title, description, index }: ToastProps) => {
    }[status ?? 'success']
 
    return (
-      <div className='animate__animated animate__slideInDown animate__faster'>
-         <div
-            role='alert'
-            className='text-white rounded-2'
-            style={{
-               backgroundColor,
-               padding: '0.5rem 2rem 0.5rem 1rem',
-            }}
-         >
-            <div className='d-flex gap-2 align-items-start'>
-               <Icon />
+      <div
+         role='alert'
+         className='text-white rounded-2'
+         style={{
+            backgroundColor,
+            padding: '0.5rem 2rem 0.5rem 1rem',
+         }}
+      >
+         <div className='d-flex gap-2 align-items-start'>
+            <Icon />
 
-               <div className='d-flex flex-column gap-1'>
-                  <p className='fw-bold mb-0'>{title}</p>
-                  <p className='mb-0'>{description ?? ''}</p>
-               </div>
+            <div className='d-flex flex-column gap-1'>
+               <p className='fw-bold mb-0'>{title}</p>
+               <p className='mb-0'>{description ?? ''}</p>
             </div>
          </div>
       </div>

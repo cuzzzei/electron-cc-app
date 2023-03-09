@@ -35,7 +35,7 @@ function AgentItem({ agent }: AgentItemProps) {
    return (
       <li
          key={agent.getId()}
-         className='py-4 d-flex gap-4 align-items-center animate__animated animate__backInRight'
+         className='py-4 d-flex gap-4 align-items-center'
          role='button'
          onClick={() => {
             navigate('/agents/view/' + agent.getId())
