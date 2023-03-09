@@ -6,13 +6,39 @@ export class AgentList {
    private head: AgentNode
    private length: number = 0
 
-   constructor() {
+   constructor(other?: AgentList) {
       this.head = new AgentNode()
       this.head.setPrev(this.head)
       this.head.setNext(this.head)
+
+      if (other) {
+         this.copyAll(other)
+      }
    }
 
-   private copyAll(list: AgentList) {}
+   private copyAll(other: AgentList) {
+      let aux: AgentNodeRef = other.head.getNext()
+
+      while (aux !== null && aux !== other.head) {
+         const newNode = new AgentNode(new Agent(aux.getValue()))
+         let position = this.getLastPosition()
+
+         // List
+         if (position === null) {
+            position = this.head
+         }
+
+         newNode.setPrev(position)
+         newNode.setNext(position.getNext())
+
+         position.getNext()?.setPrev(newNode as AgentNode)
+         position.setNext(newNode as AgentNode)
+
+         aux = aux.getNext()
+      }
+
+      this.length = other.length
+   }
 
    private isValidPosition(position: AgentNode): boolean {
       let aux = this.head.getNext()
@@ -138,8 +164,7 @@ export class AgentList {
    public deleteAll() {}
 
    public assign(other: AgentList): AgentList {
-      this.head = other.head
-      this.length = other.length
+      this.copyAll(other)
       return this
    }
 

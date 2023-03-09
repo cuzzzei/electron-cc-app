@@ -259,18 +259,7 @@ export function fill(list: AgentList, render: () => void) {
 
    const agent7 = new Agent(agent6)
    agent7.setId(crypto.randomUUID())
-
-   agent5.getCallHistory().insertOrdered(
-      new Call({
-         id: crypto.randomUUID(),
-         clientName: new Name('Gareth', 'Estrada'),
-         description: 'Doesn not know hot to turn on the printer',
-         start: new Time(8, 14),
-         duration: new Time(0, 5),
-      }),
-      Call.compareByStartTime
-   )
-   agent7.setCallHistory(new CallList(agent5.getCallHistory()))
+   agent7.setName(new Name('Another', 'Agent'))
 
    list.insertAtStart(agent1)
    list.insertAtStart(agent2)
