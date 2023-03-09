@@ -1,5 +1,6 @@
 import { Agent } from './Agent'
 import { AgentNode, AgentNodeRef } from './AgentNode'
+import { AgentJSON } from '/@/types/agent/JSON'
 import { ListException } from '/@/types/ListException'
 
 export class AgentList {
@@ -144,12 +145,12 @@ export class AgentList {
       return null
    }
 
-   public findById(id: string): AgentNodeRef {
+   public findById(id: string): Agent | null {
       let temp: AgentNodeRef = this.head.getNext()
 
       while (temp !== null && temp !== this.head) {
          if (temp.getValue().getId() === id) {
-            return temp
+            return temp.getValue()
          }
 
          temp = temp.getNext()
@@ -175,23 +176,16 @@ export class AgentList {
       pos.getNext()?.setPrev(pos.getPrev())
    }
 
-   public deleteAll() {}
+   public deleteAll() {
+      this.head = new AgentNode()
+      this.head.setPrev(this.head)
+      this.head.setNext(this.head)
+      this.length = 0
+   }
 
    public assign(other: AgentList): AgentList {
       this.copyAll(other)
       return this
-   }
-
-   public toArray(): Array<Agent> {
-      const result: Array<Agent> = []
-      let temp: AgentNodeRef = this.head.getNext()
-
-      while (temp !== null && temp !== this.head) {
-         result.push(temp.getValue())
-         temp = temp.getNext()
-      }
-
-      return result
    }
 
    public filter(filterFunction: (item: Agent) => boolean): AgentList {
@@ -211,6 +205,31 @@ export class AgentList {
       return filteredList
    }
 
+   public toArray(): Array<Agent> {
+      const result: Array<Agent> = []
+      let temp: AgentNodeRef = this.head.getNext()
+
+      while (temp !== null && temp !== this.head) {
+         result.push(temp.getValue())
+         temp = temp.getNext()
+      }
+
+      return result
+   }
+
+   public toJSON(): Array<AgentJSON> {
+      const result: Array<AgentJSON> = []
+      let temp = this.head.getNext()
+
+      while (temp !== null && temp !== this.head) {
+         const value = temp.getValue().toJSON()
+         result.push(value)
+         temp = temp.getNext()
+      }
+
+      return result
+   }
+
    private swapNodes(nodeA: AgentNode, nodeB: AgentNode) {}
    private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode) {}
    private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode) {}
@@ -218,5 +237,4 @@ export class AgentList {
    public sortBySpecialty() {}
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
-   public toJSON(): any {}
 }

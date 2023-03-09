@@ -2,6 +2,7 @@ import { CallList } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
 import { Time } from '/@/types/Time'
+import { AgentJSON } from './JSON'
 
 export interface AgentProps {
    id: string
@@ -166,6 +167,13 @@ export class Agent {
 
    public isLesserOrEquals(other: Agent): boolean {
       return this.isLesserThan(other) || this.isEqual(other)
+   }
+
+   public toJSON(): AgentJSON {
+      return {
+         ...this,
+         callHistory: this.callHistory.toJSON(),
+      }
    }
 
    public static compareByName(a: Agent, b: Agent): number {

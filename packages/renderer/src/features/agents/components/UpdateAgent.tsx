@@ -59,7 +59,10 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
             onClose={() => setIsOpen(false)}
             title='Agent profile'
             triggerButton={
-               <Button onClick={() => setIsOpen(true)} colorScheme='gray'>
+               <Button
+                  onClick={() => setIsOpen(true)}
+                  colorScheme='gray'
+               >
                   <div style={{ width: '15px' }}>
                      <UserIcon />
                   </div>

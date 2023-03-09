@@ -10,7 +10,7 @@ import { UpdateAgent } from '/@/features/agents/components/UpdateAgent'
 export const Agent = () => {
    const { agentList } = useAppContext()
    const { id } = useParams()
-   const agent: AgentType | undefined = agentList.findById(id ?? '')?.getValue()
+   const agent: AgentType | null = agentList.findById(id ?? '')
 
    if (!agent) return null
 

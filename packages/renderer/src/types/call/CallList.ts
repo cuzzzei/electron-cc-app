@@ -194,18 +194,6 @@ export class CallList {
       return this
    }
 
-   public toArray(): Array<Call> {
-      const result: Array<Call> = []
-      let temp: CallNodeRef = this.head
-
-      while (temp != null) {
-         result.push(temp.getValue())
-         temp = temp.getNext()
-      }
-
-      return result
-   }
-
    public filter(filterFunction: (item: Call) => boolean): CallList {
       const filteredList = new CallList()
       let temp: CallNodeRef = this.head
@@ -223,7 +211,22 @@ export class CallList {
       return filteredList
    }
 
-   public toJSON(): any {}
+   public toArray(): Array<Call> {
+      const result: Array<Call> = []
+      let temp: CallNodeRef = this.head
+
+      while (temp != null) {
+         result.push(temp.getValue())
+         temp = temp.getNext()
+      }
+
+      return result
+   }
+
+   public toJSON(): Array<Call> {
+      return this.toArray()
+   }
+
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
 }
