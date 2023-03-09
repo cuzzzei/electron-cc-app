@@ -63,6 +63,7 @@ export const Modal = ({
                   if (e.target === e.currentTarget) {
                      onClose()
                   }
+                  e.stopPropagation()
                }}
             >
                <div className='modal-dialog modal-dialog-centered border-0'>

@@ -69,3 +69,12 @@
    border-color: black;
    color: black;
 }
+
+.ghost {
+   background-color: transparent;
+   border: none;
+}
+.ghost:hover {
+   background-color: #ccc;
+   color: black;
+}

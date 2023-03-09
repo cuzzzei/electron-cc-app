@@ -17,7 +17,14 @@ export const Landing = () => {
                alt='React logo'
             />
 
-            <Button onClick={() => navigate('/agents')}>Start</Button>
+            <Button
+               onClick={() => navigate('/agents')}
+               style={{
+                  width: '300px',
+               }}
+            >
+               Start
+            </Button>
          </div>
       </div>
    )

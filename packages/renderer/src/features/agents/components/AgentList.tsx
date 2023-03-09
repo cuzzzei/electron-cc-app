@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { Avatar } from '/@/components/Avatar'
 import { AgentList as AgentListClass, Agent } from '/@/types/agent'
+import { DeleteAgent } from './DeleteAgent'
 
 interface AgentListProps {
    agentList: AgentListClass
@@ -54,16 +55,21 @@ function AgentItem({ agent }: AgentItemProps) {
             style={{ width: '4.5rem' }}
          />
 
-         <div className='d-flex flex-column'>
-            <p
-               className='fs-5 mb-1'
-               style={{
-                  letterSpacing: '-0.05rem',
-                  color: active ? 'var(--geist-violet-dark)' : undefined,
-               }}
-            >
-               {agent.getName().toString()}
-            </p>
+         <div className='d-flex flex-column w-100'>
+            <div className='d-flex w-100 justify-content-between pe-2'>
+               <p
+                  className='fs-5 mb-1 d-flex'
+                  style={{
+                     letterSpacing: '-0.05rem',
+                     color: active ? 'var(--geist-violet-dark)' : undefined,
+                  }}
+               >
+                  {agent.getName().toString()}
+               </p>
+
+               <DeleteAgent agent={agent} />
+            </div>
+
             <p className='mb-0'>{agent.getSpecialty()}</p>
             <p className='mb-0  text-muted'>{agent.getExtension()}</p>
          </div>
