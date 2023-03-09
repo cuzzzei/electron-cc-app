@@ -1,8 +1,10 @@
-import { CallList as CallListClass } from '/@/types/call'
-import { getColumns } from '../data/tableColumns'
+import { Call, CallList as CallListClass } from '/@/types/call'
 import { CreateCall } from '../components/CreateCall'
-import { Table } from '/@/components/Table'
 import { DeleteAll } from '/@/features/calls/components/DeleteAll'
+import { getColumns } from '../data/tableColumns'
+import { Table } from '/@/components/Table'
+import { UpdateCall } from '/@/features/calls/components/UpdateCall'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 interface CallListProps {
@@ -17,20 +19,42 @@ const Container = styled.div`
 `
 
 export const CallList = ({ callList }: CallListProps) => {
+   const [selectedCallId, setSelectedCallId] = useState('')
+   const [openEdit, setOpenEdit] = useState(false)
+
+   function handleOpenEdit(row: Call) {
+      setSelectedCallId(row.getId())
+      setOpenEdit(true)
+   }
+
+   const call = callList.findById(selectedCallId)
+
    return (
-      <Container className='p-4 p-lg-5'>
-         <div className='d-flex gap-3'>
-            <h3 className='fw-bold'>Calls</h3>
+      <>
+         {call && (
+            <UpdateCall
+               call={call}
+               callList={callList}
+               isOpen={openEdit}
+               setIsOpen={setOpenEdit}
+            />
+         )}
 
-            <CreateCall callList={callList} />
-            <DeleteAll callList={callList} />
-         </div>
+         <Container className='p-4 p-lg-5'>
+            <div className='d-flex gap-3'>
+               <h3 className='fw-bold'>Calls</h3>
 
-         <Table
-            columns={getColumns(callList)}
-            data={callList.toArray().map((call) => call)}
-            emptyMessage='No calls received'
-         />
-      </Container>
+               <CreateCall callList={callList} />
+               <DeleteAll callList={callList} />
+            </div>
+
+            <Table
+               columns={getColumns(callList)}
+               data={callList.toArray().map((call) => call)}
+               emptyMessage='No calls received'
+               onRowClick={handleOpenEdit}
+            />
+         </Container>
+      </>
    )
 }

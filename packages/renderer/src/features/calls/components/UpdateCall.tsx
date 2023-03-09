@@ -1,21 +1,26 @@
+import { Button } from '/@/components/Button'
 import { CallForm, CallFormData } from '../components/CallForm'
 import { CallList, Call, CallNode } from '/@/types/call'
 import { Modal } from '/@/components/Modal'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
-import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
-import { Button } from '/@/components/Button'
 
 interface UpdateCallProps {
    call: Call
    callList: CallList
+   isOpen: boolean
+   setIsOpen: (v: boolean) => void
 }
 
-export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
+export const UpdateCall = ({
+   call,
+   callList,
+   isOpen,
+   setIsOpen,
+}: UpdateCallProps) => {
    const toast = useToast()
-   const [isOpen, setIsOpen] = useState(false)
    const { render } = useAppContext()
 
    function onSubmit(data: CallFormData) {
@@ -50,13 +55,6 @@ export const UpdateCall = ({ call, callList }: UpdateCallProps) => {
          isOpen={isOpen}
          onClose={() => setIsOpen(false)}
          title='Update call'
-         triggerButton={
-            <div>
-               <Button onClick={() => setIsOpen(true)}>
-                  <i className='fa fa-pencil' />
-               </Button>
-            </div>
-         }
          confirmButton={
             <Button
                type='submit'

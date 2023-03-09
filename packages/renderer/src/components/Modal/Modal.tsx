@@ -8,7 +8,7 @@ interface ModalProps {
    children: React.ReactNode
    onClose: () => void
 
-   triggerButton: React.ReactElement
+   triggerButton?: React.ReactElement
    confirmButton?: React.ReactElement
 }
 
