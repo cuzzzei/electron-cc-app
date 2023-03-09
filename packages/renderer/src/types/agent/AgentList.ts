@@ -144,6 +144,20 @@ export class AgentList {
       return null
    }
 
+   public findById(id: string): AgentNodeRef {
+      let temp: AgentNodeRef = this.head.getNext()
+
+      while (temp !== null && temp !== this.head) {
+         if (temp.getValue().getId() === id) {
+            return temp
+         }
+
+         temp = temp.getNext()
+      }
+
+      return null
+   }
+
    public retrieve(node: AgentNode): Agent {
       if (!this.isValidPosition(node)) {
          throw new ListException('Invalid position')
@@ -195,20 +209,6 @@ export class AgentList {
       }
 
       return filteredList
-   }
-
-   public findById(id: string): AgentNodeRef {
-      let temp: AgentNodeRef = this.head.getNext()
-
-      while (temp !== null && temp !== this.head) {
-         if (temp.getValue().getId() === id) {
-            return temp
-         }
-
-         temp = temp.getNext()
-      }
-
-      return null
    }
 
    private swapNodes(nodeA: AgentNode, nodeB: AgentNode) {}
