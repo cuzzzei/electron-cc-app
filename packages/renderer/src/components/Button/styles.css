@@ -37,25 +37,25 @@
 }
 
 .button-red {
-   background-color: #ee0000;
-   border-color: #ee0000;
+   background-color: var(--geist-error);
+   border-color: var(--geist-error);
 }
 .button-red:hover {
-   color: #ee0000;
+   color: var(--geist-error);
 }
 
 .button-yellow {
-   background-color: #f5a623;
-   border-color: #f5a623;
+   background-color: var(--geist-warning);
+   border-color: var(--geist-warning);
 }
 .button-yellow:hover {
-   color: #f5a623;
+   color: var(--geist-warning);
 }
 
 .button-gray {
    background-color: white;
-   color: #666;
-   border-color: #eaeaea;
+   color: var(--accents-5);
+   border-color: var(--accents-2);
 }
 .button-gray:hover {
    border-color: black;
