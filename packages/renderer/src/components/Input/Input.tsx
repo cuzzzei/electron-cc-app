@@ -51,6 +51,7 @@ export const Input = ({
             size={size}
             maxLength={size}
             disabled={disabled}
+            aria-label={label}
             {...registration}
             {...rest}
          />

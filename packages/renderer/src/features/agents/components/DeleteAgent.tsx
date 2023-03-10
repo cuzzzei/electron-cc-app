@@ -46,6 +46,7 @@ export function DeleteAgent({ agent }: DeleteAgentProps) {
          onClose={() => setIsOpen(false)}
          triggerButton={
             <Button
+               aria-label={`Delete agent ${agent.getName()}`}
                colorScheme='gray'
                variant='ghost'
                onClick={(e) => {

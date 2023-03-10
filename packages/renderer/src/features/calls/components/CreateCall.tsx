@@ -1,3 +1,4 @@
+import { Button } from '/@/components/Button'
 import { CallForm, CallFormData } from '../components/CallForm'
 import { CallList, Call } from '/@/types/call'
 import { Modal } from '/@/components/Modal'
@@ -6,7 +7,7 @@ import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
-import { Button } from '/@/components/Button'
+import { v4 as uuid } from 'uuid'
 
 interface CreateCallProps {
    callList: CallList
@@ -24,7 +25,7 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
 
    function onSubmit(data: CallFormData) {
       const newCall = new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name(data.clientFirstName, data.clientLastName),
          description: data.description,
          start: Time.fromString(data.startTime),

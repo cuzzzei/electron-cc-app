@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Toast, Status } from '/@/components/Toast'
+import { v4 as uuid } from 'uuid'
 
 interface ToastProviderProps {
    children: React.ReactNode
@@ -37,7 +38,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
    const [list, setList] = useState<Array<ToastConfig & { id: string }>>([])
 
    function addToast(toast: ToastConfig) {
-      const id = crypto.randomUUID()
+      const id = uuid()
 
       setList((prev) => {
          if (prev.length > 5) {

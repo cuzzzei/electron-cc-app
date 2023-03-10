@@ -11,6 +11,7 @@ import { Agent } from '/@/types/agent'
 import { CallList } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
+import { v4 as uuid } from 'uuid'
 
 export const CreateAgent = () => {
    const toast = useToast()
@@ -19,7 +20,7 @@ export const CreateAgent = () => {
 
    function onSubmit(data: AgentFormData) {
       const newAgent = new Agent({
-         id: crypto.randomUUID(),
+         id: uuid(),
          age: data.age,
          callHistory: new CallList(),
          extension: data.extension,
@@ -68,6 +69,9 @@ export const CreateAgent = () => {
             <Button
                type='submit'
                form='create-agent'
+               onClick={() => {
+                  console.log('clicked')
+               }}
             >
                Create
             </Button>

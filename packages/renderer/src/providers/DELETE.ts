@@ -3,10 +3,11 @@ import { AgentList } from '/@/types/agent'
 import { CallList, Call } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
+import { v4 as uuid } from 'uuid'
 
 export function fill(list: AgentList, render: () => void) {
    const agent1 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Ronaldo', 'Nazario'),
       age: 22,
       callHistory: new CallList(),
@@ -18,7 +19,7 @@ export function fill(list: AgentList, render: () => void) {
    })
 
    const agent2 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Marco', 'Maidana'),
       age: 25,
       callHistory: new CallList(),
@@ -30,7 +31,7 @@ export function fill(list: AgentList, render: () => void) {
    })
 
    const agent3 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Manuel', 'Martinez'),
       age: 33,
       callHistory: new CallList(),
@@ -42,7 +43,7 @@ export function fill(list: AgentList, render: () => void) {
    })
 
    const agent4 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Maria', 'Morales'),
       age: 24,
       callHistory: new CallList(),
@@ -54,7 +55,7 @@ export function fill(list: AgentList, render: () => void) {
    })
 
    const agent5 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Daniela', 'Juarez'),
       age: 44,
       callHistory: new CallList(),
@@ -66,7 +67,7 @@ export function fill(list: AgentList, render: () => void) {
    })
 
    const agent6 = new Agent({
-      id: crypto.randomUUID(),
+      id: uuid(),
       name: new Name('Maria', 'Salazar'),
       age: 44,
       callHistory: new CallList(),
@@ -78,7 +79,7 @@ export function fill(list: AgentList, render: () => void) {
    })
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Claire', 'Robinson'),
          description: 'Printer is unresponsive',
          start: new Time(10, 20),
@@ -88,7 +89,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Zachariah', 'Leonard'),
          description: 'Printer won’t print',
          start: new Time(7, 56),
@@ -98,7 +99,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Laura', 'Henderson'),
          description: 'Bad print quality',
          start: new Time(8, 48),
@@ -108,7 +109,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Yahya', 'Silva'),
          description: 'Uncertain about printer security',
          start: new Time(8, 1),
@@ -118,7 +119,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Wendy', 'Reese'),
          description: 'My printer won’t scan',
          start: new Time(11, 10),
@@ -128,7 +129,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Isaac', 'Hodge'),
          description: 'Too many paper jams',
          start: new Time(12, 3),
@@ -138,7 +139,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Davina', 'Munoz'),
          description: 'Prints too slowly',
          start: new Time(12, 10),
@@ -148,7 +149,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Alannah', 'Wilcox'),
          description: 'Printing is too expensive',
          start: new Time(13, 3),
@@ -158,7 +159,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Jasper', 'Hayes'),
          description: 'I can’t print from my mobile device',
          start: new Time(13, 20),
@@ -168,7 +169,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Theodore', 'Beck'),
          description: 'Wi-Fi printing takes too long',
          start: new Time(14, 5),
@@ -178,7 +179,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Fletcher', 'Dixon'),
          description: 'Nothing is Printing',
          start: new Time(14, 40),
@@ -188,7 +189,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Damian', 'Gray'),
          description: 'Cartridge or Toner Issue',
          start: new Time(15, 15),
@@ -198,7 +199,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Anna', 'Parker'),
          description: 'Creased Prints',
          start: new Time(15, 30),
@@ -208,7 +209,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Danyal', 'Farley'),
          description: 'Uneven Print Quality',
          start: new Time(15, 36),
@@ -218,7 +219,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Aiden', 'Lang'),
          description: 'The ink was crazy-expensive',
          start: new Time(7, 15),
@@ -228,7 +229,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Eden', 'Kelly'),
          description: 'The wireless networking rarely connected without a fuss',
          start: new Time(7, 20),
@@ -238,7 +239,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Sulayman', 'Franco'),
          description: 'No local stores sell “the right” ink cartridges anymore',
          start: new Time(7, 25),
@@ -248,7 +249,7 @@ export function fill(list: AgentList, render: () => void) {
    )
    agent6.getCallHistory().insertOrdered(
       new Call({
-         id: crypto.randomUUID(),
+         id: uuid(),
          clientName: new Name('Gareth', 'Estrada'),
          description: 'Doesn not know hot to turn on the printer',
          start: new Time(8, 14),
@@ -258,7 +259,7 @@ export function fill(list: AgentList, render: () => void) {
    )
 
    const agent7 = new Agent(agent6)
-   agent7.setId(crypto.randomUUID())
+   agent7.setId(uuid())
    agent7.setName(new Name('Another', 'Agent'))
 
    list.insertAtStart(agent1)

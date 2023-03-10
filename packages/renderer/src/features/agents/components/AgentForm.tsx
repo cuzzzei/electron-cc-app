@@ -3,6 +3,7 @@ import { Form } from '/@/components/Form'
 import { Input } from '/@/components/Input'
 import { Select } from '/@/components/Select'
 import { specialties, Specialty } from '/@/types/Specialty'
+import { Button } from '../../../components/Button/Button'
 
 export interface AgentFormData {
    extension: string
@@ -24,8 +25,8 @@ interface AgentFormProps {
 const schema = yup
    .object({
       extension: yup.string().length(4).required(),
-      firstName: yup.string().min(5).required(),
-      lastName: yup.string().min(5).required(),
+      firstName: yup.string().min(3).required(),
+      lastName: yup.string().min(3).required(),
       age: yup.number().required(),
       overtime: yup.number().required(),
       specialty: yup.string().required(),
@@ -128,6 +129,8 @@ export const AgentForm = ({ id, onSubmit, defaultValues }: AgentFormProps) => {
                      required
                   />
                </div>
+
+               <Button type='submit'>PENESAURIO</Button>
             </>
          )}
       </Form>

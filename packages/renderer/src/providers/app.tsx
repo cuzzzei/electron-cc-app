@@ -1,12 +1,8 @@
-import React, { createContext, useContext, useEffect, useRef } from 'react'
-import { HashRouter } from 'react-router-dom'
-import { useRender } from '/@/hooks'
-
-// === BORRAR =====
 import { AgentList } from '/@/types/agent'
-import { fill } from '/@/providers/DELETE'
+import { HashRouter } from 'react-router-dom'
 import { ToastProvider } from '/@/providers/ToastProvider'
-// === BORRAR =====
+import { useRender } from '/@/hooks'
+import React, { createContext, useContext, useRef } from 'react'
 
 interface AppContextType {
    agentList: AgentList
@@ -17,9 +13,9 @@ export function useAppContext() {
    return useContext(AppContext) as AppContextType
 }
 
-function useInitAppContext() {
+export function useInitAppContext(initialValue?: AgentList) {
    const render = useRender()
-   const agentList = useRef<AgentList>(new AgentList())
+   const agentList = useRef<AgentList>(initialValue ?? new AgentList())
 
    if (!agentList?.current) {
       agentList.current = new AgentList()
@@ -31,19 +27,16 @@ function useInitAppContext() {
    }
 }
 
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-   const context = useInitAppContext()
-   const { agentList, render } = context
-
-   // ==== BORRAR =====
-   const renderRef = useRef(false)
-
-   useEffect(() => {
-      if (!renderRef.current) {
-         fill(agentList, render)
-         renderRef.current = true
-      }
-   }, [])
+export const AppProvider = ({
+   children,
+   initialValues,
+}: {
+   children: React.ReactNode
+   initialValues?: {
+      agentList: AgentList
+   }
+}) => {
+   const context = useInitAppContext(initialValues?.agentList)
 
    return (
       <HashRouter>
