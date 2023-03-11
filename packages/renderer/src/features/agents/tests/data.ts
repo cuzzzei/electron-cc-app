@@ -9,10 +9,10 @@ export function createAgentList(): AgentList {
 
    const agent1 = new Agent({
       id: (id++).toString(),
-      name: new Name('Ronaldo', 'Nazario'),
+      name: new Name('Gary', 'Andersen'),
       age: 22,
       callHistory: new CallList(),
-      extension: '3333',
+      extension: '8329',
       startTime: new Time(7, 0),
       endTime: new Time(8, 50),
       overtime: 10,
@@ -21,10 +21,10 @@ export function createAgentList(): AgentList {
 
    const agent2 = new Agent({
       id: (id++).toString(),
-      name: new Name('Marco', 'Maidana'),
+      name: new Name('Ricky', 'Berg'),
       age: 25,
       callHistory: new CallList(),
-      extension: '4444',
+      extension: '2345',
       startTime: new Time(7, 0),
       endTime: new Time(9, 40),
       overtime: 11,
@@ -33,10 +33,10 @@ export function createAgentList(): AgentList {
 
    const agent3 = new Agent({
       id: (id++).toString(),
-      name: new Name('Manuel', 'Martinez'),
+      name: new Name('Preston', 'Gates'),
       age: 33,
       callHistory: new CallList(),
-      extension: '5555',
+      extension: '5463',
       startTime: new Time(7, 0),
       endTime: new Time(15, 0),
       overtime: 13,
@@ -45,10 +45,10 @@ export function createAgentList(): AgentList {
 
    const agent4 = new Agent({
       id: (id++).toString(),
-      name: new Name('Maria', 'Morales'),
+      name: new Name('Salma', 'Howe'),
       age: 24,
       callHistory: new CallList(),
-      extension: '6666',
+      extension: '9831',
       startTime: new Time(7, 0),
       endTime: new Time(15, 0),
       overtime: 13,
@@ -57,26 +57,14 @@ export function createAgentList(): AgentList {
 
    const agent5 = new Agent({
       id: (id++).toString(),
-      name: new Name('Daniela', 'Juarez'),
+      name: new Name('Georgiana', 'Carter'),
       age: 44,
       callHistory: new CallList(),
-      extension: '7777',
+      extension: '2391',
       startTime: new Time(7, 0),
       endTime: new Time(16, 0),
       overtime: 10,
       specialty: 'Linux',
-   })
-
-   const agent6 = new Agent({
-      id: (id++).toString(),
-      name: new Name('Maria', 'Salazar'),
-      age: 44,
-      callHistory: new CallList(),
-      extension: '8888',
-      startTime: new Time(7, 0),
-      endTime: new Time(16, 0),
-      overtime: 10,
-      specialty: 'Printers',
    })
 
    list.insertAtStart(agent1)
@@ -84,7 +72,6 @@ export function createAgentList(): AgentList {
    list.insertAtStart(agent3)
    list.insertAtStart(agent4)
    list.insertAtStart(agent5)
-   list.insertAtStart(agent6)
 
    return list
 }

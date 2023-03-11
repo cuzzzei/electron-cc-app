@@ -23,7 +23,7 @@ const agent = new Agent({
 
 function App() {
    const { agentList } = useAppContext()
-   const agent = agentList.getFirstPosition()!.getValue()
+   const agent = agentList.getLastPosition()!.getValue()
 
    return (
       <>

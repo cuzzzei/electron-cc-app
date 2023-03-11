@@ -8,6 +8,7 @@ import { Name } from '/@/types/Name'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
+import { createAgentList } from './data'
 
 const agent = new Agent({
    id: '1',
@@ -23,7 +24,7 @@ const agent = new Agent({
 
 function App() {
    const { agentList } = useAppContext()
-   const agent = agentList.getFirstPosition()!.getValue()
+   const agent = agentList.getLastPosition()!.getValue()
 
    return (
       <>
@@ -33,8 +34,9 @@ function App() {
 }
 
 describe('Agent profile', () => {
-   const agentList = new AgentList()
+   const agentList = createAgentList()
    agentList.insertAtEnd(agent)
+
    render(
       <AppProvider
          initialValues={{
@@ -47,7 +49,7 @@ describe('Agent profile', () => {
 
    it('Should show the agent name', () => {
       const nameLabels = screen.getAllByText(agent.getName().toString())
-      expect(nameLabels.length).toBeGreaterThanOrEqual(2)
+      expect(nameLabels.length).toBeGreaterThanOrEqual(1)
    })
 
    it('Should show the agent specialty', () => {

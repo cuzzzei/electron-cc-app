@@ -40,9 +40,9 @@ export const AppProvider = ({
 }) => {
    const context = useInitAppContext(initialValues?.agentList)
 
-   //useEffect(() => {
-   //   fill(context.agentList, context.render)
-   //}, [])
+   useEffect(() => {
+      fill(context.agentList, context.render)
+   }, [])
 
    return (
       <HashRouter>
