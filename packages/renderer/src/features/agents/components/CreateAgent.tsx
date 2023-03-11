@@ -69,9 +69,6 @@ export const CreateAgent = () => {
             <Button
                type='submit'
                form='create-agent'
-               onClick={() => {
-                  console.log('clicked')
-               }}
             >
                Create
             </Button>

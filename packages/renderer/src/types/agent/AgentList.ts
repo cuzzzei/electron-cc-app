@@ -63,8 +63,10 @@ export class AgentList {
       return this.length
    }
 
-   public getFirstPosition(): AgentNode {
-      return this.head as AgentNode
+   public getFirstPosition(): AgentNodeRef {
+      if (this.isEmpty()) return null
+
+      return this.head.getNext()
    }
 
    public getLastPosition(): AgentNodeRef {

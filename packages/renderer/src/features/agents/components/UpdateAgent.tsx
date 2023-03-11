@@ -62,6 +62,7 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
                <Button
                   onClick={() => setIsOpen(true)}
                   colorScheme='gray'
+                  aria-label='Edit agent profile'
                >
                   <div style={{ width: '15px' }}>
                      <UserIcon />

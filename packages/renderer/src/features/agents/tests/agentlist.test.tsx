@@ -3,6 +3,7 @@ import { AppProvider, useAppContext } from '/@/providers/app'
 import { CreateAgent } from '/@/features/agents/components/CreateAgent'
 import { createAgentList } from './data'
 import { describe, expect, test } from 'vitest'
+import { fillInput } from '/@/testUtils'
 import { render, fireEvent } from '@testing-library/react'
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
@@ -19,7 +20,7 @@ function App() {
    )
 }
 
-describe('Agents', () => {
+describe('Agent List', () => {
    const initialList = createAgentList()
 
    render(
@@ -51,7 +52,7 @@ describe('Agents', () => {
 
       for (let i = 0; i < inputs.length; i++) {
          const [label, value] = inputs[i]
-         const filledInput = await fillInput(label, value)
+         const filledInput = await fillInput(label, value, user)
 
          // @ts-ignore
          expect(filledInput.value).toBe(value)
@@ -82,9 +83,3 @@ describe('Agents', () => {
       expect(screen.queryByText('John Doe')).toBeNull()
    })
 })
-
-async function fillInput(label: string, value: string) {
-   const input = screen.getByLabelText(label)
-   await user.type(input, value)
-   return input
-}

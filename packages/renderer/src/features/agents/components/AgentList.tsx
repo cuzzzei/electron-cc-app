@@ -52,7 +52,7 @@ function AgentItem({ agent }: AgentItemProps) {
          <Avatar
             className='rounded-circle'
             seed={agent.getName().toString()}
-            style={{ width: '4.5rem' }}
+            style={{ width: '5rem' }}
          />
 
          <div className='d-flex flex-column w-100'>

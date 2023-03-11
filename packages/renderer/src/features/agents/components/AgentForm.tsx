@@ -3,7 +3,6 @@ import { Form } from '/@/components/Form'
 import { Input } from '/@/components/Input'
 import { Select } from '/@/components/Select'
 import { specialties, Specialty } from '/@/types/Specialty'
-import { Button } from '../../../components/Button/Button'
 
 export interface AgentFormData {
    extension: string
@@ -129,8 +128,6 @@ export const AgentForm = ({ id, onSubmit, defaultValues }: AgentFormProps) => {
                      required
                   />
                </div>
-
-               <Button type='submit'>PENESAURIO</Button>
             </>
          )}
       </Form>
