@@ -133,11 +133,14 @@ export class AgentList {
       this.insert(null, agent)
    }
 
-   public find(agent: Agent): AgentNodeRef {
+   public find(param: Agent | ((agent: Agent) => boolean)): AgentNodeRef {
       let aux: AgentNodeRef = this.head.getNext()
 
       while (aux !== null && aux !== this.head) {
-         if (aux.getValue().isEqual(agent)) {
+         const currentAgent = aux.getValue()
+         if (param instanceof Agent) {
+            if (currentAgent.isEqual(param)) return aux
+         } else if (param(currentAgent)) {
             return aux
          }
 

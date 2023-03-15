@@ -19,6 +19,17 @@ export const CreateAgent = () => {
    const { agentList, render } = useAppContext()
 
    function onSubmit(data: AgentFormData) {
+      const alreadyTaken = agentList.find(
+         (agent) => agent.getExtension() === data.extension
+      )
+
+      if (alreadyTaken) {
+         return toast({
+            title: `Extension ${data.extension} already taken`,
+            status: 'error',
+         })
+      }
+
       const newAgent = new Agent({
          id: uuid(),
          age: data.age,
@@ -32,7 +43,7 @@ export const CreateAgent = () => {
       })
 
       try {
-         agentList.insertAtEnd(newAgent)
+         agentList.insertAtStart(newAgent)
          setIsOpen(false)
 
          toast({

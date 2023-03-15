@@ -23,14 +23,23 @@ interface AgentFormProps {
 
 const schema = yup
    .object({
-      extension: yup.string().length(4).required(),
-      firstName: yup.string().min(3).required(),
-      lastName: yup.string().min(3).required(),
-      age: yup.number().required(),
-      overtime: yup.number().required(),
-      specialty: yup.string().required(),
-      startTime: yup.string().required(),
-      endTime: yup.string().required(),
+      extension: yup
+         .string()
+         .length(4, 'Extension must be exactly 4 chars')
+         .required(),
+      firstName: yup
+         .string()
+         .min(3, 'First name must be at least 3 chars')
+         .required(),
+      lastName: yup
+         .string()
+         .min(3, 'Last name must be at least 3 chars')
+         .required(),
+      age: yup.number().typeError('Age is required').required(),
+      overtime: yup.number().typeError('Overtime is required').required(),
+      specialty: yup.string().required('Specialty is required'),
+      startTime: yup.string().required('Start time is required'),
+      endTime: yup.string().required('End time is required'),
    })
    .required()
 

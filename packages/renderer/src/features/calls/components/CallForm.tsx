@@ -18,8 +18,14 @@ interface CallFormProps {
 
 const schema = yup
    .object({
-      clientFirstName: yup.string().min(4).required(),
-      clientLastName: yup.string().min(4).required(),
+      clientFirstName: yup
+         .string()
+         .min(4, 'First name must be at least 4 chars')
+         .required(),
+      clientLastName: yup
+         .string()
+         .min(4, 'Last name must be at least 4 chars')
+         .required(),
       startTime: yup.string().required(),
       duration: yup.string().required(),
    })

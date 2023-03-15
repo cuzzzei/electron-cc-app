@@ -138,10 +138,15 @@ export class CallList {
       this.insert(previous, call)
    }
 
-   public find(call: Call): CallNodeRef {
+   public find(param: Call | ((call: Call) => boolean)): CallNodeRef {
       let temp = this.head
 
-      while (temp !== null && temp.getValue().isDifferent(call)) {
+      while (
+         temp !== null &&
+         (param instanceof Call
+            ? temp.getValue().isDifferent(param)
+            : param(temp.getValue()))
+      ) {
          temp = temp.getNext()
       }
 

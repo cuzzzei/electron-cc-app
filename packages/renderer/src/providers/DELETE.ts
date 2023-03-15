@@ -5,7 +5,11 @@ import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 import { v4 as uuid } from 'uuid'
 
+let filled = false
+
 export function fill(list: AgentList, render: () => void) {
+   if (filled) return
+
    const agent1 = new Agent({
       id: uuid(),
       name: new Name('Ronaldo', 'Nazario'),
@@ -271,4 +275,5 @@ export function fill(list: AgentList, render: () => void) {
    list.insertAtStart(agent7)
 
    render()
+   filled = true
 }

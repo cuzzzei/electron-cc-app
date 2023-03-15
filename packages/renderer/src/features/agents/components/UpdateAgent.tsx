@@ -19,10 +19,21 @@ interface UpdateAgentProps {
 
 export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
    const toast = useToast()
-   const { render } = useAppContext()
+   const { render, agentList } = useAppContext()
    const [isOpen, setIsOpen] = useState(false)
 
    function onSubmit(data: AgentFormData) {
+      const alreadyTaken = agentList.find(
+         (agent) => agent.getExtension() === data.extension
+      )
+
+      if (alreadyTaken) {
+         return toast({
+            title: `Extension ${data.extension} already taken`,
+            status: 'error',
+         })
+      }
+
       // Update data
       agent.setAge(data.age)
       agent.setExtension(data.extension)
