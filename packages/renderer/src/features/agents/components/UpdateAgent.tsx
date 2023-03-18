@@ -41,7 +41,7 @@ export const UpdateAgent = ({ agent }: UpdateAgentProps) => {
       agent.setName(new Name(data.firstName, data.lastName))
       agent.setOvertime(data.overtime)
       agent.setSpecialty(data.specialty)
-      agent.setStartTime(Time.fromString(data.endTime))
+      agent.setStartTime(Time.fromString(data.startTime))
 
       toast({
          title: 'Agent updated successfully',

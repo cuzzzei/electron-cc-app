@@ -20,7 +20,7 @@ interface ToastConfig {
    duration?: number
 }
 
-const HIDE_TIMER = 2500
+const HIDE_TIMER = 3000
 
 const Container = styled.div`
    padding: 15px;

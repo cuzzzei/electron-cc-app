@@ -264,7 +264,44 @@ export function fill(list: AgentList, render: () => void) {
 
    const agent7 = new Agent(agent6)
    agent7.setId(uuid())
-   agent7.setName(new Name('Another', 'Agent'))
+   agent7.setExtension('8321')
+   agent7.setName(new Name('Briony', 'AgGloverent'))
+
+   const agent8 = new Agent({
+      age: 18,
+      callHistory: new CallList(),
+      startTime: new Time(7, 0),
+      endTime: new Time(13, 0),
+      extension: '8217',
+      id: uuid(),
+      name: new Name('Keyaan', 'Cline'),
+      overtime: 1,
+      specialty: 'Linux',
+   })
+
+   const agent9 = new Agent({
+      age: 19,
+      callHistory: new CallList(),
+      startTime: new Time(10, 0),
+      endTime: new Time(9, 0),
+      extension: '3299',
+      id: uuid(),
+      name: new Name('Wilfred', 'Blackburn'),
+      overtime: 0,
+      specialty: 'Printers',
+   })
+
+   const agent10 = new Agent({
+      age: 22,
+      callHistory: new CallList(),
+      startTime: new Time(9, 30),
+      endTime: new Time(16, 0),
+      extension: '5424',
+      id: uuid(),
+      name: new Name('Brendon', 'Parrish'),
+      overtime: 0,
+      specialty: 'Laptops',
+   })
 
    list.insertAtStart(agent1)
    list.insertAtStart(agent2)
@@ -273,6 +310,9 @@ export function fill(list: AgentList, render: () => void) {
    list.insertAtStart(agent5)
    list.insertAtStart(agent6)
    list.insertAtStart(agent7)
+   list.insertAtStart(agent8)
+   list.insertAtStart(agent9)
+   list.insertAtStart(agent10)
 
    render()
    filled = true

@@ -38,15 +38,15 @@ const Content = styled.div<{ show: boolean }>`
    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
 
    animation-name: ${(props) => (props.show ? 'show' : 'hide')};
-   animation-duration: ${(props) => (props.show ? '0.35s' : '0.1s')};
+   animation-duration: ${(props) => (props.show ? '0.15s' : '0.1s')};
 
    @keyframes show {
       from {
-         opacity: 0;
+         scale: 0;
          transform: translate3d(0, -40px, 0);
       }
       to {
-         opacity: 1;
+         scale: 1;
          transform: translate3d(0, 0, 0);
       }
    }
