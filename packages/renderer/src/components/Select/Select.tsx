@@ -13,6 +13,8 @@ type SelectProps = {
    required?: boolean
    registration: Partial<UseFormRegisterReturn>
    children: React.ReactNode
+   style?: React.CSSProperties
+   fullWidth?: boolean
 }
 
 export const Select = ({
@@ -23,9 +25,17 @@ export const Select = ({
    required = false,
    registration,
    children,
+   style,
+   fullWidth = false,
 }: SelectProps) => {
    return (
-      <div className={`form-group text-start  ${className}`}>
+      <div
+         className={`form-group text-start ${className}`}
+         style={{
+            ...style,
+            width: fullWidth ? '100%' : undefined,
+         }}
+      >
          <label htmlFor={label}>
             {label}
 
@@ -34,8 +44,13 @@ export const Select = ({
 
          <select
             id={label}
-            className={`form-select mt-2 ${error?.message && 'is-invalid'}`}
+            className={`form-select mt-2 ${
+               error?.message && 'is-invalid'
+            } ${className}`}
             {...registration}
+            style={{
+               width: fullWidth ? '100%' : undefined,
+            }}
          >
             {children}
          </select>

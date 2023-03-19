@@ -6,6 +6,7 @@ interface ModalProps {
    title: string
    isOpen: boolean
    children: React.ReactNode
+   closeButtonText?: string
    onClose: () => void
 
    triggerButton?: React.ReactElement
@@ -70,6 +71,7 @@ export const Modal = ({
    title,
    children,
    triggerButton,
+   closeButtonText = 'Cancel',
    confirmButton,
 }: ModalProps) => {
    const [show, setShow] = useState(true)
@@ -127,7 +129,7 @@ export const Modal = ({
                            onClick={() => onClose()}
                            style={{ marginRight: '15px' }}
                         >
-                           Cancel
+                           {closeButtonText}
                         </Button>
 
                         {confirmButton}
