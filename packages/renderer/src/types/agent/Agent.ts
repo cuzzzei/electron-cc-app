@@ -2,7 +2,7 @@ import { CallList } from '/@/types/call'
 import { Name } from '/@/types/Name'
 import { Specialty } from '/@/types/Specialty'
 import { Time } from '/@/types/Time'
-import { AgentJSON } from './JSON'
+import { AgentJSON } from '../JSON'
 
 export interface AgentProps {
    id: string
@@ -171,9 +171,30 @@ export class Agent {
 
    public toJSON(): AgentJSON {
       return {
-         ...this,
+         id: this.id,
+         age: this.age,
+         extension: this.extension,
+         overtime: this.overtime,
+         specialty: this.specialty,
+         name: this.name.toJSON(),
+         startTime: this.startTime.toJSON(),
+         endTime: this.endTime.toJSON(),
          callHistory: this.callHistory.toJSON(),
       }
+   }
+
+   public static fromJSON(json: AgentJSON): Agent {
+      const agent = new Agent()
+      agent.id = json.id
+      agent.extension = json.extension
+      agent.age = json.age
+      agent.overtime = json.overtime
+      agent.specialty = json.specialty
+      agent.name = Name.fromJSON(json.name)
+      agent.startTime = Time.fromJSON(json.startTime)
+      agent.endTime = Time.fromJSON(json.endTime)
+      agent.callHistory = CallList.fromJSON(json.callHistory)
+      return agent
    }
 
    public static compareByName(a: Agent, b: Agent): number {

@@ -1,6 +1,6 @@
 import { Agent } from './Agent'
 import { AgentNode, AgentNodeRef } from './AgentNode'
-import { AgentJSON } from '/@/types/agent/JSON'
+import { AgentJSON } from '../JSON'
 import { ListException } from '/@/types/ListException'
 
 export class AgentList {
@@ -91,12 +91,6 @@ export class AgentList {
       }
 
       return pos.getNext()
-   }
-
-   public toString(): string {
-      return this.toArray()
-         .map((agent) => agent.toString())
-         .join('\n\n\n')
    }
 
    public insert(position: AgentNodeRef, data: Agent) {
@@ -210,6 +204,12 @@ export class AgentList {
       return filteredList
    }
 
+   public toString(): string {
+      return this.toArray()
+         .map((agent) => agent.toString())
+         .join('\n\n\n')
+   }
+
    public toArray(): Array<Agent> {
       const result: Array<Agent> = []
       let temp: AgentNodeRef = this.head.getNext()
@@ -233,6 +233,22 @@ export class AgentList {
       }
 
       return result
+   }
+
+   public fromJSON(data: Array<AgentJSON>): AgentList {
+      const list = new AgentList()
+
+      data.forEach((agent) => {
+         try {
+            list.insertAtEnd(Agent.fromJSON(agent))
+         } catch (err) {
+            if (err instanceof Error) {
+               throw new Error(err.message + ' at AgentList.fromJSON')
+            }
+         }
+      })
+
+      return list
    }
 
    private swapNodes(nodeA: AgentNode, nodeB: AgentNode) {}

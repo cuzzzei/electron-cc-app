@@ -1,3 +1,5 @@
+import { NameJSON } from '/@/types/JSON'
+
 export class Name {
    private first: string
    private last: string
@@ -34,6 +36,17 @@ export class Name {
       this.first = name.first
       this.last = name.last
       return this
+   }
+
+   public toJSON(): NameJSON {
+      return {
+         last: this.last,
+         first: this.first,
+      }
+   }
+
+   public static fromJSON(json: NameJSON): Name {
+      return new Name(json.first, json.last)
    }
 
    public isEqual(other: Name): boolean {

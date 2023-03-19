@@ -31,17 +31,24 @@ export const Form = <
    schema,
    style,
 }: FormProps<TFormData, Schema>) => {
-   const methods = useForm<TFormData>({
+   let methods = useForm<TFormData>({
       resolver: yupResolver(schema),
       defaultValues,
    })
+
+   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      const submitHandler = methods.handleSubmit(onSubmit)
+      submitHandler(e)
+
+      methods.reset()
+   }
 
    return (
       <form
          id={id}
          noValidate
          className={`d-flex flex-column gap-4 needs-validation ${className}`}
-         onSubmit={methods.handleSubmit(onSubmit)}
+         onSubmit={handleSubmit}
          style={style}
       >
          {children(methods)}

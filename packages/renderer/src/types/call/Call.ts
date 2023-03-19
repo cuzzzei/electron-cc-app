@@ -1,3 +1,4 @@
+import { CallJSON } from '/@/types/JSON'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 
@@ -73,25 +74,6 @@ export class Call {
       this.description = description
    }
 
-   public static fromString(s: string): Call {
-      const [
-         id,
-         clientFirstName,
-         clientLastName,
-         startTimeStr,
-         duration,
-         description,
-      ] = s.split(' | ')
-
-      return new Call({
-         id,
-         clientName: new Name(clientFirstName, clientLastName),
-         start: Time.fromString(startTimeStr),
-         duration: Time.fromString(duration),
-         description,
-      })
-   }
-
    public toString(): string {
       let result: string = ''
       result += this.id + ' | '
@@ -110,6 +92,26 @@ export class Call {
       this.clientName.assign(other.clientName)
       this.description = other.description
       return this
+   }
+
+   public toJSON(): CallJSON {
+      return {
+         id: this.id,
+         description: this.description,
+         startTime: this.startTime.toJSON(),
+         duration: this.duration.toJSON(),
+         clientName: this.clientName.toJSON(),
+      }
+   }
+
+   public static fromJSON(data: CallJSON): Call {
+      const call = new Call()
+      call.id = data.id
+      call.description = data.description
+      call.startTime = Time.fromJSON(data.startTime)
+      call.duration = Time.fromJSON(data.duration)
+      call.clientName = Name.fromJSON(data.clientName)
+      return call
    }
 
    public isEqual(other: Call): boolean {

@@ -1,5 +1,6 @@
 import { Call } from './Call'
 import { CallNode, CallNodeRef } from './CallNode'
+import { CallJSON } from '/@/types/JSON'
 import { ListException } from '/@/types/ListException'
 
 export class CallList {
@@ -85,12 +86,6 @@ export class CallList {
 
    public getNextPosition(node: CallNode): CallNodeRef {
       return node.getNext()
-   }
-
-   public toString(): string {
-      return this.toArray()
-         .map((call) => call.toString())
-         .join('\n')
    }
 
    public insert(position: CallNodeRef, call: Call) {
@@ -216,6 +211,12 @@ export class CallList {
       return filteredList
    }
 
+   public toString(): string {
+      return this.toArray()
+         .map((call) => call.toString())
+         .join('\n')
+   }
+
    public toArray(): Array<Call> {
       const result: Array<Call> = []
       let temp: CallNodeRef = this.head
@@ -228,8 +229,33 @@ export class CallList {
       return result
    }
 
-   public toJSON(): Array<Call> {
-      return this.toArray()
+   public toJSON(): Array<CallJSON> {
+      const result: Array<CallJSON> = []
+      let temp = this.head
+
+      while (temp !== null) {
+         const value = temp.getValue().toJSON()
+         result.push(value)
+         temp = temp.getNext()
+      }
+
+      return result
+   }
+
+   public static fromJSON(data: Array<CallJSON>): CallList {
+      const list = new CallList()
+
+      data.forEach((call) => {
+         try {
+            list.insertAtEnd(Call.fromJSON(call))
+         } catch (err) {
+            if (err instanceof Error) {
+               throw new Error(err.message + ' at CallList.fromJSON')
+            }
+         }
+      })
+
+      return list
    }
 
    public writeToDisk(s: string) {}

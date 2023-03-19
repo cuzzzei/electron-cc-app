@@ -1,3 +1,5 @@
+import { TimeJSON } from '/@/types/JSON'
+
 export class Time {
    private hour: number
    private minute: number
@@ -74,6 +76,17 @@ export class Time {
       const minute = this.format(this.minute)
 
       return `${hour}:${minute}`
+   }
+
+   public toJSON(): TimeJSON {
+      return {
+         hour: this.hour,
+         minute: this.minute,
+      }
+   }
+
+   public static fromJSON(json: TimeJSON): Time {
+      return new Time(json.hour, json.minute)
    }
 
    public assign(other: Time): Time {

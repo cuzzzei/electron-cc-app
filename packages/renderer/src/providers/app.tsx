@@ -3,8 +3,6 @@ import { HashRouter } from 'react-router-dom'
 import { ToastProvider } from '/@/providers/ToastProvider'
 import { useRender } from '/@/hooks'
 import React, { createContext, useContext, useRef } from 'react'
-import { useEffect } from 'react'
-import { fill } from '/@/providers/DELETE'
 
 interface AppContextType {
    agentList: AgentList
@@ -39,10 +37,6 @@ export const AppProvider = ({
    }
 }) => {
    const context = useInitAppContext(initialValues?.agentList)
-
-   useEffect(() => {
-      fill(context.agentList, context.render)
-   }, [])
 
    return (
       <HashRouter>

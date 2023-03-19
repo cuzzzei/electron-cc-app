@@ -1,0 +1,782 @@
+{
+   "agents": [
+      {
+         "id": "4c0dcd2e-4833-4b7e-84dc-8457833657ca",
+         "extension": "5424",
+         "name": {
+            "first": "Brendon",
+            "last": "Parrish"
+         },
+         "age": 22,
+         "overtime": 0,
+         "specialty": "Laptops",
+         "startTime": {
+            "hour": 9,
+            "minute": 30
+         },
+         "endTime": {
+            "hour": 16,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "9cd43be2-f35f-4c07-a202-163a8276e638",
+         "extension": "3299",
+         "name": {
+            "first": "Wilfred",
+            "last": "Blackburn"
+         },
+         "age": 19,
+         "overtime": 0,
+         "specialty": "Printers",
+         "startTime": {
+            "hour": 10,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 9,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "c4eb3414-a152-4c3c-8080-c581d6960e49",
+         "extension": "8217",
+         "name": {
+            "first": "Keyaan",
+            "last": "Cline"
+         },
+         "age": 18,
+         "overtime": 1,
+         "specialty": "Linux",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 13,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "024db13c-1e3a-47ae-87b6-ad47609761e1",
+         "extension": "8321",
+         "name": {
+            "first": "Briony",
+            "last": "AgGloverent"
+         },
+         "age": 44,
+         "overtime": 10,
+         "specialty": "Printers",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 16,
+            "minute": 0
+         },
+         "callHistory": [
+            {
+               "id": "64d8f4d7-6d62-42aa-8b8f-0a08c7e9d195",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 36
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Danyal",
+                  "last": "Farley"
+               },
+               "description": "Uneven Print Quality"
+            },
+            {
+               "id": "0d5e5872-195e-4b72-936e-deaeeefca538",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 30
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Anna",
+                  "last": "Parker"
+               },
+               "description": "Creased Prints"
+            },
+            {
+               "id": "8d02f52d-a144-4fb8-84e3-08b501b45303",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 15
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Damian",
+                  "last": "Gray"
+               },
+               "description": "Cartridge or Toner Issue"
+            },
+            {
+               "id": "209c9b06-afa6-4fd0-842b-bf5a19f03909",
+               "startTime": {
+                  "hour": 14,
+                  "minute": 40
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 20
+               },
+               "clientName": {
+                  "first": "Fletcher",
+                  "last": "Dixon"
+               },
+               "description": "Nothing is Printing"
+            },
+            {
+               "id": "737d5d41-8e11-4cc7-9366-03f1477e22f3",
+               "startTime": {
+                  "hour": 14,
+                  "minute": 5
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 12
+               },
+               "clientName": {
+                  "first": "Theodore",
+                  "last": "Beck"
+               },
+               "description": "Wi-Fi printing takes too long"
+            },
+            {
+               "id": "0d03acb2-2a4a-4654-976b-94a9eca9a2cc",
+               "startTime": {
+                  "hour": 13,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 9
+               },
+               "clientName": {
+                  "first": "Jasper",
+                  "last": "Hayes"
+               },
+               "description": "I can’t print from my mobile device"
+            },
+            {
+               "id": "7b36f7f3-d0b6-45f3-bd9d-254ae6ff825a",
+               "startTime": {
+                  "hour": 13,
+                  "minute": 3
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 3
+               },
+               "clientName": {
+                  "first": "Alannah",
+                  "last": "Wilcox"
+               },
+               "description": "Printing is too expensive"
+            },
+            {
+               "id": "98a4294a-e55a-4cae-9ca8-3977af618595",
+               "startTime": {
+                  "hour": 12,
+                  "minute": 10
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Davina",
+                  "last": "Munoz"
+               },
+               "description": "Prints too slowly"
+            },
+            {
+               "id": "686188c8-92de-49a3-b2c5-a3ea98a4e0e9",
+               "startTime": {
+                  "hour": 12,
+                  "minute": 3
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 4
+               },
+               "clientName": {
+                  "first": "Isaac",
+                  "last": "Hodge"
+               },
+               "description": "Too many paper jams"
+            },
+            {
+               "id": "60185501-26f8-43f1-87f4-ab595a329735",
+               "startTime": {
+                  "hour": 11,
+                  "minute": 10
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Wendy",
+                  "last": "Reese"
+               },
+               "description": "My printer won’t scan"
+            },
+            {
+               "id": "8cb4849c-c570-4a55-be8a-9c6f8b976d9f",
+               "startTime": {
+                  "hour": 10,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 3
+               },
+               "clientName": {
+                  "first": "Claire",
+                  "last": "Robinson"
+               },
+               "description": "Printer is unresponsive"
+            },
+            {
+               "id": "2ef9b927-a050-45f1-a674-186d6d97206e",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 48
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 20
+               },
+               "clientName": {
+                  "first": "Laura",
+                  "last": "Henderson"
+               },
+               "description": "Bad print quality"
+            },
+            {
+               "id": "da3b29ba-e6a0-4d09-a2e6-9d83f55ae75f",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 14
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Gareth",
+                  "last": "Estrada"
+               },
+               "description": "Doesn not know hot to turn on the printer"
+            },
+            {
+               "id": "7b12fce4-a6a0-46f4-a39c-8192fe6ca9b8",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 1
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Yahya",
+                  "last": "Silva"
+               },
+               "description": "Uncertain about printer security"
+            },
+            {
+               "id": "319a73bc-bafe-4573-8dc8-225b51353ff9",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 56
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 10
+               },
+               "clientName": {
+                  "first": "Zachariah",
+                  "last": "Leonard"
+               },
+               "description": "Printer won’t print"
+            },
+            {
+               "id": "6851d32a-3108-469e-bd0e-81b321f5f735",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 25
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 6
+               },
+               "clientName": {
+                  "first": "Sulayman",
+                  "last": "Franco"
+               },
+               "description": "No local stores sell “the right” ink cartridges anymore"
+            },
+            {
+               "id": "f37216c7-0925-4778-a1e5-57837979a2e8",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Eden",
+                  "last": "Kelly"
+               },
+               "description": "The wireless networking rarely connected without a fuss"
+            },
+            {
+               "id": "2c614bd6-8403-4115-9e58-683801c50e57",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 15
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 6
+               },
+               "clientName": {
+                  "first": "Aiden",
+                  "last": "Lang"
+               },
+               "description": "The ink was crazy-expensive"
+            }
+         ]
+      },
+      {
+         "id": "bca8fa73-9cb6-4b93-8242-009fa7d204b4",
+         "extension": "8888",
+         "name": {
+            "first": "Maria",
+            "last": "Salazar"
+         },
+         "age": 44,
+         "overtime": 10,
+         "specialty": "Printers",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 16,
+            "minute": 0
+         },
+         "callHistory": [
+            {
+               "id": "64d8f4d7-6d62-42aa-8b8f-0a08c7e9d195",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 36
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Danyal",
+                  "last": "Farley"
+               },
+               "description": "Uneven Print Quality"
+            },
+            {
+               "id": "0d5e5872-195e-4b72-936e-deaeeefca538",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 30
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Anna",
+                  "last": "Parker"
+               },
+               "description": "Creased Prints"
+            },
+            {
+               "id": "8d02f52d-a144-4fb8-84e3-08b501b45303",
+               "startTime": {
+                  "hour": 15,
+                  "minute": 15
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Damian",
+                  "last": "Gray"
+               },
+               "description": "Cartridge or Toner Issue"
+            },
+            {
+               "id": "209c9b06-afa6-4fd0-842b-bf5a19f03909",
+               "startTime": {
+                  "hour": 14,
+                  "minute": 40
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 20
+               },
+               "clientName": {
+                  "first": "Fletcher",
+                  "last": "Dixon"
+               },
+               "description": "Nothing is Printing"
+            },
+            {
+               "id": "737d5d41-8e11-4cc7-9366-03f1477e22f3",
+               "startTime": {
+                  "hour": 14,
+                  "minute": 5
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 12
+               },
+               "clientName": {
+                  "first": "Theodore",
+                  "last": "Beck"
+               },
+               "description": "Wi-Fi printing takes too long"
+            },
+            {
+               "id": "0d03acb2-2a4a-4654-976b-94a9eca9a2cc",
+               "startTime": {
+                  "hour": 13,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 9
+               },
+               "clientName": {
+                  "first": "Jasper",
+                  "last": "Hayes"
+               },
+               "description": "I can’t print from my mobile device"
+            },
+            {
+               "id": "7b36f7f3-d0b6-45f3-bd9d-254ae6ff825a",
+               "startTime": {
+                  "hour": 13,
+                  "minute": 3
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 3
+               },
+               "clientName": {
+                  "first": "Alannah",
+                  "last": "Wilcox"
+               },
+               "description": "Printing is too expensive"
+            },
+            {
+               "id": "98a4294a-e55a-4cae-9ca8-3977af618595",
+               "startTime": {
+                  "hour": 12,
+                  "minute": 10
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Davina",
+                  "last": "Munoz"
+               },
+               "description": "Prints too slowly"
+            },
+            {
+               "id": "686188c8-92de-49a3-b2c5-a3ea98a4e0e9",
+               "startTime": {
+                  "hour": 12,
+                  "minute": 3
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 4
+               },
+               "clientName": {
+                  "first": "Isaac",
+                  "last": "Hodge"
+               },
+               "description": "Too many paper jams"
+            },
+            {
+               "id": "60185501-26f8-43f1-87f4-ab595a329735",
+               "startTime": {
+                  "hour": 11,
+                  "minute": 10
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Wendy",
+                  "last": "Reese"
+               },
+               "description": "My printer won’t scan"
+            },
+            {
+               "id": "8cb4849c-c570-4a55-be8a-9c6f8b976d9f",
+               "startTime": {
+                  "hour": 10,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 3
+               },
+               "clientName": {
+                  "first": "Claire",
+                  "last": "Robinson"
+               },
+               "description": "Printer is unresponsive"
+            },
+            {
+               "id": "2ef9b927-a050-45f1-a674-186d6d97206e",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 48
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 20
+               },
+               "clientName": {
+                  "first": "Laura",
+                  "last": "Henderson"
+               },
+               "description": "Bad print quality"
+            },
+            {
+               "id": "da3b29ba-e6a0-4d09-a2e6-9d83f55ae75f",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 14
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Gareth",
+                  "last": "Estrada"
+               },
+               "description": "Doesn not know hot to turn on the printer"
+            },
+            {
+               "id": "7b12fce4-a6a0-46f4-a39c-8192fe6ca9b8",
+               "startTime": {
+                  "hour": 8,
+                  "minute": 1
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 5
+               },
+               "clientName": {
+                  "first": "Yahya",
+                  "last": "Silva"
+               },
+               "description": "Uncertain about printer security"
+            },
+            {
+               "id": "319a73bc-bafe-4573-8dc8-225b51353ff9",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 56
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 10
+               },
+               "clientName": {
+                  "first": "Zachariah",
+                  "last": "Leonard"
+               },
+               "description": "Printer won’t print"
+            },
+            {
+               "id": "6851d32a-3108-469e-bd0e-81b321f5f735",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 25
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 6
+               },
+               "clientName": {
+                  "first": "Sulayman",
+                  "last": "Franco"
+               },
+               "description": "No local stores sell “the right” ink cartridges anymore"
+            },
+            {
+               "id": "f37216c7-0925-4778-a1e5-57837979a2e8",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 20
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 2
+               },
+               "clientName": {
+                  "first": "Eden",
+                  "last": "Kelly"
+               },
+               "description": "The wireless networking rarely connected without a fuss"
+            },
+            {
+               "id": "2c614bd6-8403-4115-9e58-683801c50e57",
+               "startTime": {
+                  "hour": 7,
+                  "minute": 15
+               },
+               "duration": {
+                  "hour": 0,
+                  "minute": 6
+               },
+               "clientName": {
+                  "first": "Aiden",
+                  "last": "Lang"
+               },
+               "description": "The ink was crazy-expensive"
+            }
+         ]
+      },
+      {
+         "id": "4818adb8-c6bd-4b9c-a8ed-b99a1380bc5e",
+         "extension": "7777",
+         "name": {
+            "first": "Daniela",
+            "last": "Juarez"
+         },
+         "age": 44,
+         "overtime": 10,
+         "specialty": "Linux",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 16,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "72a7b44b-548d-4169-b58b-211c29ebfe13",
+         "extension": "6666",
+         "name": {
+            "first": "Maria",
+            "last": "Morales"
+         },
+         "age": 24,
+         "overtime": 13,
+         "specialty": "Laptops",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 15,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "2abfd41b-4703-4bc1-9af3-dca11c835915",
+         "extension": "5555",
+         "name": {
+            "first": "Manuel",
+            "last": "Martinez"
+         },
+         "age": 33,
+         "overtime": 13,
+         "specialty": "Network",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 15,
+            "minute": 0
+         },
+         "callHistory": []
+      },
+      {
+         "id": "df16d144-1d7a-451a-b8c4-6635181b6f53",
+         "extension": "4444",
+         "name": {
+            "first": "Marco",
+            "last": "Maidana"
+         },
+         "age": 25,
+         "overtime": 11,
+         "specialty": "Laptops",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 9,
+            "minute": 40
+         },
+         "callHistory": []
+      },
+      {
+         "id": "a43b3ca4-40a8-4154-b048-847988fe2df8",
+         "extension": "3333",
+         "name": {
+            "first": "Ronaldo",
+            "last": "Nazario"
+         },
+         "age": 22,
+         "overtime": 10,
+         "specialty": "Desktop",
+         "startTime": {
+            "hour": 7,
+            "minute": 0
+         },
+         "endTime": {
+            "hour": 8,
+            "minute": 50
+         },
+         "callHistory": []
+      }
+   ]
+}
