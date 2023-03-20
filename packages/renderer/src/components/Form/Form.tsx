@@ -37,10 +37,12 @@ export const Form = <
    })
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-      const submitHandler = methods.handleSubmit(onSubmit)
+      const submitHandler = methods.handleSubmit((data) => {
+         onSubmit(data)
+         methods.reset()
+      })
+      
       submitHandler(e)
-
-      methods.reset()
    }
 
    return (
