@@ -1,4 +1,5 @@
 import { AgentList } from '/@/features/agents'
+import { createAgentList } from '../features/agents/utils/index'
 import { HashRouter } from 'react-router-dom'
 import { ToastProvider } from '/@/providers/ToastProvider'
 import { useRender } from '/@/hooks'
@@ -15,10 +16,10 @@ export function useAppContext() {
 
 export function useInitAppContext(initialValue?: AgentList) {
    const render = useRender()
-   const agentList = useRef<AgentList>(initialValue ?? new AgentList())
+   const agentList = useRef<AgentList>(initialValue ?? createAgentList())
 
    if (!agentList?.current) {
-      agentList.current = new AgentList()
+      agentList.current = createAgentList()
    }
 
    return {

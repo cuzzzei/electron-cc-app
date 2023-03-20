@@ -51,7 +51,7 @@ export function createRandomAgent(): Agent {
    agent.setStartTime(start)
    agent.setEndTime(end)
 
-   for (let i = 0; i < 30; i++) {
+   for (let i = 0; i < 10; i++) {
       agent
          .getCallHistory()
          .insertOrdered(
@@ -66,14 +66,11 @@ export function createRandomAgent(): Agent {
 export function createAgentList() {
    const list = new AgentList()
 
-   for (let i = 0; i < 11; i++) {
+   for (let i = 0; i < 40; i++) {
       const newagent = createRandomAgent()
       list.insertAtEnd(newagent)
    }
 
-   const final = {
-      agents: list.toJSON(),
-   }
 
-   console.log(JSON.stringify(final))
+   return list
 }

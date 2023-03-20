@@ -35,7 +35,7 @@ export const Agents = () => {
          >
             <div className='px-4 md:px-5'>
                <div className='w-100 d-flex justify-content-between'>
-                  <h3 className='fw-bold'>Agents</h3>
+                  <h3 className='fw-bold'>Agents ({matches.getLength()})</h3>
 
                   <AgentsSettings />
                </div>

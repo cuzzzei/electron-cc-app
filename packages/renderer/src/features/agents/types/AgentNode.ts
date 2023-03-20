@@ -8,8 +8,19 @@ export class AgentNode {
    private prev: AgentNodeRef
    private next: AgentNodeRef
 
-   constructor(value?: Agent) {
-      if (value) {
+   private copyConstructor(node: AgentNode) {
+      this.value = new Agent(node.getValue())
+      this.prev = node.getPrev()
+      this.next = node.getNext()
+   }
+
+   constructor(value?: Agent | AgentNode) {
+      if (value instanceof AgentNode) {
+         this.copyConstructor(value)
+         return
+      }
+
+      if (value instanceof Agent) {
          this.value = value
       }
       this.prev = null
@@ -17,6 +28,7 @@ export class AgentNode {
    }
 
    public getValue(): Agent {
+      console.log(this.value === undefined)
       if (!this.value) {
          throw new NodeException('Node value is undefined')
       }

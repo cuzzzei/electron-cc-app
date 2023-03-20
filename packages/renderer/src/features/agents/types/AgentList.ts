@@ -251,11 +251,119 @@ export class AgentList {
       return list
    }
 
-   private swapNodes(nodeA: AgentNode, nodeB: AgentNode) {}
-   private sortNodesByName(nodeA: AgentNode, nodeB: AgentNode) {}
-   private sortNodesBySpecialty(nodeA: AgentNode, nodeB: AgentNode) {}
-   public sortByName() {}
-   public sortBySpecialty() {}
+   private swapContigousNodes(nodeA: AgentNode, nodeB: AgentNode) {
+      const aPrev = nodeA.getPrev()
+
+      aPrev?.setNext(nodeB)
+      nodeB.getNext()?.setPrev(aPrev)
+
+      nodeA.setPrev(nodeB)
+      nodeA.setNext(nodeB.getNext())
+
+      nodeB.setPrev(aPrev)
+      nodeB.setNext(nodeA)
+   }
+
+   public swapPositions(nodeA: AgentNodeRef, nodeB: AgentNodeRef) {
+      if (nodeA === null || nodeB === null) {
+         return
+      }
+
+      if (nodeA === nodeB) {
+         return
+      }
+
+      const aPrev = nodeA.getPrev()
+      const aNext = nodeA.getNext()
+
+      if (aNext === nodeB) {
+         this.swapContigousNodes(nodeA, nodeB)
+         return
+      }
+
+      if (aPrev === nodeB) {
+         this.swapContigousNodes(nodeB, nodeA)
+         return
+      }
+
+      nodeA.setPrev(nodeB.getPrev())
+      nodeA.setNext(nodeB.getNext())
+      nodeB.getPrev()?.setNext(nodeA)
+      nodeB.getNext()?.setPrev(nodeA)
+
+      nodeB.setPrev(aPrev)
+      nodeB.setNext(aNext)
+      aPrev?.setNext(nodeB)
+      aNext?.setPrev(nodeB)
+   }
+
+   private print() {
+      console.log(this.toArray().map((agent) => agent.getName().toString()))
+   }
+
+   private findPosition(n: number) {
+      let pos: AgentNodeRef = this.head.getNext()
+
+      for (let i = 0; i < n; i++) {
+         pos = pos?.getNext() ?? null
+      }
+
+      return pos
+   }
+
+   private quickSort(
+      start: number,
+      end: number,
+      compare: (a: Agent, b: Agent) => number
+   ) {
+      if (start >= end) {
+         return
+      }
+
+      let i = start
+      let j = end
+
+      while (i < j) {
+         let a, b
+
+         while (
+            i < j &&
+            (a = this.findPosition(i)) !== null &&
+            (b = this.findPosition(end)) !== null &&
+            compare(a.getValue(), b.getValue()) <= 0
+         ) {
+            i++
+         }
+
+         while (
+            i < j &&
+            (a = this.findPosition(j)) !== null &&
+            (b = this.findPosition(end)) !== null &&
+            compare(a.getValue(), b.getValue()) >= 0
+         ) {
+            j--
+         }
+
+         if (i !== j) {
+            this.swapPositions(this.findPosition(i), this.findPosition(j))
+         }
+      }
+
+      if (i !== end) {
+         this.swapPositions(this.findPosition(i), this.findPosition(end))
+      }
+
+      this.quickSort(start, i - 1, compare)
+      this.quickSort(i + 1, end, compare)
+   }
+
+   public sort(compare: (a: Agent, b: Agent) => number) {
+      if (this.isEmpty()) return
+
+      this.quickSort(0, this.length - 1, compare)
+      this.print()
+   }
+
    public writeToDisk(s: string) {}
    public readFromDisk(s: string) {}
 }

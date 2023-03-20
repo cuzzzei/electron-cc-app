@@ -198,10 +198,12 @@ export class Agent {
    }
 
    public static compareByName(a: Agent, b: Agent): number {
-      return Number(a.name.toString()) - Number(b.name.toString())
+      const val = a.name.toString().localeCompare(b.name.toString())
+      return val
    }
 
    public static compareBySpecialty(a: Agent, b: Agent): number {
-      return Number(a.specialty) - Number(b.specialty)
+      const val = a.specialty.localeCompare(b.specialty)
+      return val
    }
 }

@@ -11,7 +11,7 @@ type SelectProps = {
    helperText?: string
    label: string
    required?: boolean
-   registration: Partial<UseFormRegisterReturn>
+   registration: Partial<UseFormRegisterReturn> | ({ value: any, onChange: ((e: React.ChangeEvent<HTMLSelectElement>) => void)})
    children: React.ReactNode
    style?: React.CSSProperties
    fullWidth?: boolean
