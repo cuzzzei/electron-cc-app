@@ -1,7 +1,5 @@
 import { Button } from '/@/components/Button'
-import { Call } from '../../../types/call/Call'
-import { CallList } from '/@/types/call'
-import { CallNode } from '../../../types/call/CallNode'
+import { CallList, CallNode, Call } from '/@/features/calls'
 import { TableColumn } from '/@/components/Table'
 import { useAppContext } from '/@/providers/app'
 import { useToast } from '/@/hooks/useToast'

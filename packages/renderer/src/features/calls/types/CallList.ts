@@ -1,6 +1,6 @@
 import { Call } from './Call'
+import { CallJSON } from './JSON'
 import { CallNode, CallNodeRef } from './CallNode'
-import { CallJSON } from '/@/types/JSON'
 import { ListException } from '/@/types/ListException'
 
 export class CallList {

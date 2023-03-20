@@ -1,4 +1,4 @@
-import { CallJSON } from '/@/types/JSON'
+import { CallJSON } from './JSON'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 

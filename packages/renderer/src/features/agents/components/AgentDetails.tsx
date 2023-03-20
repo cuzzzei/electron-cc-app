@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/agent'
+import { Agent } from '/@/features/agents'
 import {
    BanknotesIcon,
    CakeIcon,

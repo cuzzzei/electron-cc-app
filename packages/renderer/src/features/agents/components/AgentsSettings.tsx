@@ -3,9 +3,11 @@ import { Cog8ToothIcon } from '@heroicons/react/24/outline'
 import { DeleteAllAgents } from './DeleteAllAgents'
 import { Modal } from '/@/components/Modal'
 import { Select } from '/@/components/Select'
+import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 
 export const AgentsSettings = () => {
+   const { agentList } = useAppContext()
    const [isOpen, setIsOpen] = useState(false)
 
    function handleClose() {
@@ -52,6 +54,9 @@ export const AgentsSettings = () => {
                <Button
                   fullWidth
                   colorScheme='cyan'
+                  onClick={() => {
+                     console.log(JSON.stringify(agentList))
+                  }}
                >
                   Save agents ✅
                </Button>

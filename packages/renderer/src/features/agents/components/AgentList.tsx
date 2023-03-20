@@ -1,8 +1,8 @@
+import { AgentList as AgentListClass, Agent } from '/@/features/agents'
+import { Avatar } from '/@/components/Avatar'
+import { DeleteAgent } from './DeleteAgent'
 import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { Avatar } from '/@/components/Avatar'
-import { AgentList as AgentListClass, Agent } from '/@/types/agent'
-import { DeleteAgent } from './DeleteAgent'
 
 interface AgentListProps {
    agentList: AgentListClass

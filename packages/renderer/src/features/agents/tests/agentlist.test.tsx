@@ -1,3 +1,4 @@
+import { Agent } from '/@/features/agents'
 import { AgentList } from '/@/features/agents/components/AgentList'
 import { AppProvider, useAppContext } from '/@/providers/app'
 import { CreateAgent } from '/@/features/agents/components/CreateAgent'
@@ -7,6 +8,7 @@ import { fillInput } from '/@/testUtils'
 import { render, fireEvent } from '@testing-library/react'
 import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
+
 const user = userEvent.setup()
 
 function App() {
@@ -30,7 +32,7 @@ describe('Agent List', () => {
    )
 
    test('Should render initial agents', () => {
-      initialList.toArray().forEach((agent) => {
+      initialList.toArray().forEach((agent: Agent) => {
          const name = agent.getName().toString()
          expect(screen.getByText(name)).toBeDefined()
       })

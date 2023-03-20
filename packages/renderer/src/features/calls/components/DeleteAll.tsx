@@ -1,9 +1,9 @@
-import { CallList } from '/@/types/call'
+import { Button } from '/@/components/Button'
+import { CallList } from '/@/features/calls'
 import { Modal } from '/@/components/Modal'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
-import { Button } from '/@/components/Button'
 
 interface DeleteAllProps {
    callList: CallList

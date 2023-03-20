@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/agent'
+import { Agent } from '/@/features/agents'
 import { AgentList } from '/@/features/agents/components/AgentList'
 import { AgentsSettings } from '../components/AgentsSettings'
 import { CreateAgent } from '/@/features/agents/components/CreateAgent'

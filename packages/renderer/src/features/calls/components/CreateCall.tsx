@@ -1,6 +1,6 @@
 import { Button } from '/@/components/Button'
 import { CallForm, CallFormData } from '../components/CallForm'
-import { CallList, Call } from '/@/types/call'
+import { CallList, Call } from '/@/features/calls'
 import { Modal } from '/@/components/Modal'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'

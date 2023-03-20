@@ -1,4 +1,4 @@
-import { specialties } from '/@/types/Specialty'
+import { specialties } from '../types/Specialty'
 import { useState } from 'react'
 import { Filter } from '/@/features/agents/routes/Agents'
 

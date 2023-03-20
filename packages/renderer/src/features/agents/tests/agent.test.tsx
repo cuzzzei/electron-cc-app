@@ -1,14 +1,13 @@
-import { Agent } from '/@/types/agent'
-import { AgentList } from '/@/types/agent'
+import { Agent } from '/@/features/agents'
 import { AgentProfile } from '/@/features/agents/components/AgentProfile'
 import { AppProvider } from '/@/providers/app'
-import { CallList } from '/@/types/call'
+import { CallList } from '/@/features/calls'
+import { createAgentList } from './data'
 import { describe, expect, it } from 'vitest'
 import { Name } from '/@/types/Name'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { Time } from '/@/types/Time'
 import { useAppContext } from '/@/providers/app'
-import { createAgentList } from './data'
 
 const agent = new Agent({
    id: '1',

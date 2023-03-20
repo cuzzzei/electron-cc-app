@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/agent'
+import { Agent } from '/@/features/agents'
 import { Button } from '/@/components/Button'
 import { Modal } from '/@/components/Modal'
 import { useAppContext } from '/@/providers/app'

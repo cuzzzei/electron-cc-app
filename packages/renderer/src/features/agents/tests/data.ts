@@ -1,5 +1,5 @@
-import { AgentList, Agent } from '/@/types/agent'
-import { CallList } from '/@/types/call'
+import { AgentList, Agent } from '/@/features/agents'
+import { CallList } from '/@/features/calls'
 import { Name } from '/@/types/Name'
 import { Time } from '/@/types/Time'
 

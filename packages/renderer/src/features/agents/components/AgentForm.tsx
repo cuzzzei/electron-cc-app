@@ -2,7 +2,7 @@ import * as yup from 'yup'
 import { Form } from '/@/components/Form'
 import { Input } from '/@/components/Input'
 import { Select } from '/@/components/Select'
-import { specialties, Specialty } from '/@/types/Specialty'
+import { specialties, Specialty } from '../types/Specialty'
 
 export interface AgentFormData {
    extension: string

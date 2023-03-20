@@ -1,5 +1,5 @@
 import { Agent } from './Agent'
-import { NodeException } from '../NodeException'
+import { NodeException } from '/@/types/NodeException'
 
 export type AgentNodeRef = AgentNode | null
 

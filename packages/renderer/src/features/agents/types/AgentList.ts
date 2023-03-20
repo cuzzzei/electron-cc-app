@@ -1,6 +1,6 @@
 import { Agent } from './Agent'
+import { AgentJSON } from './JSON'
 import { AgentNode, AgentNodeRef } from './AgentNode'
-import { AgentJSON } from '../JSON'
 import { ListException } from '/@/types/ListException'
 
 export class AgentList {

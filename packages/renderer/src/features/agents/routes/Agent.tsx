@@ -1,4 +1,4 @@
-import { Agent as AgentClass } from '/@/types/agent/Agent'
+import { Agent as AgentClass } from '../types/Agent'
 import { AgentProfile } from '/@/features/agents/components/AgentProfile'
 import { useAppContext } from '/@/providers/app'
 import { useParams } from 'react-router-dom'

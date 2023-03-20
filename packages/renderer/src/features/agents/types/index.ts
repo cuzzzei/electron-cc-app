@@ -1,3 +1,5 @@
 export * from './Agent'
 export * from './AgentList'
 export * from './AgentNode'
+export * from './JSON'
+export * from './Specialty'

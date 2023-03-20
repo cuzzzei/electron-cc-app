@@ -1,4 +1,4 @@
-import { Agent } from '/@/types/agent'
+import { Agent } from '/@/features/agents'
 import { AgentDetails } from '../components/AgentDetails'
 import { Avatar } from '/@/components/Avatar'
 import { CallList } from '/@/features/calls/components/CallList'

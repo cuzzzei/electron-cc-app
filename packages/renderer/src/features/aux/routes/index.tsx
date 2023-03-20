@@ -1,5 +1,4 @@
-import { Agent } from '/@/types/agent'
-import { AgentJSON } from '/@/types/JSON'
+import { Agent, AgentJSON } from '/@/features/agents'
 import { Button } from '/@/components/Button'
 import { Form } from '/@/components/Form'
 import { Input } from '/@/components/Input'

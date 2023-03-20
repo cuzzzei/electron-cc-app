@@ -1,8 +1,8 @@
-import { CallList } from '/@/types/call'
+import { AgentJSON } from '/@/features/agents'
+import { CallList } from '/@/features/calls'
 import { Name } from '/@/types/Name'
-import { Specialty } from '/@/types/Specialty'
+import { Specialty } from './Specialty'
 import { Time } from '/@/types/Time'
-import { AgentJSON } from '../JSON'
 
 export interface AgentProps {
    id: string
