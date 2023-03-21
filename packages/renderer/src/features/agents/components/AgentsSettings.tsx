@@ -28,16 +28,10 @@ export const AgentsSettings = () => {
 
       //agentList.print()
       //agentList.printReversed()
-      try {
-         if (sortBy === 'name') {
-            agentList.sort(Agent.compareByName)
-         } else {
-            agentList.sort(Agent.compareBySpecialty)
-         }
-      } catch (err) { 
-         if(err instanceof Error) {
-            console.log('zzz', err.message)
-         }
+      if (sortBy === 'name') {
+         agentList.sort(Agent.compareByName)
+      } else {
+         agentList.sort(Agent.compareBySpecialty)
       }
 
       render()

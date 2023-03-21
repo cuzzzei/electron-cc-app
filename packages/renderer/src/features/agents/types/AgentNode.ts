@@ -28,10 +28,6 @@ export class AgentNode {
    }
 
    public getValue(): Agent {
-      //if (!this.value) {
-      //   throw new NodeException('Node value is undefined')
-      //}
-
       return this.value
    }
    public getPrev(): AgentNodeRef {
