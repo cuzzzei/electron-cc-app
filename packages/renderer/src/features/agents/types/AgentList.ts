@@ -307,7 +307,7 @@ export class AgentList {
       aNext?.setPrev(nodeB)
    }
 
-   public print(show? : boolean) {
+   public print(show?: boolean) {
       let result = []
       let temp = this.head.getNext()
 
@@ -316,7 +316,7 @@ export class AgentList {
          temp = temp.getNext()
       }
 
-      if(show) {
+      if (show) {
          console.log(result)
       }
 
@@ -394,21 +394,21 @@ export class AgentList {
             console.log(start)
 
             if (i === start) {
-
                start = j
                console.log(start, '\n\n\n\n')
             }
 
-            
             this.swapPositions(i, j)
-
-
             ;[i, j] = [j, i]
          }
       }
 
       if (i !== end) {
          this.swapPositions(i, end)
+         if (i === start) {
+            //console.log('i no se movio')
+            start = end
+         }
 
          // @ts-ignore
          ;[i, end] = [end, i]
@@ -418,6 +418,7 @@ export class AgentList {
          throw Error('CAGASTE')
       }
 
+      this.print(true)
       console.log('Pivote: ', i?.getValue().getName().toString())
       console.log(
          start?.getValue()?.getName(),
@@ -427,6 +428,15 @@ export class AgentList {
       //console.log(i === start, i, start)
 
       // means i is start
+      if (i !== start) {
+         console.log('Ordenar parte izquierda')
+         this.quickSort(start, i.getPrev(), compare)
+      }
+
+      if (i !== end) {
+         console.log('Ordenar parte derecha')
+         this.quickSort(i.getNext(), end, compare)
+      }
       //if (i.getPrev()?.getValue() !== undefined) {
       //   console.log('Ordenar parte izquierda')
       //   console.log(
