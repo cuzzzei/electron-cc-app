@@ -67,10 +67,10 @@ export function createAgentList() {
    const list = new AgentList()
    const NUM_AGENTS = 10
 
-   //for (let i = 0; i < NUM_AGENTS; i++) {
-   //   const newagent = createRandomAgent()
-   //   list.insertAtEnd(newagent)
-   //}
+   for (let i = 0; i < NUM_AGENTS; i++) {
+      const newagent = createRandomAgent()
+      list.insertAtEnd(newagent)
+   }
 
 
    return list

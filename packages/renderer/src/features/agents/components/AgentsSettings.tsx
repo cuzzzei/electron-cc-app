@@ -30,8 +30,10 @@ export const AgentsSettings = () => {
       //agentList.printReversed()
       if (sortBy === 'name') {
          agentList.sort(Agent.compareByName)
+         console.log('SORTED BY NAME: ', agentList.isSorted(Agent.compareByName))
       } else {
          agentList.sort(Agent.compareBySpecialty)
+         console.log('SORTED BY SPECIALTY: ', agentList.isSorted(Agent.compareBySpecialty))
       }
 
       render()

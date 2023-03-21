@@ -335,6 +335,22 @@ export class AgentList {
       return result
    }
 
+   public isSorted(compare: (a: Agent, b: Agent) => number) {
+      //let aux = this.getFirstPosition()
+      const data = this.toArray()
+      let i = 0
+
+      while (i < data.length - 1) {
+         if (compare(data[i], data[i + 1]) > 0) {
+            return false
+         }
+
+         i++
+      }
+
+      return true
+   }
+
    private findPosition(n: number) {
       let pos: AgentNodeRef = this.head.getNext()
 
@@ -367,7 +383,7 @@ export class AgentList {
       let i: AgentNodeRef = start
       let j: AgentNodeRef = end
 
-      this.print(true)
+      //this.print(true)
 
       while (i !== j) {
          while (
@@ -377,7 +393,7 @@ export class AgentList {
             compare(i.getValue(), end.getValue()) <= 0
          ) {
             i = i.getNext()
-            console.log('i++')
+            //console.log('i++')
          }
 
          while (
@@ -387,15 +403,15 @@ export class AgentList {
             compare(j.getValue(), end.getValue()) >= 0
          ) {
             j = j.getPrev()
-            console.log('j--')
+            //console.log('j--')
          }
 
          if (i !== j) {
-            console.log(start)
+            //console.log(start)
 
             if (i === start) {
                start = j
-               console.log(start, '\n\n\n\n')
+               //console.log(start, '\n\n\n\n')
             }
 
             this.swapPositions(i, j)
@@ -415,26 +431,26 @@ export class AgentList {
       }
 
       if (!this.stillOk(this.print(), this.printReversed())) {
-         throw Error('CAGASTE')
+         throw Error('ZZZZZZZZZZZZ')
       }
 
-      this.print(true)
-      console.log('Pivote: ', i?.getValue().getName().toString())
-      console.log(
-         start?.getValue()?.getName(),
-         i.getValue()?.getName(),
-         end?.getValue()?.getName()
-      )
+      //this.print(true)
+      //console.log('Pivote: ', i?.getValue().getName().toString())
+      //console.log(
+      //   start?.getValue()?.getName(),
+      //   i.getValue()?.getName(),
+      //   end?.getValue()?.getName()
+      //)
       //console.log(i === start, i, start)
 
       // means i is start
       if (i !== start) {
-         console.log('Ordenar parte izquierda')
+         //console.log('Ordenar parte izquierda')
          this.quickSort(start, i.getPrev(), compare)
       }
 
       if (i !== end) {
-         console.log('Ordenar parte derecha')
+         //console.log('Ordenar parte derecha')
          this.quickSort(i.getNext(), end, compare)
       }
       //if (i.getPrev()?.getValue() !== undefined) {
