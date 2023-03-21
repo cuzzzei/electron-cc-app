@@ -65,8 +65,9 @@ export function createRandomAgent(): Agent {
 
 export function createAgentList() {
    const list = new AgentList()
+   const NUM_AGENTS = 10
 
-   for (let i = 0; i < 40; i++) {
+   for (let i = 0; i < NUM_AGENTS; i++) {
       const newagent = createRandomAgent()
       list.insertAtEnd(newagent)
    }

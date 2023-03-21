@@ -16,14 +16,30 @@ export const AgentsSettings = () => {
       setIsOpen(false)
    }
 
-
    function sort() {
-      if(sortBy === 'name') {
-         agentList.sort(Agent.compareByName)
-      } else {
-         agentList.sort(Agent.compareBySpecialty)
+      //agentList.print()
+      //agentList.printReversed()
+
+      //const a = agentList.getFirstPosition()
+      //const b = a!.getNext()
+      //agentList.swapPositions(a, b)
+
+      //console.log('\n\n')
+
+      //agentList.print()
+      //agentList.printReversed()
+      try {
+         if (sortBy === 'name') {
+            agentList.sort(Agent.compareByName)
+         } else {
+            agentList.sort(Agent.compareBySpecialty)
+         }
+      } catch (err) { 
+         if(err instanceof Error) {
+            console.log('zzz', err.message)
+         }
       }
-      
+
       render()
    }
 

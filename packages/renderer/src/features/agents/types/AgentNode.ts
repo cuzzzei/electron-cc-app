@@ -28,10 +28,9 @@ export class AgentNode {
    }
 
    public getValue(): Agent {
-      console.log(this.value === undefined)
-      if (!this.value) {
-         throw new NodeException('Node value is undefined')
-      }
+      //if (!this.value) {
+      //   throw new NodeException('Node value is undefined')
+      //}
 
       return this.value
    }

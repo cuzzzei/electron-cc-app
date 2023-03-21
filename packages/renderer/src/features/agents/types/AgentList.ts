@@ -253,23 +253,33 @@ export class AgentList {
 
    private swapContigousNodes(nodeA: AgentNode, nodeB: AgentNode) {
       const aPrev = nodeA.getPrev()
+      const bNext = nodeB.getNext()
+
+      //  aPrev  nodeA -> nodeB -> bNext
+      //  aPrev  nodeB -> nodeA -> bNext
 
       aPrev?.setNext(nodeB)
-      nodeB.getNext()?.setPrev(aPrev)
-
-      nodeA.setPrev(nodeB)
-      nodeA.setNext(nodeB.getNext())
-
       nodeB.setPrev(aPrev)
       nodeB.setNext(nodeA)
+
+      nodeA.setPrev(nodeB)
+      nodeA.setNext(bNext)
+      bNext?.setPrev(nodeA)
+
+      //aPrev?.setNext(nodeB)
+      //aNext?.setPrev(nodeB)
+
+      //nodeA.setPrev(nodeB)
+      //nodeA.setNext(nodeB.getNext())
+
+      //nodeB.getNext()?.setPrev(nodeA)
+
+      //nodeB.setPrev(aPrev)
+      //nodeB.setNext(nodeA)
    }
 
    public swapPositions(nodeA: AgentNodeRef, nodeB: AgentNodeRef) {
-      if (nodeA === null || nodeB === null) {
-         return
-      }
-
-      if (nodeA === nodeB) {
+      if (nodeA === null || nodeB === null || nodeA === nodeB) {
          return
       }
 
@@ -297,8 +307,28 @@ export class AgentList {
       aNext?.setPrev(nodeB)
    }
 
-   private print() {
-      console.log(this.toArray().map((agent) => agent.getName().toString()))
+   public print() {
+      let result = []
+      let temp = this.head.getNext()
+
+      while (temp !== null && temp !== this.head) {
+         result.push(temp.getValue().getName().toString())
+         temp = temp.getNext()
+      }
+
+      return result
+   }
+
+   public printReversed() {
+      let result = []
+      let temp = this.head.getPrev()
+
+      while (temp !== null && temp !== this.head) {
+         result.push(temp.getValue().getName().toString())
+         temp = temp.getPrev()
+      }
+
+      return result
    }
 
    private findPosition(n: number) {
@@ -311,57 +341,99 @@ export class AgentList {
       return pos
    }
 
-   private quickSort(
-      start: number,
-      end: number,
-      compare: (a: Agent, b: Agent) => number
-   ) {
-      if (start >= end) {
-         return
+   private stillOk(a: Array<string>, b: Array<string>): boolean {
+      if (a.length !== b.length) return false
+      const lastpos = b.length - 1
+
+      for (let i = 0; i < a.length; i++) {
+         if (a[i] !== b[lastpos - i]) return false
       }
 
-      let i = start
-      let j = end
+      return true
+   }
 
-      while (i < j) {
-         let a, b
+   private quickSort(
+      start: AgentNodeRef,
+      end: AgentNodeRef,
+      compare: (a: Agent, b: Agent) => number
+   ) {
+      if (!start || !end) return
+      if (start === end) return
 
+      let i: AgentNodeRef = start
+      let j: AgentNodeRef = end
+
+      while (i !== j) {
          while (
-            i < j &&
-            (a = this.findPosition(i)) !== null &&
-            (b = this.findPosition(end)) !== null &&
-            compare(a.getValue(), b.getValue()) <= 0
+            i !== j &&
+            i !== null &&
+            end !== null &&
+            compare(i.getValue(), end.getValue()) <= 0
          ) {
-            i++
+            i = i.getNext()
          }
 
          while (
-            i < j &&
-            (a = this.findPosition(j)) !== null &&
-            (b = this.findPosition(end)) !== null &&
-            compare(a.getValue(), b.getValue()) >= 0
+            i !== j &&
+            j !== null &&
+            end !== null &&
+            compare(j.getValue(), end.getValue()) >= 0
          ) {
-            j--
+            j = j.getPrev()
          }
 
          if (i !== j) {
-            this.swapPositions(this.findPosition(i), this.findPosition(j))
+            this.swapPositions(i, j)
+
+            if (i === start) {
+               start = j
+            }
+
+            const aux: AgentNodeRef = i
+            i = j
+            j = aux
          }
       }
 
       if (i !== end) {
-         this.swapPositions(this.findPosition(i), this.findPosition(end))
+         this.swapPositions(i, end)
+         const aux = i
+         i = end
+         end = aux
       }
 
-      this.quickSort(start, i - 1, compare)
-      this.quickSort(i + 1, end, compare)
+      if (!this.stillOk(this.print(), this.printReversed())) {
+         throw Error('CAGASTE')
+      }
+
+      //console.log('Pivote', i?.getValue().getName().toString())
+
+      if (i !== start) {
+         console.log('Ordenar parte izquierda')
+         console.log(
+            start?.getValue().getName().toString(),
+            '---',
+            i.getPrev()?.getValue().getName().toString()
+         )
+
+         //this.quickSort(start, i.getPrev(), compare)
+      }
+
+      if (i !== end) {
+         console.log('Ordenar parte derecha')
+         console.log(
+            i.getNext()?.getValue().getName().toString(),
+            '---',
+            end?.getValue().getName().toString()
+         )
+         //this.quickSort(i.getNext(), end, compare)
+      }
    }
 
    public sort(compare: (a: Agent, b: Agent) => number) {
       if (this.isEmpty()) return
 
-      this.quickSort(0, this.length - 1, compare)
-      this.print()
+      this.quickSort(this.getFirstPosition(), this.getLastPosition(), compare)
    }
 
    public writeToDisk(s: string) {}
