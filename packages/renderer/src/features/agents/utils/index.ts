@@ -51,7 +51,7 @@ export function createRandomAgent(): Agent {
    agent.setStartTime(start)
    agent.setEndTime(end)
 
-   for (let i = 0; i < 1; i++) {
+   for (let i = 0; i < 10; i++) {
       agent
          .getCallHistory()
          .insertOrdered(
