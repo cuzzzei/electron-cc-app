@@ -336,19 +336,31 @@ export class AgentList {
    }
 
    public isSorted(compare: (a: Agent, b: Agent) => number) {
-      //let aux = this.getFirstPosition()
-      const data = this.toArray()
-      let i = 0
+      let aux: AgentNodeRef = this.head.getNext()
 
-      while (i < data.length - 1) {
-         if (compare(data[i], data[i + 1]) > 0) {
+      while (aux !== null && aux.getNext() !== this.head) {
+         if (compare(aux.getValue(), aux.getNext()!.getValue()) > 0) {
             return false
          }
 
-         i++
+         aux = aux.getNext()
       }
 
       return true
+
+      // using array instead
+      //const data = this.toArray()
+      //let i = 0
+
+      //while (i < data.length - 1) {
+      //   if (compare(data[i], data[i + 1]) > 0) {
+      //      return false
+      //   }
+
+      //   i++
+      //}
+
+      //return true
    }
 
    private findPosition(n: number) {
