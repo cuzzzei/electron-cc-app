@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export const useRender = () => {
-   const [c, setC] = useState(0)
+   const [_, setC] = useState(0)
 
-   function render() {
-      setC(c + 1)
-   }
+   const render = useCallback(() => {
+      setC((prev) => prev + 1)
+   }, [])
 
    return render
 }

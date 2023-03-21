@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom'
 import { ToastProvider } from '/@/providers/ToastProvider'
 import { useRender } from '/@/hooks'
 import React, { createContext, useContext, useRef } from 'react'
+import { useEffect } from 'react'
 
 interface AppContextType {
    agentList: AgentList
@@ -16,11 +17,21 @@ export function useAppContext() {
 
 export function useInitAppContext(initialValue?: AgentList) {
    const render = useRender()
-   const agentList = useRef<AgentList>(initialValue ?? createAgentList())
+   const agentList = useRef<AgentList | null>(null)
 
-   if (!agentList?.current) {
-      agentList.current = createAgentList()
-   }
+   useEffect(() => {
+      if (!agentList?.current) {
+         createAgentList()
+            .then((result) => {
+               agentList.current = result
+               render()
+               console.log('Resolved')
+            })
+            .catch((err) => {
+               console.log('Error loading agent list')
+            })
+      }
+   }, [render])
 
    return {
       render,
@@ -39,9 +50,18 @@ export const AppProvider = ({
 }) => {
    const context = useInitAppContext(initialValues?.agentList)
 
+   if (context.agentList === null) {
+      return null
+   }
+
    return (
       <HashRouter>
-         <AppContext.Provider value={context}>
+         <AppContext.Provider
+            value={{
+               agentList: context.agentList,
+               render: context.render,
+            }}
+         >
             <ToastProvider>{children}</ToastProvider>
          </AppContext.Provider>
       </HashRouter>

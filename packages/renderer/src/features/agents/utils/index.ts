@@ -63,15 +63,20 @@ export function createRandomAgent(): Agent {
    return agent
 }
 
-export function createAgentList() {
+export async function createAgentList(): Promise<AgentList> {
    const list = new AgentList()
    const NUM_AGENTS = 400
 
-   for (let i = 0; i < NUM_AGENTS; i++) {
-      const newagent = createRandomAgent()
-      list.insertAtEnd(newagent)
-   }
+   return new Promise((resolve, reject) => {
+      for (let i = 0; i < NUM_AGENTS; i++) {
+         try {
+            const newagent = createRandomAgent()
+            list.insertAtEnd(newagent)
+         } catch (err) {
+            reject(err)
+         }
+      }
 
-
-   return list
+      resolve(list)
+   })
 }

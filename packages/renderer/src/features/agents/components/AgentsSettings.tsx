@@ -17,24 +17,21 @@ export const AgentsSettings = () => {
    }
 
    function sort() {
-      //agentList.print()
-      //agentList.printReversed()
-
-      //const a = agentList.getFirstPosition()
-      //const b = a!.getNext()
-      //agentList.swapPositions(a, b)
-
-      //console.log('\n\n')
-
-      //agentList.print()
-      //agentList.printReversed()
+      console.time('Sorting...')
       if (sortBy === 'name') {
          agentList.sort(Agent.compareByName)
-         console.log('SORTED BY NAME: ', agentList.isSorted(Agent.compareByName))
+         console.log(
+            'SORTED BY NAME: ',
+            agentList.isSorted(Agent.compareByName)
+         )
       } else {
          agentList.sort(Agent.compareBySpecialty)
-         console.log('SORTED BY SPECIALTY: ', agentList.isSorted(Agent.compareBySpecialty))
+         console.log(
+            'SORTED BY SPECIALTY: ',
+            agentList.isSorted(Agent.compareBySpecialty)
+         )
       }
+      console.timeEnd('Sorting...')
 
       render()
    }
