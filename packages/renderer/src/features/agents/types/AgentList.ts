@@ -18,7 +18,7 @@ export class AgentList {
    }
 
    private copyAll(other: AgentList) {
-      let aux: AgentNodeRef = other.head.getNext()
+      let aux: AgentNodeRef = other.getFirstPosition()
 
       while (aux !== null && aux !== other.head) {
          const newNode = new AgentNode(new Agent(aux.getValue()))
@@ -251,49 +251,14 @@ export class AgentList {
       return list
    }
 
-   private swapContigousNodes(nodeA: AgentNode, nodeB: AgentNode) {
-      const aPrev = nodeA.getPrev()
-      const bNext = nodeB.getNext()
-
-      //  aPrev  nodeA -> nodeB -> bNext
-      //  aPrev  nodeB -> nodeA -> bNext
-
-      aPrev?.setNext(nodeB)
-      nodeB.setPrev(aPrev)
-      nodeB.setNext(nodeA)
-
-      nodeA.setPrev(nodeB)
-      nodeA.setNext(bNext)
-      bNext?.setPrev(nodeA)
-   }
-
-   private swapPositions(nodeA: AgentNodeRef, nodeB: AgentNodeRef) {
+   private swapValues(nodeA: AgentNodeRef, nodeB: AgentNodeRef) {
       if (nodeA === null || nodeB === null || nodeA === nodeB) {
          return
       }
 
-      const aPrev = nodeA.getPrev()
-      const aNext = nodeA.getNext()
-
-      if (aNext === nodeB) {
-         this.swapContigousNodes(nodeA, nodeB)
-         return
-      }
-
-      if (aPrev === nodeB) {
-         this.swapContigousNodes(nodeB, nodeA)
-         return
-      }
-
-      nodeA.setPrev(nodeB.getPrev())
-      nodeA.setNext(nodeB.getNext())
-      nodeB.getPrev()?.setNext(nodeA)
-      nodeB.getNext()?.setPrev(nodeA)
-
-      nodeB.setPrev(aPrev)
-      nodeB.setNext(aNext)
-      aPrev?.setNext(nodeB)
-      aNext?.setPrev(nodeB)
+      const aux = nodeA.getValue()
+      nodeA.setValue(nodeB.getValue())
+      nodeB.setValue(aux)
    }
 
    public isSorted(compare: (a: Agent, b: Agent) => number) {
@@ -341,31 +306,21 @@ export class AgentList {
          }
 
          if (i !== j) {
-            if (i === start) {
-               start = j
-            }
-
-            this.swapPositions(i, j)
-            ;[i, j] = [j, i]
+            this.swapValues(i, j)
          }
       }
 
       if (i !== end) {
-         this.swapPositions(i, end)
-         if (i === start) {
-            start = end
-         }
-
-         ;[i, end] = [end, i]
+         this.swapValues(i, end)
       }
 
+      if (i === null) return
+
       if (i !== start) {
-         //console.log('Sort left)
          this.quickSort(start, i.getPrev(), compare)
       }
 
       if (i !== end) {
-         //console.log('Sort right')
          this.quickSort(i.getNext(), end, compare)
       }
    }
