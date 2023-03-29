@@ -44,6 +44,21 @@ export const AgentsSettings = () => {
       render()
    }
 
+   async function save() {
+      const data = agentList.toJSON()
+      const body = {
+         filename: 'agents.json',
+         content: JSON.stringify(data),
+      }
+
+      window.api.send('saveAgents', body)
+   }
+
+   async function load() {
+      console.log('ok')
+      window.api.send('loadAgents')
+   }
+
    return (
       <Modal
          isOpen={isOpen}
@@ -82,6 +97,25 @@ export const AgentsSettings = () => {
                </Button>
             </div>
 
+            <div className='w-50'>
+               <Button
+                  fullWidth
+                  colorScheme='yellow'
+                  onClick={() => load()}
+               >
+                  Load agents 🗳
+               </Button>
+            </div>
+
+            <div className='w-50'>
+               <Button
+                  fullWidth
+                  colorScheme='cyan'
+                  onClick={() => save()}
+               >
+                  Save agents ✅
+               </Button>
+            </div>
 
             <div className='w-full'>
                <DeleteAllAgents />
@@ -89,4 +123,18 @@ export const AgentsSettings = () => {
          </div>
       </Modal>
    )
+}
+
+declare global {
+   interface Window {
+      api: {
+         send: (
+            chanel: 'saveAgents' | 'loadAgents',
+            body?: {
+               filename: string
+               content: string
+            }
+         ) => void
+      }
+   }
 }

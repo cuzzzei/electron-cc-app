@@ -2,6 +2,8 @@ import { app } from 'electron'
 import './security-restrictions'
 import { restoreOrCreateWindow } from '/@/mainWindow'
 import { platform } from 'node:process'
+import { ipcMain } from 'electron'
+import { writeFile, readFile } from 'fs/promises'
 
 /**
  * Prevent electron from running multiple instances.
@@ -75,3 +77,23 @@ if (import.meta.env.PROD) {
       })
       .catch((e) => console.error('Failed check and install updates:', e))
 }
+
+// Events
+ipcMain.on('saveAgents', async (event, data) => {
+   console.log('lol2')
+
+   try {
+      await writeFile(data.filename, data.content)
+      console.log('Content saved')
+   } catch (err) {
+      console.log(err)
+   }
+})
+
+ipcMain.on('loadAgents', async () => {
+   const data = await readFile('agents.json', { encoding: 'utf8' })
+   console.log(data)
+   
+})
+
+
