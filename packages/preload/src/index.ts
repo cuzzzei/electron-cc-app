@@ -7,6 +7,8 @@ export { versions } from './versions'
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
+
+// TODO: REMOVE DUPLCATION OF EVENTS
 contextBridge.exposeInMainWorld('api', {
    send: (channel: string, data: any) => {
       // whitelist channels

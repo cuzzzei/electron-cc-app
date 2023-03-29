@@ -1,5 +1,6 @@
 import { Agent, AgentJSON } from '../types'
 import { AgentList } from '../types'
+import { Api } from '/@/features/agents/api'
 import { Button } from '/@/components/Button'
 import { CheckBadgeIcon, Cog8ToothIcon } from '@heroicons/react/24/outline'
 import { DeleteAllAgents } from './DeleteAllAgents'
@@ -8,6 +9,12 @@ import { Select } from '/@/components/Select'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+
+declare global {
+   interface Window {
+      api: Api
+   }
+}
 
 export const AgentsSettings = () => {
    const toast = useToast()
@@ -61,15 +68,17 @@ export const AgentsSettings = () => {
 
    async function load() {
       window.api.send('loadAgents')
-      window.api.receive('agents', (data: string) => {
-         const jsonData: AgentJSON[] = JSON.parse(data)
-         const newList = AgentList.fromJSON(jsonData)
-         agentList.assign(newList)
-         render()
+      window.api.receive('agents', (response) => {
+         if (response.status === 'success') {
+            const jsonData: AgentJSON[] = JSON.parse(response.data)
+            const newList = AgentList.fromJSON(jsonData)
+            agentList.assign(newList)
+            render()
+         }
 
          toast({
-            title: 'Agents loaded successfully',
-            status: 'success',
+            title: response.result,
+            status: response.status,
          })
       })
    }
@@ -138,19 +147,4 @@ export const AgentsSettings = () => {
          </div>
       </Modal>
    )
-}
-
-declare global {
-   interface Window {
-      api: {
-         send: (
-            chanel: 'saveAgents' | 'loadAgents',
-            body?: {
-               filename: string
-               content: string
-            }
-         ) => void
-         receive: (channel: 'agents', data: any) => void
-      }
-   }
 }

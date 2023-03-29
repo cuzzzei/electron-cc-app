@@ -77,10 +77,24 @@ export async function restoreOrCreateWindow() {
    })
 
    ipcMain.on('loadAgents', async () => {
-      const data = await readFile('agents.json', { encoding: 'utf8' })
+      try {
+         const data = await readFile('agents.json', { encoding: 'utf8' })
 
-      if (window) {
-         window.webContents.send('agents', data)
+         if (window) {
+            window.webContents.send('agents', {
+               result: 'Agents loaded successfully',
+               status: 'success',
+               data,
+            })
+            return
+         }
+
+         throw new Error('')
+      } catch (err) {
+         window?.webContents.send('agents', {
+            result: 'Error loading agents',
+            status: 'error',
+         })
       }
    })
 }
