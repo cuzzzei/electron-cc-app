@@ -6,8 +6,10 @@ import { Modal } from '/@/components/Modal'
 import { Select } from '/@/components/Select'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
+import { useToast } from '/@/hooks/useToast'
 
 export const AgentsSettings = () => {
+   const toast = useToast()
    const { agentList, render } = useAppContext()
    const [isOpen, setIsOpen] = useState(false)
    const [sortBy, setSortBy] = useState('name')
@@ -17,21 +19,27 @@ export const AgentsSettings = () => {
    }
 
    function sort() {
-      console.time('Sorting...')
+      let isSorted = false
+
       if (sortBy === 'name') {
          agentList.sort(Agent.compareByName)
-         console.log(
-            'SORTED BY NAME: ',
-            agentList.isSorted(Agent.compareByName)
-         )
+         isSorted = agentList.isSorted(Agent.compareByName)
       } else {
          agentList.sort(Agent.compareBySpecialty)
-         console.log(
-            'SORTED BY SPECIALTY: ',
-            agentList.isSorted(Agent.compareBySpecialty)
-         )
+         isSorted = agentList.isSorted(Agent.compareBySpecialty)
       }
-      console.timeEnd('Sorting...')
+
+      if (isSorted) {
+         toast({
+            title: `List ordered by ${sortBy}`,
+            status: 'success',
+         })
+      } else {
+         toast({
+            title: `Error trying to order by ${sortBy}`,
+            status: 'error',
+         })
+      }
 
       render()
    }
@@ -74,26 +82,6 @@ export const AgentsSettings = () => {
                </Button>
             </div>
 
-            <div className='w-50'>
-               <Button
-                  fullWidth
-                  colorScheme='yellow'
-               >
-                  Load agents 🗳
-               </Button>
-            </div>
-
-            <div className='w-50'>
-               <Button
-                  fullWidth
-                  colorScheme='cyan'
-                  onClick={() => {
-                     console.log(JSON.stringify(agentList))
-                  }}
-               >
-                  Save agents ✅
-               </Button>
-            </div>
 
             <div className='w-full'>
                <DeleteAllAgents />
