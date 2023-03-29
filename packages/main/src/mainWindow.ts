@@ -1,6 +1,8 @@
 import { app, BrowserWindow } from 'electron'
+import { ipcMain } from 'electron'
 import { join } from 'node:path'
 import { URL } from 'node:url'
+import { writeFile, readFile } from 'fs/promises'
 
 async function createWindow() {
    const browserWindow = new BrowserWindow({
@@ -64,4 +66,21 @@ export async function restoreOrCreateWindow() {
    }
 
    window.focus()
+
+   // Events
+   ipcMain.on('saveAgents', async (event, data) => {
+      try {
+         await writeFile(data.filename, data.content)
+      } catch (err) {
+         console.log(err)
+      }
+   })
+
+   ipcMain.on('loadAgents', async () => {
+      const data = await readFile('agents.json', { encoding: 'utf8' })
+
+      if (window) {
+         window.webContents.send('agents', data)
+      }
+   })
 }

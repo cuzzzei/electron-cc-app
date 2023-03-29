@@ -17,7 +17,7 @@ contextBridge.exposeInMainWorld('api', {
    },
 
    receive: (channel: string, func: any) => {
-      const validChannels = ['loadAgents']
+      const validChannels = ['agents']
       if (validChannels.includes(channel)) {
          // Deliberately strip event as it includes `sender`
          ipcRenderer.on(channel, (event, ...args) => func(...args))

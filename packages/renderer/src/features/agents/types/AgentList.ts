@@ -183,6 +183,7 @@ export class AgentList {
    }
 
    public assign(other: AgentList): AgentList {
+      this.deleteAll()
       this.copyAll(other)
       return this
    }
@@ -235,7 +236,7 @@ export class AgentList {
       return result
    }
 
-   public fromJSON(data: Array<AgentJSON>): AgentList {
+   public static fromJSON(data: Array<AgentJSON>): AgentList {
       const list = new AgentList()
 
       data.forEach((agent) => {

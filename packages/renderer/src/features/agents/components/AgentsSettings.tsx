@@ -1,4 +1,5 @@
-import { Agent } from '../types'
+import { Agent, AgentJSON } from '../types'
+import { AgentList } from '../types'
 import { Button } from '/@/components/Button'
 import { CheckBadgeIcon, Cog8ToothIcon } from '@heroicons/react/24/outline'
 import { DeleteAllAgents } from './DeleteAllAgents'
@@ -52,11 +53,25 @@ export const AgentsSettings = () => {
       }
 
       window.api.send('saveAgents', body)
+      toast({
+         title: 'Agents saved successfully',
+         status: 'success',
+      })
    }
 
    async function load() {
-      console.log('ok')
       window.api.send('loadAgents')
+      window.api.receive('agents', (data: string) => {
+         const jsonData: AgentJSON[] = JSON.parse(data)
+         const newList = AgentList.fromJSON(jsonData)
+         agentList.assign(newList)
+         render()
+
+         toast({
+            title: 'Agents loaded successfully',
+            status: 'success',
+         })
+      })
    }
 
    return (
@@ -135,6 +150,7 @@ declare global {
                content: string
             }
          ) => void
+         receive: (channel: 'agents', data: any) => void
       }
    }
 }
