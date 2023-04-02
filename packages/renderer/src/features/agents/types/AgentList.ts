@@ -343,7 +343,7 @@ export class AgentList {
          const data = JSON.stringify(json)
 
          const result: WriteToDiskResponse = await window.ipcRenderer.invoke(
-            'saveAgents',
+            'saveData',
             {
                fileName,
                data,
@@ -352,14 +352,14 @@ export class AgentList {
 
          return result
       } catch {
-         throw new ListException('Errorr writing list to disk')
+         throw new ListException('Error writing list to disk')
       }
    }
 
    public async readFromDisk(fileName: string): Promise<ReadFromDiskResponse> {
       try {
          const data: ReadFromDiskResponse = await window.ipcRenderer.invoke(
-            'loadAgents',
+            'loadData',
             { fileName }
          )
 

@@ -68,34 +68,34 @@ export async function restoreOrCreateWindow() {
    window.focus()
 
    // Events
-   ipcMain.handle('saveAgents', async (event, data) => {
+   ipcMain.handle('saveData', async (event, data) => {
       try {
          await writeFile(data.fileName, data.data)
 
          return {
-            result: 'Agents saved successfully',
+            result: 'Data saved successfully',
             status: 'success',
          }
       } catch (err) {
          return {
-            result: 'Error trying to save agents',
+            result: 'Error trying to save data',
             status: 'error',
          }
       }
    })
 
-   ipcMain.handle('loadAgents', async (event, params) => {
+   ipcMain.handle('loadData', async (event, params) => {
       try {
          const data = await readFile(params.fileName, { encoding: 'utf8' })
 
          return {
-            result: 'Agents loaded successfully',
+            result: 'Data loaded successfully',
             status: 'success',
             data,
          }
       } catch (err) {
          return {
-            result: 'Error loading agents',
+            result: 'Error loading data',
             status: 'error',
          }
       }

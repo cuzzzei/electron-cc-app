@@ -2,6 +2,7 @@ import { Call } from './Call'
 import { CallJSON } from './JSON'
 import { CallNode, CallNodeRef } from './CallNode'
 import { ListException } from '/@/types/ListException'
+import { ReadFromDiskResponse, WriteToDiskResponse } from '/@/features/agents/api'
 
 export class CallList {
    private head: CallNodeRef
@@ -258,6 +259,41 @@ export class CallList {
       return list
    }
 
-   public writeToDisk(s: string) {}
-   public readFromDisk(s: string) {}
+   public async writeToDisk(fileName: string) {
+      try {
+         const json: CallJSON[] = this.toJSON()
+         const data = JSON.stringify(json)
+
+         const result: WriteToDiskResponse = await window.ipcRenderer.invoke(
+            'saveData',
+            {
+               fileName,
+               data,
+            }
+         )
+
+         return result
+      } catch {
+         throw new ListException('Error writing list to disk')
+      }
+   }
+   public async readFromDisk(fileName: string) {
+      try {
+         const data: ReadFromDiskResponse = await window.ipcRenderer.invoke(
+            'loadData',
+            { fileName }
+         )
+
+         if (!data.data) {
+            throw new ListException('Error loading calls from disk')
+         }
+
+         const json: CallJSON[] = JSON.parse(data.data)
+         this.assign(CallList.fromJSON(json))
+
+         return data
+      } catch {
+         throw new ListException('Error loading calls from disk')
+      }
+   }
 }
