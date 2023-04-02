@@ -51,7 +51,7 @@ export function createRandomAgent(): Agent {
    agent.setStartTime(start)
    agent.setEndTime(end)
 
-   for (let i = 0; i < 1; i++) {
+   for (let i = 0; i < 10; i++) {
       agent
          .getCallHistory()
          .insertOrdered(
@@ -65,7 +65,7 @@ export function createRandomAgent(): Agent {
 
 export async function createAgentList(): Promise<AgentList> {
    const list = new AgentList()
-   const NUM_AGENTS = 1
+   const NUM_AGENTS = 15
 
    return new Promise((resolve, reject) => {
       for (let i = 0; i < NUM_AGENTS; i++) {

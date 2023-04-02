@@ -1,6 +1,4 @@
-import { Agent, AgentJSON } from '../types'
-import { AgentList } from '../types'
-import { Api } from '/@/features/agents/api'
+import { Agent } from '../types'
 import { Button } from '/@/components/Button'
 import { CheckBadgeIcon, Cog8ToothIcon } from '@heroicons/react/24/outline'
 import { DeleteAllAgents } from './DeleteAllAgents'
@@ -9,10 +7,11 @@ import { Select } from '/@/components/Select'
 import { useAppContext } from '/@/providers/app'
 import { useState } from 'react'
 import { useToast } from '/@/hooks/useToast'
+import { IpcRenderer } from 'electron'
 
 declare global {
    interface Window {
-      api: Api
+      ipcRenderer: IpcRenderer
    }
 }
 
@@ -53,34 +52,36 @@ export const AgentsSettings = () => {
    }
 
    async function save() {
-      const data = agentList.toJSON()
-      const body = {
-         filename: 'agents.json',
-         content: JSON.stringify(data),
-      }
+      try {
+         const result = await agentList.writeToDisk('agents.json')
 
-      window.api.send('saveAgents', body)
-      toast({
-         title: 'Agents saved successfully',
-         status: 'success',
-      })
+         toast({
+            title: result.result,
+            status: result.status,
+         })
+      } catch {
+         toast({
+            title: 'Unexpected error trying to write agents in disk',
+            status: 'error',
+         })
+      }
    }
 
    async function load() {
-      window.api.send('loadAgents')
-      window.api.receive('agents', (response) => {
-         if (response.status === 'success') {
-            const jsonData: AgentJSON[] = JSON.parse(response.data)
-            const newList = AgentList.fromJSON(jsonData)
-            agentList.assign(newList)
-            render()
-         }
+      try {
+         const result = await agentList.readFromDisk('agents.json')
+         render()
 
          toast({
-            title: response.result,
-            status: response.status,
+            title: result.result,
+            status: result.status,
          })
-      })
+      } catch {
+         toast({
+            title: 'Unexpected error trying to load agents',
+            status: 'error',
+         })
+      }
    }
 
    return (

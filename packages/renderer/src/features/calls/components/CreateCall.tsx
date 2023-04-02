@@ -42,7 +42,10 @@ export const CreateCall = ({ callList }: CreateCallProps) => {
 
          render()
       } catch (err) {
-         console.log(err)
+         toast({
+            title: 'Error creating call',
+            status: 'error',
+         })
       }
    }
 

@@ -2,6 +2,10 @@ import { Agent } from './Agent'
 import { AgentJSON } from './JSON'
 import { AgentNode, AgentNodeRef } from './AgentNode'
 import { ListException } from '/@/types/ListException'
+import {
+   ReadFromDiskResponse,
+   WriteToDiskResponse,
+} from '/@/features/agents/api'
 
 export class AgentList {
    private head: AgentNode
@@ -173,6 +177,7 @@ export class AgentList {
 
       pos.getPrev()?.setNext(pos.getNext())
       pos.getNext()?.setPrev(pos.getPrev())
+      this.length--
    }
 
    public deleteAll() {
@@ -332,6 +337,42 @@ export class AgentList {
       this.quickSort(this.getFirstPosition(), this.getLastPosition(), compare)
    }
 
-   public writeToDisk(s: string) {}
-   public readFromDisk(s: string) {}
+   public async writeToDisk(fileName: string): Promise<WriteToDiskResponse> {
+      try {
+         const json: AgentJSON[] = this.toJSON()
+         const data = JSON.stringify(json)
+
+         const result: WriteToDiskResponse = await window.ipcRenderer.invoke(
+            'saveAgents',
+            {
+               fileName,
+               data,
+            }
+         )
+
+         return result
+      } catch {
+         throw new ListException('Errorr writing list to disk')
+      }
+   }
+
+   public async readFromDisk(fileName: string): Promise<ReadFromDiskResponse> {
+      try {
+         const data: ReadFromDiskResponse = await window.ipcRenderer.invoke(
+            'loadAgents',
+            { fileName }
+         )
+
+         if (!data.data) {
+            throw new ListException('Error loading agents from disk')
+         }
+
+         const json: AgentJSON[] = JSON.parse(data.data)
+         this.assign(AgentList.fromJSON(json))
+
+         return data
+      } catch {
+         throw new ListException('Error loading agents from disk')
+      }
+   }
 }

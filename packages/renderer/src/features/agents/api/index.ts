@@ -1,13 +1,12 @@
+import { Status } from '/@/components/Toast'
 
+export interface ReadFromDiskResponse {
+   result: string
+   status: Status
+   data?: string
+}
 
-
-export interface Api {
-   send: (
-      channel: 'saveAgents' | 'loadAgents',
-      body?: {
-         filename: string
-         content: string
-      }
-   ) => void
-   receive: (channel: 'agents', data: any) => void
+export interface WriteToDiskResponse {
+   result: string
+   status: Status
 }

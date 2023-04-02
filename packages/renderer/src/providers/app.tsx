@@ -17,21 +17,7 @@ export function useAppContext() {
 
 export function useInitAppContext(initialValue?: AgentList) {
    const render = useRender()
-   const agentList = useRef<AgentList | null>(null)
-
-   useEffect(() => {
-      if (!agentList?.current) {
-         createAgentList()
-            .then((result) => {
-               agentList.current = result
-               render()
-               console.log('Resolved')
-            })
-            .catch((err) => {
-               console.log('Error loading agent list')
-            })
-      }
-   }, [render])
+   const agentList = useRef<AgentList | null>(new AgentList())
 
    return {
       render,

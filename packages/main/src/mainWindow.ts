@@ -68,33 +68,36 @@ export async function restoreOrCreateWindow() {
    window.focus()
 
    // Events
-   ipcMain.on('saveAgents', async (event, data) => {
+   ipcMain.handle('saveAgents', async (event, data) => {
       try {
-         await writeFile(data.filename, data.content)
+         await writeFile(data.fileName, data.data)
+
+         return {
+            result: 'Agents saved successfully',
+            status: 'success',
+         }
       } catch (err) {
-         console.log(err)
+         return {
+            result: 'Error trying to save agents',
+            status: 'error',
+         }
       }
    })
 
-   ipcMain.on('loadAgents', async () => {
+   ipcMain.handle('loadAgents', async (event, params) => {
       try {
-         const data = await readFile('agents.json', { encoding: 'utf8' })
+         const data = await readFile(params.fileName, { encoding: 'utf8' })
 
-         if (window) {
-            window.webContents.send('agents', {
-               result: 'Agents loaded successfully',
-               status: 'success',
-               data,
-            })
-            return
+         return {
+            result: 'Agents loaded successfully',
+            status: 'success',
+            data,
          }
-
-         throw new Error('')
       } catch (err) {
-         window?.webContents.send('agents', {
+         return {
             result: 'Error loading agents',
             status: 'error',
-         })
+         }
       }
    })
 }
